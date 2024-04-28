@@ -1,4 +1,4 @@
-import 'package:enercicio/logo_screen.dart';
+import 'package:enercicio/pages/escolha_login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,7 +32,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LogoScreen(),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: EscolhaLogin(),
+      // initialRoute: '/',
+      // routes: {
+      //   '/': (context) => LogoScreen(),
+      // },
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
