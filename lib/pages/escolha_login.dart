@@ -38,7 +38,7 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Escolha uma opção abaixo:',
               style: TextStyle(
                 color: Colors.white,
@@ -81,15 +81,15 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
               children: [
                 ElevatedButton(
                   onPressed: modfieLogin,
-                  child: Icon(
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                  ),
+                  child: const Icon(
                     Icons.arrow_back_rounded,
                     color: Colors.purple,
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    shape: CircleBorder(),
                   ), 
                 ),
-                Container(
+                SizedBox(
                   height: 250,
                   width: 250,
                   // color: Colors.white,
@@ -104,12 +104,12 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
                 ),
                 ElevatedButton(
                   onPressed: modfieLogin,
-                  child: Icon(
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                  ),
+                  child: const Icon(
                     Icons.arrow_forward_rounded,
                     color: Colors.purple,
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    shape: CircleBorder(),
                   ), 
                 ),
               ],
@@ -119,7 +119,7 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
             ),
             Text(
               buttonD == 1 && buttonE == 1 ? 'ATLETA' : 'EMPRESA',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 50,
                 fontWeight: FontWeight.bold,
@@ -131,20 +131,20 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
             TextButton(
               onPressed: () {Navigator.push(
                 context, MaterialPageRoute(
-                  builder: (context) => LoginAtleta()),
+                  builder: (context) => const LoginAtleta()),
               );
                 },
-              child: Text(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.purple,
+                // fixedSize: Size(400, 50)
+              ),
+              child: const Text(
                 'ENTRAR',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
-              ),
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.purple,
-                // fixedSize: Size(400, 50)
               ),
             ),
           ],
