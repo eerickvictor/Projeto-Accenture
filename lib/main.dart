@@ -1,3 +1,5 @@
+import 'package:enercicio/pages/escolha_login.dart';
+import 'package:enercicio/pages/pageLoginAtleta.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,18 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Enercicio',
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Stack(
-        alignment: AlignmentDirectional.center,
-        children:[
-          Container(color: Colors.black),
-          Container(color: Colors.purple, width: 225, height: 225, ),
-        ]
-      ),
+      theme: ThemeData(),
+      home: EscolhaLogin(),
+      // initialRoute: '/',
+      // routes: {
+      //   '/': (context) => escolha_login(),
+      // },
     );
   }
 }
