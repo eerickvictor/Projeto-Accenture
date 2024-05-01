@@ -70,8 +70,11 @@ flutter:
 
   assets:
     - assets/images/logo_enercicio.png
+    - assets/images/logo_enercicio_horizontal.png
     - assets/images/bike_imagem.png
     - assets/images/company_imagem.png
+    - assets/images/stations/station_imagem.png
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
