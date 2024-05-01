@@ -74,6 +74,7 @@ flutter:
     - assets/images/bike_imagem.png
     - assets/images/company_imagem.png
     - assets/images/stations/station_imagem.png
+    - assets/images/icons/icon_perfil.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
