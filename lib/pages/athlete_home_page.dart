@@ -21,7 +21,6 @@ class _athleteHomePageState extends State<athleteHomePage> {
           height: 50,
           child: Image.asset('assets/images/logo_enercicio_horizontal.png'),
         )
-        
       ),
       body: Container(
         width: 400,
@@ -105,4 +104,3 @@ class _ContainerEmpresaState extends State<ContainerEmpresa> {
     );
   }
 }
-

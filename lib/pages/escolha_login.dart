@@ -21,8 +21,8 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
         // print("Mudou para -1");
         buttonD = -1;
         buttonE = -1;
-      }else if(buttonD == -1 && buttonE == -1)
-      {
+      }else if(buttonD == -1 && buttonE == -1){
+        // print("Mudou para 1 ");
         buttonD = 1;
         buttonE = 1;
         print('Mudou para -1');
