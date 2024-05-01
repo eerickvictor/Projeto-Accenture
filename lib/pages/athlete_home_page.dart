@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -9,6 +12,12 @@ class athleteHomePage extends StatefulWidget {
 }
 
 class _athleteHomePageState extends State<athleteHomePage> {
+
+  void pressed()
+  {
+    print('pressionado');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,9 +65,53 @@ class _athleteHomePageState extends State<athleteHomePage> {
                 ],
               ),
             ),
+            // Container(
+            //   width: 400,
+            //   hei
+            //   color: Colors.purple,
+            // ),
           ],
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        padding: EdgeInsets.only(),
+        color: Colors.purple,
+        height: 60,
+        child: Container(
+          height: 20,
+          width: 500,
+          child: ElevatedButton(
+            onPressed: pressed,
+            child: Icon(
+              Icons.account_circle_rounded,
+              color: Colors.white,
+              size: 50,
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.purple,
+              shape: const CircleBorder(),
+              shadowColor: Colors.transparent,
+            ),
+          ),
+        ),
+      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   backgroundColor: Colors.purple,
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.account_circle_rounded, color: Colors.white,
+      //       ), 
+      //       label: 'Perfil',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.account_circle_rounded, color: Colors.white,
+      //       ), 
+      //       label: 'Perfil',
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
