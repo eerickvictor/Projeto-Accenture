@@ -75,20 +75,19 @@ class _athleteHomePageState extends State<athleteHomePage> {
       ),
       bottomNavigationBar: BottomAppBar(
         padding: EdgeInsets.only(),
-        color: Colors.purple,
+        color: Colors.black,
         height: 60,
         child: Container(
           height: 20,
           width: 500,
           child: ElevatedButton(
             onPressed: pressed,
-            child: Icon(
-              Icons.account_circle_rounded,
-              color: Colors.white,
-              size: 50,
+            child: Image.asset(
+              'assets/images/icons/icon_perfil.png',
+              scale: 5,
             ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.purple,
+              backgroundColor: Colors.transparent,
               shape: const CircleBorder(),
               shadowColor: Colors.transparent,
             ),
