@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:html';
 
+import 'package:enercicio/pages/athlete_perfil_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -81,7 +82,13 @@ class _athleteHomePageState extends State<athleteHomePage> {
           height: 20,
           width: 500,
           child: ElevatedButton(
-            onPressed: pressed,
+            onPressed: () {
+              Navigator.push(
+                context, MaterialPageRoute(
+                  builder: (context) => const AthletePerfilPage()
+                ),
+              );
+            },
             child: Image.asset(
               'assets/images/icons/icon_perfil.png',
               scale: 5,
