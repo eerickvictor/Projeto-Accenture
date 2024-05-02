@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:html';
 
+import 'package:enercicio/pages/athlete_company_page.dart';
 import 'package:enercicio/pages/athlete_perfil_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -139,7 +140,13 @@ class _ContainerEmpresaState extends State<ContainerEmpresa> {
         width: 250,
         height: 250,
         child: ElevatedButton(
-          onPressed: pressed,
+          onPressed: () => {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const AthleteCompanyPage()),
+            ),
+          },
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
               shadowColor: Colors.transparent,
