@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:html';
 
 import 'package:enercicio/pages/athlete_perfil_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -13,9 +14,7 @@ class athleteHomePage extends StatefulWidget {
 }
 
 class _athleteHomePageState extends State<athleteHomePage> {
-
-  void pressed()
-  {
+  void pressed() {
     print('pressionado');
   }
 
@@ -24,14 +23,13 @@ class _athleteHomePageState extends State<athleteHomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Container(
-          alignment: Alignment.center,
-          width: 400,
-          height: 50,
-          child: Image.asset('assets/images/logo_enercicio_horizontal.png'),
-        )
-      ),
+          backgroundColor: Colors.black,
+          title: Container(
+            alignment: Alignment.center,
+            width: 400,
+            height: 50,
+            child: Image.asset('assets/images/logo_enercicio_horizontal.png'),
+          )),
       body: Container(
         width: 400,
         padding: EdgeInsets.all(10.0),
@@ -84,9 +82,9 @@ class _athleteHomePageState extends State<athleteHomePage> {
           child: ElevatedButton(
             onPressed: () {
               Navigator.push(
-                context, MaterialPageRoute(
-                  builder: (context) => const AthletePerfilPage()
-                ),
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AthletePerfilPage()),
               );
             },
             child: Image.asset(
@@ -107,13 +105,13 @@ class _athleteHomePageState extends State<athleteHomePage> {
       //     BottomNavigationBarItem(
       //       icon: Icon(
       //         Icons.account_circle_rounded, color: Colors.white,
-      //       ), 
+      //       ),
       //       label: 'Perfil',
       //     ),
       //     BottomNavigationBarItem(
       //       icon: Icon(
       //         Icons.account_circle_rounded, color: Colors.white,
-      //       ), 
+      //       ),
       //       label: 'Perfil',
       //     ),
       //   ],
@@ -130,13 +128,22 @@ class ContainerEmpresa extends StatefulWidget {
 }
 
 class _ContainerEmpresaState extends State<ContainerEmpresa> {
+  void pressed() {
+    print('pressionado');
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 250,
-          height: 250,
+    return Column(children: [
+      SizedBox(
+        width: 250,
+        height: 250,
+        child: ElevatedButton(
+          onPressed: pressed,
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              shadowColor: Colors.transparent,
+              shape: BeveledRectangleBorder()),
           child: Column(
             children: [
               Container(
@@ -158,8 +165,8 @@ class _ContainerEmpresaState extends State<ContainerEmpresa> {
               ),
             ],
           ),
-        )
-      ],
-    );
+        ),
+      )
+    ]);
   }
 }
