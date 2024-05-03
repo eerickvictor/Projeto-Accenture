@@ -1,3 +1,4 @@
+import 'package:enercicio/pages/escolha_login.dart';
 import 'package:flutter/material.dart';
 
 class AthletePerfilPage extends StatefulWidget {
@@ -150,52 +151,51 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
         color: Colors.black,
         height: 60,
         child: SizedBox(
-          height: 20,
-          width: 500,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ElevatedButton.icon(
-                onPressed: () {
-                  
-                },
-                icon: const Icon(
-                  Icons.edit,
-                  color: Colors.white,
-                ),
-                label: const Text(
-                  'Editar perfil',
-                  style: TextStyle(
+            height: 20,
+            width: 500,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.edit,
                     color: Colors.white,
                   ),
+                  label: const Text(
+                    'Editar perfil',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent),
                 ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  shadowColor: Colors.transparent
-                ),
-              ),
-              ElevatedButton.icon(
-                onPressed: () {
-                  
-                },
-                icon: const Icon(
-                  Icons.backspace,
-                  color: Colors.white,
-                ),
-                label: const Text(
-                  'Sair',
-                  style: TextStyle(
+                ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const EscolhaLogin()),
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.backspace,
                     color: Colors.white,
                   ),
+                  label: const Text(
+                    'Sair',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent),
                 ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  shadowColor: Colors.transparent
-                ),
-              ),
-            ],
-          )
-        ),
+              ],
+            )),
       ),
     );
   }
