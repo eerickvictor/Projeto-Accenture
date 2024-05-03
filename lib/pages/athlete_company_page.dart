@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class AthleteCompanyPage extends StatefulWidget {
   const AthleteCompanyPage({super.key});
@@ -17,15 +18,15 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
         title: Container(
           child: Row(
             children: [
-              Container(
+              SizedBox(
                 width: 40,
                 height: 40,
                 child: Image.asset('assets/images/stations/station_imagem.png'),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
-              Text(
+              const Text(
                 'COMPANY X',
                 style: TextStyle(
                   color: Colors.white,
@@ -38,21 +39,29 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         width: 400,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 400,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    'Sobre:',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                   Container(
+                    padding: EdgeInsets.all(15),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          child: Row(
+                          child: const Row(
                             children: [
                               Icon(
                                 Icons.home,
@@ -63,7 +72,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                 width: 5,
                               ),
                               Text(
-                                'Parque Santana - Ariano Suassuna - R. Jorge Gomes de Sá - Santana, Recife - PE, 52060-530',
+                                'Parque Santana - Ariano Suassuna - R. Jorge Gomes de \nSá - Santana, Recife - PE, 52060-530',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 10,
@@ -72,11 +81,11 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
-                          child: Row(
+                          child: const Row(
                             children: [
                               Icon(
                                 Icons.phone,
@@ -96,11 +105,11 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
-                          child: Row(
+                          child: const Row(
                             children: [
                               Icon(
                                 Icons.circle,
@@ -123,44 +132,117 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 30,
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Container(
+              width: 400,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Metas e Recompensas:',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500),
                   ),
                   Container(
                     alignment: Alignment.center,
-                    width: 400,
-                    height: 200,
+                    padding: EdgeInsets.all(15),
                     child: Container(
-                      width: 350,
-                      height: 300,
+                      width: 300,
+                      height: 180,
+                      padding: const EdgeInsets.all(5.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: const Color.fromARGB(221, 22, 22, 22),
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Metas e Recompensas',
+                            'Percorrer a distancia de 5KM',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 10,
-                                fontWeight: FontWeight.w400),
+                                fontWeight: FontWeight.w800),
+                          ),
+                          SizedBox(
+                            height: 8,
                           ),
                           Container(
                             width: 300,
-                            height: 180,
-                            padding: EdgeInsets.all(10.0),
-                            color: Color.fromARGB(221, 22, 22, 22),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Percorrer a distancia de 5KM',
+                            height: 1,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            'Objetivo:',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w800),
+                          ),
+                          SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            'Percorrer uma distancia de 5KM',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 5,
+                                fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            'Recompensa:',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w800),
+                          ),
+                          SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            'Desconto de 50% na mensalidade',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 5,
+                                fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            width: 300,
+                            height: 1,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            width: 300,
+                            height: 30,
+                            decoration: BoxDecoration(
+                                color: Colors.purple,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text('30%',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w800),
-                                ),
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 15, 15, 15),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500)),
                             ),
                           ),
                         ],
@@ -170,6 +252,39 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                 ],
               ),
             ),
+            SizedBox(
+              height: 30,
+            ),
+            Container(
+              width: 400,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.qr_code,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text('INICIAR EXERCICIO',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500))
+                    ],
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: const BeveledRectangleBorder(),
+                  backgroundColor: Colors.purple,
+                ),
+              ),
+            )
           ],
         ),
       ),
