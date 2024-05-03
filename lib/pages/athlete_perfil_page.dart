@@ -1,5 +1,6 @@
 import 'package:enercicio/pages/escolha_login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class AthletePerfilPage extends StatefulWidget {
   const AthletePerfilPage({super.key});
@@ -27,14 +28,64 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
       body: Container(
         width: 400,
         padding: const EdgeInsets.all(20.0),
-        child: Column(
+        child: ListView(
           children: [
+            Container(
+              width: 400,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Total de KMs\nPercorridos:',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          '7.00',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Container(
+                            width: 160,
+                            child: Text(
+                              'KMs',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Nome:',
+                  Text(
+                    'Informações:',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -42,103 +93,118 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                     ),
                   ),
                   Container(
-                    height: 2,
-                  ),
-                  const Text(
-                    'Robson Azeitona Ludimar Rosa',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  Container(
-                    height: 8,
-                  ),
-                  const Text(
-                    'E-mail:',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  Container(
-                    height: 2,
-                  ),
-                  const Text(
-                    'ralr@gmail.com',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  Container(
-                    height: 8,
-                  ),
-                  const Text(
-                    'Data de nascimento:',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  Container(
-                    height: 2,
-                  ),
-                  const Text(
-                    '20/08/1990',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  Container(
-                    height: 8,
-                  ),
-                  const Text(
-                    'CPF:',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  Container(
-                    height: 2,
-                  ),
-                  const Text(
-                    '650.534.234-80',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  Container(
-                    height: 8,
-                  ),
-                  const Text(
-                    'Contato:',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  Container(
-                    height: 2,
-                  ),
-                  const Text(
-                    '+55 81 94355-4354',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    padding: EdgeInsets.all(15),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Nome:',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Container(
+                            height: 2,
+                          ),
+                          const Text(
+                            'Robson Azeitona Ludimar Rosa',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Container(
+                            height: 8,
+                          ),
+                          const Text(
+                            'E-mail:',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Container(
+                            height: 2,
+                          ),
+                          const Text(
+                            'ralr@gmail.com',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Container(
+                            height: 8,
+                          ),
+                          const Text(
+                            'Data de nascimento:',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Container(
+                            height: 2,
+                          ),
+                          const Text(
+                            '20/08/1990',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Container(
+                            height: 8,
+                          ),
+                          const Text(
+                            'CPF:',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Container(
+                            height: 2,
+                          ),
+                          const Text(
+                            '650.534.234-80',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Container(
+                            height: 8,
+                          ),
+                          const Text(
+                            'Contato:',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Container(
+                            height: 2,
+                          ),
+                          const Text(
+                            '+55 81 94355-4354',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ]),
                   ),
                 ],
               ),
