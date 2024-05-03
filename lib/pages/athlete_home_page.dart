@@ -1,11 +1,7 @@
-import 'dart:convert';
-import 'dart:html';
 
 import 'package:enercicio/pages/athlete_company_page.dart';
 import 'package:enercicio/pages/athlete_perfil_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class athleteHomePage extends StatefulWidget {
   const athleteHomePage({super.key});
@@ -33,14 +29,14 @@ class _athleteHomePageState extends State<athleteHomePage> {
           )),
       body: Container(
         width: 400,
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
               height: 30,
             ),
-            Align(
+            const Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 'Empresas:',
@@ -58,7 +54,7 @@ class _athleteHomePageState extends State<athleteHomePage> {
             Expanded(
               child: ListView(
                 shrinkWrap: true,
-                children: [
+                children: const [
                   ContainerEmpresa(),
                   ContainerEmpresa(),
                   ContainerEmpresa(),
@@ -74,10 +70,10 @@ class _athleteHomePageState extends State<athleteHomePage> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        padding: EdgeInsets.only(),
+        padding: const EdgeInsets.only(),
         color: Colors.black,
         height: 60,
-        child: Container(
+        child: SizedBox(
           height: 20,
           width: 500,
           child: ElevatedButton(
@@ -88,14 +84,14 @@ class _athleteHomePageState extends State<athleteHomePage> {
                     builder: (context) => const AthletePerfilPage()),
               );
             },
-            child: Image.asset(
-              'assets/images/icons/icon_perfil.png',
-              scale: 5,
-            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
               shape: const CircleBorder(),
               shadowColor: Colors.transparent,
+            ),
+            child: Image.asset(
+              'assets/images/icons/icon_perfil.png',
+              scale: 5,
             ),
           ),
         ),
@@ -150,15 +146,15 @@ class _ContainerEmpresaState extends State<ContainerEmpresa> {
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
               shadowColor: Colors.transparent,
-              shape: BeveledRectangleBorder()),
+              shape: const BeveledRectangleBorder()),
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 width: 250,
                 height: 200,
                 child: Image.asset('assets/images/stations/station_imagem.png'),
               ),
-              Align(
+              const Align(
                 alignment: Alignment.center,
                 child: Text(
                   'EMPRESA X',

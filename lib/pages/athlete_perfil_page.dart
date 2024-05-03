@@ -14,7 +14,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text(
+        title: const Text(
           'Perfil',
           style: TextStyle(
             color: Colors.white,
@@ -25,14 +25,14 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
       ),
       body: Container(
         width: 400,
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
             Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Nome:',
                     style: TextStyle(
                       color: Colors.white,
@@ -43,7 +43,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   Container(
                     height: 2,
                   ),
-                  Text(
+                  const Text(
                     'Robson Azeitona Ludimar Rosa',
                     style: TextStyle(
                       color: Colors.white,
@@ -54,7 +54,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   Container(
                     height: 8,
                   ),
-                  Text(
+                  const Text(
                     'E-mail:',
                     style: TextStyle(
                       color: Colors.white,
@@ -65,7 +65,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   Container(
                     height: 2,
                   ),
-                  Text(
+                  const Text(
                     'ralr@gmail.com',
                     style: TextStyle(
                       color: Colors.white,
@@ -76,7 +76,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   Container(
                     height: 8,
                   ),
-                  Text(
+                  const Text(
                     'Data de nascimento:',
                     style: TextStyle(
                       color: Colors.white,
@@ -87,7 +87,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   Container(
                     height: 2,
                   ),
-                  Text(
+                  const Text(
                     '20/08/1990',
                     style: TextStyle(
                       color: Colors.white,
@@ -98,7 +98,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   Container(
                     height: 8,
                   ),
-                  Text(
+                  const Text(
                     'CPF:',
                     style: TextStyle(
                       color: Colors.white,
@@ -109,7 +109,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   Container(
                     height: 2,
                   ),
-                  Text(
+                  const Text(
                     '650.534.234-80',
                     style: TextStyle(
                       color: Colors.white,
@@ -120,7 +120,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   Container(
                     height: 8,
                   ),
-                  Text(
+                  const Text(
                     'Contato:',
                     style: TextStyle(
                       color: Colors.white,
@@ -131,7 +131,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   Container(
                     height: 2,
                   ),
-                  Text(
+                  const Text(
                     '+55 81 94355-4354',
                     style: TextStyle(
                       color: Colors.white,
@@ -146,10 +146,10 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         color: Colors.black,
         height: 60,
-        child: Container(
+        child: SizedBox(
           height: 20,
           width: 500,
           child: Row(
@@ -159,11 +159,11 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                 onPressed: () {
                   
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.edit,
                   color: Colors.white,
                 ),
-                label: Text(
+                label: const Text(
                   'Editar perfil',
                   style: TextStyle(
                     color: Colors.white,
@@ -178,11 +178,11 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                 onPressed: () {
                   
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.backspace,
                   color: Colors.white,
                 ),
-                label: Text(
+                label: const Text(
                   'Sair',
                   style: TextStyle(
                     color: Colors.white,

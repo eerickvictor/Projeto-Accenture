@@ -8,27 +8,27 @@ class CadastroAtleta extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 10, left: 40, right: 40),
+        padding: const EdgeInsets.only(top: 10, left: 40, right: 40),
         color: Colors.black,
         child: ListView(
           children: <Widget>[
             Container(
               width: 200,
               height: 200,
-              alignment: Alignment(0.0, 1.15),
-              decoration: new BoxDecoration(
-                image: new DecorationImage(
+              alignment: const Alignment(0.0, 1.15),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
                     image: AssetImage("assets/images/logo_enercicio.png"),
                     fit: BoxFit.fitHeight,
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextFormField(
               keyboardType: TextInputType.name,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Nome Completo",
                 labelStyle: TextStyle(
                   color: Colors.white,
@@ -36,14 +36,14 @@ class CadastroAtleta extends StatelessWidget{
                   fontSize: 18,
                 )
               ),
-              style: TextStyle(fontSize: 18, color: Colors.white),
+              style: const TextStyle(fontSize: 18, color: Colors.white),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "CPF",
                 labelStyle: TextStyle(
                   color: Colors.white,
@@ -51,14 +51,14 @@ class CadastroAtleta extends StatelessWidget{
                   fontSize: 18,
                 ),
               ),
-              style: TextStyle(fontSize: 18, color: Colors.white),
+              style: const TextStyle(fontSize: 18, color: Colors.white),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "E-mail",
                 labelStyle: TextStyle(
                   color: Colors.white,
@@ -66,15 +66,15 @@ class CadastroAtleta extends StatelessWidget{
                   fontSize: 20,
                 ),
               ),
-              style: TextStyle(fontSize: 18, color: Colors.white),
+              style: const TextStyle(fontSize: 18, color: Colors.white),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               keyboardType: TextInputType.text,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Senha",
                 labelStyle: TextStyle(
                   color: Colors.white,
@@ -82,15 +82,15 @@ class CadastroAtleta extends StatelessWidget{
                   fontSize: 18,
                 ),
               ),
-              style: TextStyle(fontSize: 18, color: Colors.white),
+              style: const TextStyle(fontSize: 18, color: Colors.white),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
               height: 60,
               alignment: Alignment.centerLeft,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -106,7 +106,22 @@ class CadastroAtleta extends StatelessWidget{
               ),
               child: SizedBox.expand(
                 child: ElevatedButton(
-                  child: Text(
+                  onPressed: (){
+                    Navigator.pushReplacement(
+                      context, MaterialPageRoute(
+                        builder: (context) => const LoginAtleta()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.transparent,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
+                      ),
+                    ),
+                  ),
+                  child: const Text(
                     "Cadastrar",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -114,21 +129,6 @@ class CadastroAtleta extends StatelessWidget{
                       fontSize: 18,
                     ),
                     textAlign: TextAlign.center,
-                  ),
-                  onPressed: (){
-                    Navigator.pushReplacement(
-                      context, MaterialPageRoute(
-                        builder: (context) => LoginAtleta()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.transparent,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5),
-                      ),
-                    ),
                   ),
                 ),
               ),
