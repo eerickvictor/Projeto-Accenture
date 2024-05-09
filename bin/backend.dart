@@ -1,15 +1,24 @@
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart' as shelf_io;
 
-import 'servidor.dart';
+import 'api/home_api.dart';
+import 'api/loginApi.dart';
+import 'infra/custom_server.dart';
+
 
 void main() async{
-  
-  var _servidor = Servidor();
-  
-  final servidor = await shelf_io.serve(_servidor.handler, "localhost", 8080);
+  var cascadeHandler = 
+  Cascade()
+  .add(
+    LoginApi().handler
+  )
+  .add(
+      HomeApi().handler
+    )
+    .handler;
 
-  print('Nosso servidor foi iniciado http://localhost:8080');
+    var handler = 
+    Pipeline().addMiddleware(logRequests()).addHandler(cascadeHandler);
 
-  
+  CustomServer().initialize(handler);
 }
