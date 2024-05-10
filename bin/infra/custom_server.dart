@@ -1,13 +1,15 @@
 import 'package:shelf/shelf.dart';
-import 'package:shelf_router/shelf_router.dart';
+
 import 'package:shelf/shelf_io.dart' as shelf_io;
 
 class CustomServer{
-  Future<void> initialize(Handler handler) async{
-    String url = "localhost";
-    int port = 8080;
+  Future<void> initialize({
+    required Handler handler,
+    required String url,
+    required int port,
 
-    await shelf_io.serve(handler, url, port);
+  }) async{
+      shelf_io.serve(handler, url, port);
     print("Servidor inicializado -> http://$url:$port");
   }
 }
