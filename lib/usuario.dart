@@ -1,66 +1,81 @@
 
 class Usuario {
-  static int _contador = 10; //contador para cada usuário cadastrado
-  int _idUsuario = 0; //variável para armazenar o número do usuário
-  String _nome;
-  String? _sobrenome;
-  String _cpf;
-  DateTime _nascimento;
-  String _contato;
-  String _email;
-  String _senha;
-  
+  String nomeUsuario;
+  String emailUsuario;
+  String cpfUsuario;
+  String senhaUsuario;
+  DateTime? dataNascimentoUsuario;
+  double? kmLocalUsuario;
+  double? kmTotalUsuario;
+  int? idUsuario;
 
-  Usuario(this._nome, this._cpf, this._nascimento, this._contato, this._email, this._senha) {
-    _contador++; // Incrementa o contador ao criar um novo usuário
-    _idUsuario = _contador; // Atribui o número do usuário baseado no contador
-  }
-
+  Usuario(this.nomeUsuario, this.emailUsuario, this.cpfUsuario, this.senhaUsuario,
+      {this.dataNascimentoUsuario, this.kmLocalUsuario, this.kmTotalUsuario, this.idUsuario});
 
   // Getters
-  String get nome => _nome;
+  String getNomeUsuario() {
+    return this.nomeUsuario;
+  }
 
-  String get sobrenome => _sobrenome = " ";
+  String getEmailUsuario() {
+    return this.emailUsuario;
+  }
 
-  String get cpf => _cpf;
+  String getCpfUsuario() {
+    return this.cpfUsuario;
+  }
 
-  DateTime get dataNascimento => _nascimento;
+  String getSenhaUsuario() {
+    return this.senhaUsuario;
+  }
 
-  String get contato => _contato;
+  DateTime? getDataNascimentoUsuario() {
+    return this.dataNascimentoUsuario;
+  }
 
-  String get email => _email;
+  double? getKmLocalUsuario() {
+    return this.kmLocalUsuario;
+  }
 
-  String get senha => _senha;
+  double? getKmTotalUsuario() {
+    return this.kmTotalUsuario;
+  }
 
-  int get numeroUsuario => _idUsuario;
-
+  int? getIdUsuario() {
+    return this.idUsuario;
+  }
 
   // Setters
-  set nome(String nome) {
-    _nome = nome;
+  void setNomeUsuario(String nome) {
+    this.nomeUsuario = nome;
   }
 
-  set sobrenome(String sobrenome) {
-    _sobrenome = sobrenome;
+  void setEmailUsuario(String email) {
+    this.emailUsuario = email;
   }
 
-  set cpf(String cpf) {
-    _cpf = cpf;
+  void setCpfUsuario(String cpf) {
+    this.cpfUsuario = cpf;
   }
 
-  set dataNascimento(DateTime dataNascimento) {
-    _nascimento = dataNascimento;
+  void setSenhaUsuario(String senha) {
+    this.senhaUsuario = senha;
   }
 
-  set contato(String contato) {
-    _contato = contato;
+  void setDataNascimentoUsuario(DateTime dataNascimento) {
+    this.dataNascimentoUsuario = dataNascimento;
   }
 
-  set email(String email) {
-    _email = email;
+  void setKmLocalUsuarion(double kmLocal) {
+   this.kmLocalUsuario = kmLocal;
   }
 
-  set senha(String senha) {
-    _senha = senha;
-  }
+   void setKmTotalUsuarion(double kmTotal) {
+    this.kmTotalUsuario = kmTotal;
+   }
+
+   void setIdUsuarion(int id) {
+     this.idUsuario = id; 
+     
+   }
 }
