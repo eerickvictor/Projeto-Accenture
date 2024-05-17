@@ -11,13 +11,17 @@ class LoginApi{
 
   Handler get handler{
     Router router = Router();
-     router.post("/login/atleta", (Request req) async{
-      return Response.ok(await _securityService.generateJWT('1'));
-    });
+      router.post("/login/atleta", (Request req) async{
+        var token = await _securityService.generateJWT('1');
+        var result = await _securityService.validationJWT(token);
+        return Response.ok((result != null).toString());
+      });
 
       router.post("/login/empresa", (Request req)async{
-        return Response.ok(await _securityService.generateJWT('2'));
-    });
+        var token = await _securityService.generateJWT('2');
+        var result = await _securityService.validationJWT(token);
+        return Response.ok((result != null).toString());
+      });
 
     return router;
   }
