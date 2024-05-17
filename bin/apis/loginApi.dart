@@ -1,20 +1,22 @@
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
+import '../infra/security/security_service.dart';
+
 
 class LoginApi{
+  final SecurityService _securityService;
+  LoginApi(this._securityService);
+  
+
   Handler get handler{
     Router router = Router();
-     router.post("/login", (Request req){
-      return Response.ok('Atleta');
-    });
-    
-    router.post("/login/atleta", (Request req){
-      return Response.ok('Atleta');
+     router.post("/login/atleta", (Request req) async{
+      return Response.ok(await _securityService.generateJWT('1'));
     });
 
-      router.post("/login/empresa", (Request req){
-      return Response.ok('Login Empresa');
+      router.post("/login/empresa", (Request req)async{
+        return Response.ok(await _securityService.generateJWT('2'));
     });
 
     return router;
