@@ -1,28 +1,33 @@
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
-import 'api/home_api.dart';
-import 'api/loginApi.dart';
+import 'apis/home_api.dart';
+import 'apis/loginApi.dart';
 import 'infra/custom_server.dart';
+import 'infra/middleware_incerption.dart';
+import 'models/home_model.dart';
+import 'services/generic_service.dart';
+import 'services/home_service.dart';
 import 'utils/custom_env.dart';
 
 
 void main() async{
+  
   var cascadeHandler = 
   Cascade()
   .add(
     LoginApi().handler
   )
   .add(
-      HomeApi().handler
+      HomeApi(HomeService()).handler
     )
     .handler;
 
     var handler = 
-    Pipeline().addMiddleware(logRequests()).addHandler(cascadeHandler);
+    Pipeline().addMiddleware(logRequests()).addMiddleware((MiddlewareIntecerption().middleware)).addHandler(cascadeHandler);
 
   await CustomServer().initialize(
     handler: handler,
-    url: await CustomEnv.get<String>(key:'server_url'),
-    port: await CustomEnv.get<int>(key:'server_port'),
+    url: await CustomEnv.get<String>(key:'url'),
+    port: await CustomEnv.get<int>(key:'port'),
   );
 }
