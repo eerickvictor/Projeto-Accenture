@@ -2,6 +2,7 @@
 import 'package:enercicio/pages/athlete_company_page.dart';
 import 'package:enercicio/pages/athlete_perfil_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class athleteHomePage extends StatefulWidget {
   const athleteHomePage({super.key});
@@ -20,59 +21,77 @@ class _athleteHomePageState extends State<athleteHomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
           backgroundColor: Colors.black,
           title: Container(
             alignment: Alignment.center,
             width: 400,
             height: 50,
             child: Image.asset('assets/images/logo_enercicio_horizontal.png'),
-          )),
+          ),
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(4.0),
+            child: Container(
+              color: Colors.grey.shade900,
+              height: 1.0,
+            ),
+          ),
+          ),
       body: Container(
         width: 400,
         padding: const EdgeInsets.all(10.0),
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              height: 30,
-            ),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Empresas:',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
+        child: Container(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Empresas:',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
                 ),
               ),
-            ),
-            Container(
-              height: 20,
-            ),
-            Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                children: const [
-                  ContainerEmpresa(),
-                  ContainerEmpresa(),
-                  ContainerEmpresa(),
-                ],
+              Container(
+                height: 20,
               ),
-            ),
-            // Container(
-            //   width: 400,
-            //   hei
-            //   color: Colors.purple,
-            // ),
-          ],
+              Expanded(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: const [
+                    ContainerEmpresa(),
+                    ContainerEmpresa(),
+                    ContainerEmpresa(),
+                  ],
+                ),
+              ),
+              // Container(
+              //   width: 400,
+              //   hei
+              //   color: Colors.purple,
+              // ),
+            ],
+          ),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey.shade900),
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0)
+            )
+          ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: Container(
         padding: const EdgeInsets.only(),
-        color: Colors.black,
         height: 60,
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          border: Border(top: BorderSide(color: Colors.grey.shade900, width: 1.0))
+        ),
         child: SizedBox(
           height: 20,
           width: 500,
