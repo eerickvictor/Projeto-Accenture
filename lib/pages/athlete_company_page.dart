@@ -14,6 +14,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
         title: Container(
           child: Row(
@@ -37,6 +38,13 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
             ],
           ),
         ),
+        bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(4.0),
+            child: Container(
+              color: Colors.grey.shade900,
+              height: 1.0,
+            ),
+          ),
       ),
       body: Container(
         padding: const EdgeInsets.all(10.0),
