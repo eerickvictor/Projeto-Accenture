@@ -15,6 +15,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
         title: const Text(
           'Perfil',
@@ -24,6 +25,13 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
             fontWeight: FontWeight.w600,
           ),
         ),
+        bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(4.0),
+            child: Container(
+              color: Colors.grey.shade900,
+              height: 1.0,
+            ),
+          ),
       ),
       body: Container(
         width: 400,
@@ -212,10 +220,13 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: Container(
         padding: const EdgeInsets.all(10.0),
-        color: Colors.black,
         height: 60,
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          border: Border(top: BorderSide(color: Colors.grey.shade900, width: 1.0))
+        ),
         child: SizedBox(
             height: 20,
             width: 500,
