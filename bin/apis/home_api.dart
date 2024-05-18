@@ -6,13 +6,15 @@ import '../services/home_service.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
-class HomeApi {
+import 'api.dart';
+
+class HomeApi extends Api {
     final GenericService <HomeModel> _service;
     HomeApi(this._service);
-
-  
-   Handler get handler{
-      Router router = Router();
+    
+      @override
+      Handler getHandler({List<Middleware>? middlewares}) {
+        Router router = Router();
 
 
       router.get('/homePage', (Request req){
@@ -39,6 +41,6 @@ class HomeApi {
           String? id = req.url.queryParameters["id"];
           return Response.ok("Home page");
       });
-      return router;
-    }
+      return createHandler(router: router, middlewares: middlewares);
+      }
 }

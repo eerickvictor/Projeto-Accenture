@@ -6,8 +6,6 @@ import '../../utils/custom_env.dart';
 import 'security_service.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 
-import 'validate/api_router_validation.dart';
-
 class SecurityServiceImp implements SecurityService<JWT>{
   @override
   Future<String> generateJWT(String userId) async{
@@ -66,11 +64,7 @@ class SecurityServiceImp implements SecurityService<JWT>{
   // TODO: implement verifyJWT
   Middleware get verifyJWT => createMiddleware(
     requestHandler: (Request req){
-      var apiSecurity = ApiRouterValidate().add('login/atleta').add('login/empresa');
-
-      if(apiSecurity.isPublic(req.url.path)) return null;
       
-
       if(req.context['jwt'] == null){
         return Response.forbidden("Não autorizado pilantra");
       }
