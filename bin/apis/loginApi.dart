@@ -14,13 +14,13 @@ class LoginApi extends Api{
     Router router = Router();
       router.post("/login/atleta", (Request req) async{
         var token = await _securityService.generateJWT('1');
-        var result = await _securityService.validationJWT(token);
+        // var result = await _securityService.validationJWT(token);
         return Response.ok(token);
       });
 
       router.post("/login/empresa", (Request req)async{
         var token = await _securityService.generateJWT('2');
-        var result = await _securityService.validationJWT(token);
+        // var result = await _securityService.validationJWT(token);
         return Response.ok(token);
       });
 

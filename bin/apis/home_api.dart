@@ -1,8 +1,6 @@
 import 'dart:convert';
-import 'dart:developer';
 import '../models/home_model.dart';
 import '../services/generic_service.dart';
-import '../services/home_service.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
