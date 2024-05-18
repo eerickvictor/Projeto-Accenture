@@ -1,8 +1,13 @@
+import 'package:shelf/shelf.dart';
+import 'package:shelf/src/middleware.dart';
 import 'package:test/test.dart';
 
 import '../../utils/custom_env.dart';
 import 'security_service.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
+
+import 'validate/api_router_validation.dart';
+
 class SecurityServiceImp implements SecurityService<JWT>{
   @override
   Future<String> generateJWT(String userId) async{
@@ -35,5 +40,44 @@ class SecurityServiceImp implements SecurityService<JWT>{
     }
     
   }
+
+  @override
+  // TODO: implement authorizationJWT
+  Middleware get authorization{
+    return (Handler handler){
+      return (Request req) async{
+
+        String? authorizationHeader = req.headers['Authorization'];
+        JWT? jwt; 
+        
+        if(authorizationHeader != null) {
+          if(authorizationHeader.startsWith('Bearer ')){
+            String token = authorizationHeader.substring(7);
+            jwt = await validationJWT(token);
+          }
+        }
+       var request = req.change(context: {'jwt': jwt});
+        return handler(request);
+      };
+    };
+  }
+
+  @override
+  // TODO: implement verifyJWT
+  Middleware get verifyJWT => createMiddleware(
+    requestHandler: (Request req){
+      var apiSecurity = ApiRouterValidate().add('login/atleta').add('login/empresa');
+
+      if(apiSecurity.isPublic(req.url.path)) return null;
+      
+
+      if(req.context['jwt'] == null){
+        return Response.forbidden("Não autorizado pilantra");
+      }
+      return null;
+    },
+  );
+
+  
   
 }

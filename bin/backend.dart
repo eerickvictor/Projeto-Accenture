@@ -1,3 +1,4 @@
+import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'apis/home_api.dart';
@@ -13,19 +14,19 @@ import 'utils/custom_env.dart';
 
 
 void main() async{
-  
-  var cascadeHandler = 
-  Cascade()
-  .add(
-    LoginApi(SecurityServiceImp()).handler
-  )
-  .add(
-      HomeApi(HomeService()).handler
-    )
-    .handler;
 
-    var handler = 
-    Pipeline().addMiddleware(logRequests()).addMiddleware((MiddlewareIntecerption().middleware)).addHandler(cascadeHandler);
+  SecurityService _securityService = SecurityServiceImp();
+  
+  var cascadeHandler = Cascade()
+    .add(LoginApi(_securityService).handler)
+    .add(HomeApi(HomeService()).handler).handler;
+
+  var handler = Pipeline()
+    .addMiddleware(logRequests())
+    .addMiddleware(MiddlewareIntecerption().middleware)
+    .addMiddleware(_securityService.authorization)
+    .addMiddleware(_securityService.verifyJWT)
+    .addHandler(cascadeHandler);
 
   await CustomServer().initialize(
     handler: handler,
