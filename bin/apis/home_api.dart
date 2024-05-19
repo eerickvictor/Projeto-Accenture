@@ -3,7 +3,6 @@ import '../models/home_model.dart';
 import '../services/generic_service.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
-
 import 'api.dart';
 
 class HomeApi extends Api {
@@ -11,7 +10,7 @@ class HomeApi extends Api {
     HomeApi(this._service);
     
       @override
-      Handler getHandler({List<Middleware>? middlewares}) {
+      Handler getHandler({List<Middleware>? middlewares, bool isSecurity = false}) {
         Router router = Router();
 
 
@@ -39,6 +38,6 @@ class HomeApi extends Api {
           String? id = req.url.queryParameters["id"];
           return Response.ok("Home page");
       });
-      return createHandler(router: router, middlewares: middlewares);
+      return createHandler(router: router, isSecurity: isSecurity, middlewares: middlewares);
       }
 }

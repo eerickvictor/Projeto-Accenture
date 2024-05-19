@@ -2,24 +2,22 @@ import 'package:shelf/shelf.dart';
 import 'apis/home_api.dart';
 import 'apis/loginApi.dart';
 import 'infra/custom_server.dart';
+import 'infra/dependency_injector/injector.dart';
 import 'infra/middleware_incerption.dart';
-import 'infra/security/security_service.dart';
-import 'infra/security/security_service_imp.dart';
-import 'services/home_service.dart';
 import 'utils/custom_env.dart';
 
 
-void main() async{
 
-  SecurityService _securityService = SecurityServiceImp();
+void main() async{
+  
+  final _dependencyInjector = Injector.initialize();
+  
+
+  
   
   var cascadeHandler = Cascade()
-    .add(LoginApi(_securityService).getHandler())
-    .add(HomeApi(HomeService()).getHandler(middlewares: [
-          _securityService.authorization,
-          _securityService.verifyJWT
-        ],
-      )
+    .add(_dependencyInjector.get<LoginApi>().getHandler())
+    .add(_dependencyInjector.get<HomeApi>().getHandler(isSecurity: true)
     ).handler;
 
   var handler = Pipeline()
