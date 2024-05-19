@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS `empresa`(
     `email` VARCHAR(150) NOT NULL, 
     `senha` VARCHAR(150) NOT NULL, 
     `is_ativo` TINYINT NULL DEFAULT 1,
-    `data_criacao` datetime DEFAULT CURRENT_TIMESTMAP,
-    primary key (`id`)) 
+    `data_criacao` datetime,
+    primary key (`id`));
 
 
 CREATE TABLE IF NOT EXISTS `usuario`(
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `usuario`(
     `email` VARCHAR(150) NOT NULL, 
     `senha` VARCHAR(150) NOT NULL, 
     `is_ativo` TINYINT NULL DEFAULT 1,
-    `data_criacao` datetime DEFAULT CURRENT_TIMESTMAP,
+    `data_criacao` datetime,
     primary key (`id`));
 
 CREATE TABLE IF NOT EXISTS `meta_empresa`(
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `meta_usuario`(
     `status` VARCHAR(50),
     `porcentagem` FLOAT NOT NULL DEFAULT 0,
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `usuarios` (`id`));
+    REFERENCES `usuario` (`id`));
 
 
  
