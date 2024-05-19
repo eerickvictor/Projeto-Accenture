@@ -1,14 +1,14 @@
 
-version: '3.9'
+version: '26.1.1'
 services:
   database:
-    image: mysql:5.7
+    image: mysql:8.0
     container_name: mysql
     restart: always
     environment:
       MYSQL_DATABASE: 'bancoteste'   
-      MYSQL_USER: 'root'
-      MYSQL_PASSWORD: 'root'      
+      MYSQL_USER: 'bancoteste_user'
+      MYSQL_PASSWORD: 'bancoteste_pass'      
       MYSQL_ROOT_PASSWORD: 'root'
     ports:
       - '3306:3306'
