@@ -16,10 +16,10 @@ class Injector{
     
     dependencyInjector.register<SecurityService>(() => SecurityServiceImp());
 
-    dependencyInjector.register<LoginApi>(() => LoginApi(dependencyInjector()));
+    dependencyInjector.register<LoginApi>(() => LoginApi(dependencyInjector.get()));
 
     dependencyInjector.register<GenericService<HomeModel>>(() => HomeService());
-    dependencyInjector.register<HomeApi>(() => HomeApi(dependencyInjector()));
+    dependencyInjector.register<HomeApi>(() => HomeApi((dependencyInjector.get())));
 
 
     

@@ -17,11 +17,11 @@ class DependencyInjector{
 
   T get<T extends Object>(){
     final instance = _instanceMap[T]?.generateInstance();
-    if(instance != null && instance is T)return instance;
-    throw Exception('(ERRO) -> instance ${T.toString()} not foud');
+    if(instance != null && instance is T){return instance;}else{
+    throw Exception('(ERRO) -> instance ${T.toString()} not foud');}
     }
 
-  call<T extends Object>() => get<T>();
+  //call<T extends Object>() => get<T>();
 
 }
 
