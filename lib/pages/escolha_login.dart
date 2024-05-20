@@ -1,4 +1,5 @@
-import 'package:enercicio/pages/pageLoginAtleta.dart';
+import 'package:enercicio/pages/athlete/pageLoginAtleta.dart';
+import 'package:enercicio/pages/company/pageLoginCompany.dart';
 import 'package:flutter/material.dart';
 
 class EscolhaLogin extends StatefulWidget {
@@ -132,7 +133,7 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
             TextButton(
               onPressed: () {Navigator.pushReplacement(
                 context, MaterialPageRoute(
-                  builder: (context) => const LoginAtleta()),
+                  builder: (context) => buttonD == 1 && buttonE == 1 ? const LoginAtleta() : const PageLoginCompany()),
               );
                 },
               style: TextButton.styleFrom(
