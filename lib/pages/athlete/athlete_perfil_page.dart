@@ -36,63 +36,157 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
       body: Container(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          
-        ),
-      ),
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.all(10.0),
-        height: 60,
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          border: Border(top: BorderSide(color: Colors.grey.shade900, width: 1.0))
-        ),
-        child: SizedBox(
-            height: 20,
-            width: 500,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.edit,
-                    color: Colors.white,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade900),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(5.0),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Row(
+                    children: [
+                      Icon(
+                        Icons.edit,
+                        color: Colors.white,
+                      ),
+                      SizedBox(width: 10,),
+                      Text(
+                        'Editar perfil',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
-                  label: const Text(
-                    'Editar perfil',
-                    style: TextStyle(
+                  FloatingActionButton.small(
+                    heroTag: 'btnEdit',
+                    onPressed: () => {},
+                    backgroundColor: Colors.purple,
+                    shape: const CircleBorder(),
+                    child: const Icon(
+                      Icons.arrow_forward_outlined,
                       color: Colors.white,
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shadowColor: Colors.transparent),
+                  )
+
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade900),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(5.0),
                 ),
-                ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.pushReplacement(
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Row(
+                    children: [
+                      Icon(
+                        Icons.backspace,
+                        color: Colors.white,
+                      ),
+                      SizedBox(width: 10,),
+                      Text(
+                        'Sair da conta',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                  FloatingActionButton.small(
+                    heroTag: 'btnBack',
+                    onPressed: () => {
+                      Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const EscolhaLogin()),
-                    );
-                  },
-                  icon: const Icon(
-                    Icons.backspace,
-                    color: Colors.white,
-                  ),
-                  label: const Text(
-                    'Sair',
-                    style: TextStyle(
+                        MaterialPageRoute(
+                            builder: (context) => const EscolhaLogin()),
+                      ),
+                    },
+                    backgroundColor: Colors.purple,
+                    shape: const CircleBorder(),
+                    child: const Icon(
+                      Icons.arrow_forward_outlined,
                       color: Colors.white,
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shadowColor: Colors.transparent),
-                ),
-              ],
-            )),
+                  )
+
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
+      // bottomNavigationBar: Container(
+      //   padding: const EdgeInsets.all(10.0),
+      //   height: 60,
+      //   decoration: BoxDecoration(
+      //     color: Colors.transparent,
+      //     border: Border(top: BorderSide(color: Colors.grey.shade900, width: 1.0))
+      //   ),
+      //   child: SizedBox(
+      //       height: 20,
+      //       width: 500,
+      //       child: Row(
+      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //         children: [
+      //           ElevatedButton.icon(
+      //             onPressed: () {},
+      //             icon: const Icon(
+      //               Icons.edit,
+      //               color: Colors.white,
+      //             ),
+      //             label: const Text(
+      //               'Editar perfil',
+      //               style: TextStyle(
+      //                 color: Colors.white,
+      //               ),
+      //             ),
+      //             style: ElevatedButton.styleFrom(
+      //                 backgroundColor: Colors.transparent,
+      //                 shadowColor: Colors.transparent),
+      //           ),
+      //           ElevatedButton.icon(
+      //             onPressed: () {
+      //               Navigator.pushReplacement(
+      //                 context,
+      //                 MaterialPageRoute(
+      //                     builder: (context) => const EscolhaLogin()),
+      //               );
+      //             },
+      //             icon: const Icon(
+      //               Icons.backspace,
+      //               color: Colors.white,
+      //             ),
+      //             label: const Text(
+      //               'Sair',
+      //               style: TextStyle(
+      //                 color: Colors.white,
+      //               ),
+      //             ),
+      //             style: ElevatedButton.styleFrom(
+      //                 backgroundColor: Colors.transparent,
+      //                 shadowColor: Colors.transparent),
+      //           ),
+      //         ],
+      //       )),
+      // ),
     );
   }
 }
