@@ -39,48 +39,52 @@ class _athleteHomePageState extends State<AthleteHomePage> {
       body: Container(
         width: 400,
         padding: const EdgeInsets.all(10.0),
-        child: Expanded(
-           child: ListView(
-            shrinkWrap: true,
-            children: [
-              Container(
-                child: Column(
-                  children: [
-                    const Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Empresas',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
+        child: Column(
+          children: [
+            Expanded(
+               child: ListView(
+                shrinkWrap: true,
+                children: [
+                  Container(
+                    child: Column(
+                      children: [
+                        const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Empresas',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
                         ),
-                      ),
+                        Container(
+                          padding: const EdgeInsets.all(10.0),
+                          width: 400,
+                          decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey.shade900),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10.0)
+                            )
+                          ),
+                          child: Column(
+                            children: [
+                              ContainerEmpresa(),
+                              ContainerEmpresa(),
+                              ContainerEmpresa(),
+                              ContainerEmpresa(),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(10.0),
-                      width: 400,
-                      decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade900),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(10.0)
-                        )
-                      ),
-                      child: Column(
-                        children: [
-                          ContainerEmpresa(),
-                          ContainerEmpresa(),
-                          ContainerEmpresa(),
-                          ContainerEmpresa(),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+                  )
+                ],
+              ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: Container(

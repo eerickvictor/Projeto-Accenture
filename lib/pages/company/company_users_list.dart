@@ -37,416 +37,420 @@ class _CompanyUsersListState extends State<CompanyUsersList> {
         child: Column(
           children: [
             Container(
-              child: Expanded(
-                child: ListView(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    Container(
-                      width: 400,
-                      padding: const EdgeInsets.all(20.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey.shade900),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(10.0)
-                        )
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade900),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)
-                              )
-                            ),
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.person,
-                                  color: Colors.purple,
-                                  size: 50,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      children: [
+                        Container(
+                          width: 400,
+                          padding: const EdgeInsets.all(20.0),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey.shade900),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10.0)
+                            )
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey.shade900),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(5.0)
+                                  )
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: const Row(
                                   children: [
-                                    Text(
-                                      'Nome Usuario',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.purple,
+                                      size: 50,
                                     ),
-                                    Text(
-                                      'QuiloWatts Gerados: 5000mil',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Nome Usuario',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          'QuiloWatts Gerados: 5000mil',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 10,),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade900),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)
-                              )
-                            ),
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.person,
-                                  color: Colors.purple,
-                                  size: 50,
+                              ),
+                              SizedBox(height: 10,),
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey.shade900),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(5.0)
+                                  )
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: const Row(
                                   children: [
-                                    Text(
-                                      'Nome Usuario',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.purple,
+                                      size: 50,
                                     ),
-                                    Text(
-                                      'QuiloWatts Gerados: 5000mil',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Nome Usuario',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          'QuiloWatts Gerados: 5000mil',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 10,),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade900),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)
-                              )
-                            ),
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.person,
-                                  color: Colors.purple,
-                                  size: 50,
+                              ),
+                              SizedBox(height: 10,),
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey.shade900),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(5.0)
+                                  )
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: const Row(
                                   children: [
-                                    Text(
-                                      'Nome Usuario',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.purple,
+                                      size: 50,
                                     ),
-                                    Text(
-                                      'QuiloWatts Gerados: 5000mil',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Nome Usuario',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          'QuiloWatts Gerados: 5000mil',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 10,),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade900),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)
-                              )
-                            ),
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.person,
-                                  color: Colors.purple,
-                                  size: 50,
+                              ),
+                              SizedBox(height: 10,),
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey.shade900),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(5.0)
+                                  )
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: const Row(
                                   children: [
-                                    Text(
-                                      'Nome Usuario',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.purple,
+                                      size: 50,
                                     ),
-                                    Text(
-                                      'QuiloWatts Gerados: 5000mil',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Nome Usuario',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          'QuiloWatts Gerados: 5000mil',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 10,),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade900),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)
-                              )
-                            ),
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.person,
-                                  color: Colors.purple,
-                                  size: 50,
+                              ),
+                              SizedBox(height: 10,),
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey.shade900),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(5.0)
+                                  )
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: const Row(
                                   children: [
-                                    Text(
-                                      'Nome Usuario',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.purple,
+                                      size: 50,
                                     ),
-                                    Text(
-                                      'QuiloWatts Gerados: 5000mil',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Nome Usuario',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          'QuiloWatts Gerados: 5000mil',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 10,),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade900),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)
-                              )
-                            ),
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.person,
-                                  color: Colors.purple,
-                                  size: 50,
+                              ),
+                              SizedBox(height: 10,),
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey.shade900),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(5.0)
+                                  )
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: const Row(
                                   children: [
-                                    Text(
-                                      'Nome Usuario',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.purple,
+                                      size: 50,
                                     ),
-                                    Text(
-                                      'QuiloWatts Gerados: 5000mil',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Nome Usuario',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          'QuiloWatts Gerados: 5000mil',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 10,),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade900),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)
-                              )
-                            ),
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.person,
-                                  color: Colors.purple,
-                                  size: 50,
+                              ),
+                              SizedBox(height: 10,),
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey.shade900),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(5.0)
+                                  )
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: const Row(
                                   children: [
-                                    Text(
-                                      'Nome Usuario',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.purple,
+                                      size: 50,
                                     ),
-                                    Text(
-                                      'QuiloWatts Gerados: 5000mil',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Nome Usuario',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          'QuiloWatts Gerados: 5000mil',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 10,),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade900),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)
-                              )
-                            ),
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.person,
-                                  color: Colors.purple,
-                                  size: 50,
+                              ),
+                              SizedBox(height: 10,),
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey.shade900),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(5.0)
+                                  )
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: const Row(
                                   children: [
-                                    Text(
-                                      'Nome Usuario',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.purple,
+                                      size: 50,
                                     ),
-                                    Text(
-                                      'QuiloWatts Gerados: 5000mil',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Nome Usuario',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          'QuiloWatts Gerados: 5000mil',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 10,),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade900),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)
-                              )
-                            ),
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.person,
-                                  color: Colors.purple,
-                                  size: 50,
+                              ),
+                              SizedBox(height: 10,),
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey.shade900),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(5.0)
+                                  )
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: const Row(
                                   children: [
-                                    Text(
-                                      'Nome Usuario',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.purple,
+                                      size: 50,
                                     ),
-                                    Text(
-                                      'QuiloWatts Gerados: 5000mil',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Nome Usuario',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          'QuiloWatts Gerados: 5000mil',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 10,),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade900),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)
-                              )
-                            ),
-                            child: const Row(
-                              children: [
-                                Icon(
-                                  Icons.person,
-                                  color: Colors.purple,
-                                  size: 50,
+                              ),
+                              SizedBox(height: 10,),
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey.shade900),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(5.0)
+                                  )
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: const Row(
                                   children: [
-                                    Text(
-                                      'Nome Usuario',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.purple,
+                                      size: 50,
                                     ),
-                                    Text(
-                                      'QuiloWatts Gerados: 5000mil',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Nome Usuario',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          'QuiloWatts Gerados: 5000mil',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),    
           ],
