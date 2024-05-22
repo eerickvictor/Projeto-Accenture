@@ -8,10 +8,10 @@ class AthleteHomePage extends StatefulWidget {
   const AthleteHomePage({super.key});
 
   @override
-  State<AthleteHomePage> createState() => _athleteHomePageState();
+  State<AthleteHomePage> createState() => _AthleteHomePageState();
 }
 
-class _athleteHomePageState extends State<AthleteHomePage> {
+class _AthleteHomePageState extends State<AthleteHomePage> {
   void pressed() {
     print('pressionado');
   }
