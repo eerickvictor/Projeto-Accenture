@@ -1,3 +1,4 @@
+import 'package:enercicio/pages/athlete/athlete_edit_perfil_page.dart';
 import 'package:enercicio/pages/escolha_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -67,7 +68,13 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   ),
                   FloatingActionButton.small(
                     heroTag: 'btnEdit',
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.pushReplacement(
+                      context,
+                        MaterialPageRoute(
+                            builder: (context) => AthleteEditPerfilPage()),
+                      ),
+                    },
                     backgroundColor: Colors.purple,
                     shape: const CircleBorder(),
                     child: const Icon(
