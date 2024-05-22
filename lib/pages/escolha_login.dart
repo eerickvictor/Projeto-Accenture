@@ -10,19 +10,16 @@ class EscolhaLogin extends StatefulWidget {
 }
 
 class _EscolhaLoginState extends State<EscolhaLogin> {
-
   int buttonD = 1;
   int buttonE = 1;
 
-  void modfieLogin()
-  {
+  void modfieLogin() {
     setState(() {
-      if (buttonD == 1 && buttonE == 1)
-      {
+      if (buttonD == 1 && buttonE == 1) {
         // print("Mudou para -1");
         buttonD = -1;
         buttonE = -1;
-      }else if(buttonD == -1 && buttonE == -1){
+      } else if (buttonD == -1 && buttonE == -1) {
         // print("Mudou para 1 ");
         buttonD = 1;
         buttonE = 1;
@@ -46,7 +43,6 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
                 color: Colors.white,
                 fontSize: 30,
               ),
-              
             ),
             Container(
               height: 20,
@@ -58,9 +54,10 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
                   width: 150,
                   height: 10,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: buttonD == 1 && buttonE == 1 ? Colors.white : Colors.grey
-                  ),
+                      borderRadius: BorderRadius.circular(10),
+                      color: buttonD == 1 && buttonE == 1
+                          ? Colors.white
+                          : Colors.grey),
                 ),
                 Container(
                   width: 20,
@@ -70,7 +67,9 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
                   height: 10,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: buttonD == -1 && buttonE == -1 ? Colors.white : Colors.grey,
+                    color: buttonD == -1 && buttonE == -1
+                        ? Colors.white
+                        : Colors.grey,
                   ),
                 )
               ],
@@ -89,13 +88,15 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
                   child: const Icon(
                     Icons.arrow_back_rounded,
                     color: Colors.purple,
-                  ), 
+                  ),
                 ),
                 SizedBox(
                   height: 250,
                   width: 250,
                   // color: Colors.white,
-                  child: Image.asset(buttonD == 1 && buttonE == 1 ? 'assets/images/bike_imagem.png' : 'assets/images/company_imagem.png'),
+                  child: Image.asset(buttonD == 1 && buttonE == 1
+                      ? 'assets/images/bike_imagem.png'
+                      : 'assets/images/company_imagem.png'),
                   // child: ListView(
                   //   scrollDirection: Axis.horizontal,
                   //   children: [
@@ -112,7 +113,7 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
                   child: const Icon(
                     Icons.arrow_forward_rounded,
                     color: Colors.purple,
-                  ), 
+                  ),
                 ),
               ],
             ),
@@ -131,11 +132,15 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
               height: 50,
             ),
             TextButton(
-              onPressed: () {Navigator.pushReplacement(
-                context, MaterialPageRoute(
-                  builder: (context) => buttonD == 1 && buttonE == 1 ? const LoginAtleta() : const PageLoginCompany()),
-              );
-                },
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => buttonD == 1 && buttonE == 1
+                          ? const LoginAtleta()
+                          : const PageLoginCompany()),
+                );
+              },
               style: TextButton.styleFrom(
                 backgroundColor: Colors.purple,
                 // fixedSize: Size(400, 50)

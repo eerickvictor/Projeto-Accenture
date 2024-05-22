@@ -60,7 +60,8 @@ class LoginAtleta extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const CadastroAtleta()),
+                    MaterialPageRoute(
+                        builder: (context) => const CadastroAtleta()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

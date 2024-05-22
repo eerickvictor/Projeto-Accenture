@@ -27,12 +27,12 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
           ),
         ),
         bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(4.0),
-            child: Container(
-              color: Colors.grey.shade900,
-              height: 1.0,
-            ),
+          preferredSize: const Size.fromHeight(4.0),
+          child: Container(
+            color: Colors.grey.shade900,
+            height: 1.0,
           ),
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.all(20.0),
@@ -55,7 +55,9 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                         Icons.edit,
                         color: Colors.white,
                       ),
-                      SizedBox(width: 10,),
+                      SizedBox(
+                        width: 10,
+                      ),
                       Text(
                         'Editar perfil',
                         style: TextStyle(
@@ -70,7 +72,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                     heroTag: 'btnEdit',
                     onPressed: () => {
                       Navigator.pushReplacement(
-                      context,
+                        context,
                         MaterialPageRoute(
                             builder: (context) => AthleteEditPerfilPage()),
                       ),
@@ -82,7 +84,6 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                       color: Colors.white,
                     ),
                   )
-
                 ],
               ),
             ),
@@ -106,7 +107,9 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                         Icons.backspace,
                         color: Colors.white,
                       ),
-                      SizedBox(width: 10,),
+                      SizedBox(
+                        width: 10,
+                      ),
                       Text(
                         'Sair da conta',
                         style: TextStyle(
@@ -120,11 +123,12 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   FloatingActionButton.small(
                     heroTag: 'btnBack',
                     onPressed: () => {
+                      Navigator.of(context).pop(),
                       Navigator.pushReplacement(
-                      context,
+                        context,
                         MaterialPageRoute(
                             builder: (context) => const EscolhaLogin()),
-                      ),
+                      )
                     },
                     backgroundColor: Colors.purple,
                     shape: const CircleBorder(),
@@ -133,7 +137,6 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                       color: Colors.white,
                     ),
                   )
-
                 ],
               ),
             ),
