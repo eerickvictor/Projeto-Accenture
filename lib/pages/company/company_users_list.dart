@@ -46,26 +46,24 @@ class _CompanyUsersListState extends State<CompanyUsersList> {
                     width: 400,
                     padding: const EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade900),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(10.0)
-                      )
-                    ),
+                        border: Border.all(color: Colors.grey.shade900),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10.0))),
                     child: Column(
                       children: [
-                        userContainer("Robson Irineu", "5000"),
+                        userContainer("Sofia Martins", "5000"),
                         spacing(0, 10),
-                        userContainer("Jubileu Azeitona", "7000"),
+                        userContainer("Lucas Ferreira", "7000"),
                         spacing(0, 10),
-                        userContainer("Olha ele ae", "10000"),
+                        userContainer("Isabela Silva", "10000"),
                         spacing(0, 10),
-                        userContainer("Ele Gosta Cavalo", "4000"),
+                        userContainer("Pedro Oliveira", "4000"),
                         spacing(0, 10),
-                        userContainer("Shidori Rasengan", "6000"),
+                        userContainer("Ana Santos", "6000"),
                         spacing(0, 10),
-                        userContainer("Robson Irineu", "5000"),
+                        userContainer("Mateus Costa", "5000"),
                         spacing(0, 10),
-                        userContainer("NaruSaske da Silva", "20000"),
+                        userContainer("Carolina Almeida", "20000"),
                       ],
                     ),
                   ),
@@ -75,18 +73,14 @@ class _CompanyUsersListState extends State<CompanyUsersList> {
           ],
         ),
       ),
-    );  
+    );
   }
 
-  Widget userContainer(String userName, String qtdWatts)
-  {
+  Widget userContainer(String userName, String qtdWatts) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade900),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(5.0)
-        )
-      ),
+          border: Border.all(color: Colors.grey.shade900),
+          borderRadius: const BorderRadius.all(Radius.circular(5.0))),
       child: Row(
         children: [
           const Icon(
@@ -120,8 +114,7 @@ class _CompanyUsersListState extends State<CompanyUsersList> {
     );
   }
 
-  Widget spacing(int widget, int height)
-  {
+  Widget spacing(int widget, int height) {
     return SizedBox(
       height: height.toDouble(),
       width: height.toDouble(),
