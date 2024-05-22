@@ -43,11 +43,9 @@ class _CompanyUpadateMetaState extends State<CompanyUpadateMeta> {
                     width: 400,
                     padding: const EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade900),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(10.0)
-                      )
-                    ),
+                        border: Border.all(color: Colors.grey.shade900),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10.0))),
                     child: Column(
                       children: [
                         TextFormField(
@@ -60,9 +58,12 @@ class _CompanyUpadateMetaState extends State<CompanyUpadateMeta> {
                               fontSize: 20,
                             ),
                           ),
-                          style: const TextStyle(fontSize: 15, color: Colors.white),
+                          style: const TextStyle(
+                              fontSize: 15, color: Colors.white),
                         ),
-                        const SizedBox(height: 30,),
+                        const SizedBox(
+                          height: 30,
+                        ),
                         TextFormField(
                           keyboardType: TextInputType.text,
                           decoration: const InputDecoration(
@@ -73,29 +74,24 @@ class _CompanyUpadateMetaState extends State<CompanyUpadateMeta> {
                               fontSize: 20,
                             ),
                           ),
-                          style: const TextStyle(fontSize: 15, color: Colors.white),
+                          style: const TextStyle(
+                              fontSize: 15, color: Colors.white),
                         ),
-                        const SizedBox(height: 30,),
+                        const SizedBox(
+                          height: 30,
+                        ),
                         Container(
                           width: 180,
                           height: 50,
                           decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: [
-                                Colors.pink,
-                                Colors.purple,
-                              ]
-                            ),
+                            gradient: const LinearGradient(colors: [
+                              Colors.pink,
+                              Colors.purple,
+                            ]),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: TextButton(
-                            onPressed: () => {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const CompanyHomePage()),
-                              ),
-                            },
+                            onPressed: () => {Navigator.pop(context)},
                             style: TextButton.styleFrom(
                               backgroundColor: Colors.transparent,
                             ),
@@ -116,10 +112,10 @@ class _CompanyUpadateMetaState extends State<CompanyUpadateMeta> {
                   ),
                 ],
               ),
-            ),    
+            ),
           ],
         ),
       ),
-    ); 
+    );
   }
 }
