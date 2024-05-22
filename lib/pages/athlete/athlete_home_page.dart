@@ -71,10 +71,11 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
                           ),
                           child: Column(
                             children: [
-                              ContainerEmpresa(),
-                              ContainerEmpresa(),
-                              ContainerEmpresa(),
-                              ContainerEmpresa(),
+                              companyContainer("Academia da Cidade","assets/images/stations/station_imagem.png"),
+                              companyContainer("Shopping Recife","assets/images/stations/station_imagem.png"),
+                              companyContainer("Academia BodyBuilder","assets/images/stations/station_imagem.png"),
+                              companyContainer("Porto Digital","assets/images/stations/station_imagem.png"),
+                              companyContainer("Posto Machado98","assets/images/stations/station_imagem.png"),
                             ],
                           ),
                         ),
@@ -117,80 +118,52 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
           ),
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   backgroundColor: Colors.purple,
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.account_circle_rounded, color: Colors.white,
-      //       ),
-      //       label: 'Perfil',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.account_circle_rounded, color: Colors.white,
-      //       ),
-      //       label: 'Perfil',
-      //     ),
-      //   ],
-      // ),
     );
   }
-}
 
-class ContainerEmpresa extends StatefulWidget {
-  const ContainerEmpresa({super.key});
-
-  @override
-  State<ContainerEmpresa> createState() => _ContainerEmpresaState();
-}
-
-class _ContainerEmpresaState extends State<ContainerEmpresa> {
-  void pressed() {
-    print('pressionado');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [
-      SizedBox(
-        width: 250,
-        height: 250,
-        child: ElevatedButton(
-          onPressed: () => {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const AthleteCompanyPage()),
-            ),
-          },
-          style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-              shadowColor: Colors.transparent,
-              shape: const BeveledRectangleBorder()),
-          child: Column(
-            children: [
-              SizedBox(
-                width: 250,
-                height: 200,
-                child: Image.asset('assets/images/stations/station_imagem.png'),
+  Widget companyContainer(String companyName, String urlCompanyImage)
+  {
+    return Column(
+      children: [
+        SizedBox(
+          width: 250,
+          height: 250,
+          child: ElevatedButton(
+            onPressed: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AthleteCompanyPage()),
               ),
-              const Align(
-                alignment: Alignment.center,
-                child: Text(
-                  'EMPRESA X',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 15,
+            },
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                shadowColor: Colors.transparent,
+                shape: const BeveledRectangleBorder()),
+            child: Column(
+              children: [
+                SizedBox(
+                  width: 250,
+                  height: 200,
+                  child: Image.asset(urlCompanyImage),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    companyName,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      )
-    ]);
+        )
+      ]
+    );
   }
 }
