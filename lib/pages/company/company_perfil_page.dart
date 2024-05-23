@@ -1,5 +1,3 @@
-import 'package:enercicio/pages/company/company_edit_perfil_page.dart';
-import 'package:enercicio/pages/escolha_login.dart';
 import 'package:flutter/material.dart';
 
 class CompanyPerfilPage extends StatefulWidget {
@@ -70,11 +68,7 @@ class _CompanyPerfilPageState extends State<CompanyPerfilPage> {
                   FloatingActionButton.small(
                     heroTag: 'btnEdit',
                     onPressed: () => {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CompanyEditPerfilPage()),
-                      ),
+                      Navigator.of(context).pushNamed('/editar_perfil_empresa'),
                     },
                     backgroundColor: Colors.purple,
                     shape: const CircleBorder(),
@@ -123,11 +117,7 @@ class _CompanyPerfilPageState extends State<CompanyPerfilPage> {
                     heroTag: 'btnBack',
                     onPressed: () => {
                       Navigator.of(context).pop(),
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const EscolhaLogin()),
-                      )
+                      Navigator.of(context).pushReplacementNamed('/'),
                     },
                     backgroundColor: Colors.purple,
                     shape: const CircleBorder(),

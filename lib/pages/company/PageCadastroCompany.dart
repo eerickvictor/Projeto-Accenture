@@ -1,4 +1,3 @@
-import 'package:enercicio/pages/company/pageLoginCompany.dart';
 import 'package:flutter/material.dart';
 
 class PageCadastroCompany extends StatefulWidget {
@@ -111,11 +110,8 @@ class _PageCadastroCompanyState extends State<PageCadastroCompany> {
               child: SizedBox.expand(
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const PageLoginCompany()),
-                    );
+                    Navigator.of(context)
+                        .pushReplacementNamed('/login_empresa');
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,

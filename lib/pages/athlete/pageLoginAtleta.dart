@@ -1,5 +1,4 @@
-import 'package:enercicio/pages/athlete/PageCadastroAtleta.dart';
-import 'package:enercicio/pages/athlete/athlete_home_page.dart';
+import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 
 class LoginAtleta extends StatelessWidget {
@@ -25,44 +24,18 @@ class LoginAtleta extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                labelText: "E-mail",
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
-              style: const TextStyle(fontSize: 15, color: Colors.white),
-            ),
+            buildTextField(context, "E-mail", "", false),
             const SizedBox(
               height: 20,
             ),
-            TextFormField(
-              keyboardType: TextInputType.text,
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: "Senha",
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
-              style: const TextStyle(fontSize: 15, color: Colors.white),
-            ),
+            buildTextField(context, "Senha", "", true),
             Container(
               height: 40,
               alignment: Alignment.bottomRight,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const CadastroAtleta()),
-                  );
+                  Navigator.of(context)
+                      .pushReplacementNamed('/cadastro_atleta');
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
@@ -102,11 +75,7 @@ class LoginAtleta extends StatelessWidget {
               child: SizedBox.expand(
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AthleteHomePage()),
-                    );
+                    Navigator.of(context).pushReplacementNamed('/home_atleta');
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,

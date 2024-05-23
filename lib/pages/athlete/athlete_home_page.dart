@@ -1,6 +1,3 @@
-
-import 'package:enercicio/pages/athlete/athlete_company_page.dart';
-import 'package:enercicio/pages/athlete/athlete_perfil_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -21,28 +18,28 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: Container(
-            alignment: Alignment.center,
-            width: 400,
-            height: 50,
-            child: Image.asset('assets/images/logo_enercicio_horizontal.png'),
+        backgroundColor: Colors.black,
+        title: Container(
+          alignment: Alignment.center,
+          width: 400,
+          height: 50,
+          child: Image.asset('assets/images/logo_enercicio_horizontal.png'),
+        ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(4.0),
+          child: Container(
+            color: Colors.grey.shade900,
+            height: 1.0,
           ),
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(4.0),
-            child: Container(
-              color: Colors.grey.shade900,
-              height: 1.0,
-            ),
-          ),
-          ),
+        ),
+      ),
       body: Container(
         width: 400,
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
             Expanded(
-               child: ListView(
+              child: ListView(
                 shrinkWrap: true,
                 children: [
                   Container(
@@ -64,18 +61,21 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
                           padding: const EdgeInsets.all(10.0),
                           width: 400,
                           decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey.shade900),
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(10.0)
-                            )
-                          ),
+                              border: Border.all(color: Colors.grey.shade900),
+                              borderRadius: const BorderRadius.all(
+                                  Radius.circular(10.0))),
                           child: Column(
                             children: [
-                              companyContainer("Academia da Cidade","assets/images/stations/station_imagem.png"),
-                              companyContainer("Shopping Recife","assets/images/stations/station_imagem.png"),
-                              companyContainer("Academia BodyBuilder","assets/images/stations/station_imagem.png"),
-                              companyContainer("Porto Digital","assets/images/stations/station_imagem.png"),
-                              companyContainer("Posto Machado98","assets/images/stations/station_imagem.png"),
+                              companyContainer("Academia da Cidade",
+                                  "assets/images/stations/station_imagem.png"),
+                              companyContainer("Shopping Recife",
+                                  "assets/images/stations/station_imagem.png"),
+                              companyContainer("Academia BodyBuilder",
+                                  "assets/images/stations/station_imagem.png"),
+                              companyContainer("Porto Digital",
+                                  "assets/images/stations/station_imagem.png"),
+                              companyContainer("Posto Machado98",
+                                  "assets/images/stations/station_imagem.png"),
                             ],
                           ),
                         ),
@@ -92,19 +92,15 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
         padding: const EdgeInsets.only(),
         height: 60,
         decoration: BoxDecoration(
-          color: Colors.transparent,
-          border: Border(top: BorderSide(color: Colors.grey.shade900, width: 1.0))
-        ),
+            color: Colors.transparent,
+            border: Border(
+                top: BorderSide(color: Colors.grey.shade900, width: 1.0))),
         child: SizedBox(
           height: 20,
           width: 500,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const AthletePerfilPage()),
-              );
+              Navigator.of(context).pushNamed('/perfil_atleta');
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
@@ -121,49 +117,42 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
     );
   }
 
-  Widget companyContainer(String companyName, String urlCompanyImage)
-  {
-    return Column(
-      children: [
-        SizedBox(
-          width: 250,
-          height: 250,
-          child: ElevatedButton(
-            onPressed: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const AthleteCompanyPage()),
+  Widget companyContainer(String companyName, String urlCompanyImage) {
+    return Column(children: [
+      SizedBox(
+        width: 250,
+        height: 250,
+        child: ElevatedButton(
+          onPressed: () => {
+            Navigator.of(context).pushNamed('/home_atleta_empresa'),
+          },
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              shadowColor: Colors.transparent,
+              shape: const BeveledRectangleBorder()),
+          child: Column(
+            children: [
+              SizedBox(
+                width: 250,
+                height: 200,
+                child: Image.asset(urlCompanyImage),
               ),
-            },
-            style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                shadowColor: Colors.transparent,
-                shape: const BeveledRectangleBorder()),
-            child: Column(
-              children: [
-                SizedBox(
-                  width: 250,
-                  height: 200,
-                  child: Image.asset(urlCompanyImage),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    companyName,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15,
-                    ),
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  companyName,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        )
-      ]
-    );
+        ),
+      )
+    ]);
   }
 }

@@ -1,11 +1,10 @@
-import 'package:enercicio/pages/athlete/pageLoginAtleta.dart';
 import 'package:flutter/material.dart';
 
-class CadastroAtleta extends StatelessWidget{
+class CadastroAtleta extends StatelessWidget {
   const CadastroAtleta({super.key});
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(top: 10, left: 40, right: 40),
@@ -18,8 +17,8 @@ class CadastroAtleta extends StatelessWidget{
               alignment: const Alignment(0.0, 1.15),
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/images/logo_enercicio.png"),
-                    fit: BoxFit.fitHeight,
+                  image: AssetImage("assets/images/logo_enercicio.png"),
+                  fit: BoxFit.fitHeight,
                 ),
               ),
             ),
@@ -29,13 +28,12 @@ class CadastroAtleta extends StatelessWidget{
             TextFormField(
               keyboardType: TextInputType.name,
               decoration: const InputDecoration(
-                labelText: "Nome Completo",
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                )
-              ),
+                  labelText: "Nome Completo",
+                  labelStyle: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 18,
+                  )),
               style: const TextStyle(fontSize: 18, color: Colors.white),
             ),
             const SizedBox(
@@ -94,7 +92,7 @@ class CadastroAtleta extends StatelessWidget{
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                    stops: [0.3, 1],
+                  stops: [0.3, 1],
                   colors: [
                     Color(0xFF800080),
                     Color(0xFF400040),
@@ -106,11 +104,8 @@ class CadastroAtleta extends StatelessWidget{
               ),
               child: SizedBox.expand(
                 child: ElevatedButton(
-                  onPressed: (){
-                    Navigator.pushReplacement(
-                      context, MaterialPageRoute(
-                        builder: (context) => const LoginAtleta()),
-                    );
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed('/login_atleta');
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,

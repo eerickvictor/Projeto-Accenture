@@ -1,5 +1,3 @@
-import 'package:enercicio/pages/company/PageCadastroCompany.dart';
-import 'package:enercicio/pages/company/company_home_page.dart';
 import 'package:flutter/material.dart';
 
 class PageLoginCompany extends StatefulWidget {
@@ -63,11 +61,8 @@ class _PageLoginCompanyState extends State<PageLoginCompany> {
               alignment: Alignment.bottomRight,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PageCadastroCompany()),
-                  );
+                  Navigator.of(context)
+                      .pushReplacementNamed('/cadastro_empresa');
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
@@ -107,11 +102,7 @@ class _PageLoginCompanyState extends State<PageLoginCompany> {
               child: SizedBox.expand(
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const CompanyHomePage()),
-                    );
+                    Navigator.of(context).pushReplacementNamed('/home_empresa');
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
