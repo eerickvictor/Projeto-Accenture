@@ -1,3 +1,4 @@
+import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 
 class CompanyEditPerfilPage extends StatefulWidget {
@@ -43,57 +44,13 @@ class _CompanyEditPerfilPageState extends State<CompanyEditPerfilPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 160,
-                  height: 40,
-                  decoration: BoxDecoration(
-                      // gradient: const LinearGradient(
-                      //   colors: [
-                      //     Colors.pink,
-                      //     Colors.purple,
-                      //   ]
-                      // ),
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: Colors.purple)),
-                  child: TextButton(
-                    onPressed: () => {},
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                    ),
-                    child: const Text(
-                      "Cancelar alterações",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+                textButton(context, 160, 40, "Cancelar alterações", false, true,
+                    false, false, ""),
                 const SizedBox(
                   width: 20,
                 ),
-                Container(
-                  width: 160,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(colors: [
-                      Colors.pink,
-                      Colors.purple,
-                    ]),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: TextButton(
-                    onPressed: () => {},
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                    ),
-                    child: const Text(
-                      "Salvar alterações",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+                textButton(context, 160, 40, "Salvar alterações", true, false,
+                    false, false, ""),
               ],
             )
           ],

@@ -1,7 +1,4 @@
-import 'package:enercicio/pages/company/company_create_meta.dart';
-import 'package:enercicio/pages/company/company_perfil_page.dart';
-import 'package:enercicio/pages/company/company_update_meta.dart';
-import 'package:enercicio/pages/company/company_users_list.dart';
+import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 
@@ -130,94 +127,31 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    width: 110,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      gradient: const LinearGradient(colors: [
-                                        Colors.pink,
-                                        Colors.purple,
-                                      ]),
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    child: TextButton(
-                                      onPressed: () => {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const CompanyCreateMeta()),
-                                        ),
-                                      },
-                                      style: TextButton.styleFrom(
-                                        backgroundColor: Colors.transparent,
-                                      ),
-                                      child: const Text(
-                                        "Criar meta",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                  textButton(
+                                      context,
+                                      110,
+                                      40,
+                                      "Criar meta",
+                                      true,
+                                      false,
+                                      false,
+                                      true,
+                                      "/criar_meta_empresa"),
                                   const SizedBox(
                                     width: 10,
                                   ),
-                                  Container(
-                                    width: 110,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      gradient: const LinearGradient(colors: [
-                                        Colors.pink,
-                                        Colors.purple,
-                                      ]),
-                                    ),
-                                    child: TextButton(
-                                      onPressed: () => {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const CompanyUpadateMeta()),
-                                        ),
-                                      },
-                                      style: TextButton.styleFrom(
-                                        backgroundColor: Colors.transparent,
-                                      ),
-                                      child: const Text(
-                                        "Editar meta ",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                  textButton(
+                                      context,
+                                      110,
+                                      40,
+                                      "Editar meta",
+                                      true,
+                                      false,
+                                      false,
+                                      true,
+                                      "/editar_meta_empresa"),
                                   const SizedBox(
                                     width: 10,
-                                  ),
-                                  Container(
-                                    width: 110,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      gradient: const LinearGradient(colors: [
-                                        Colors.pink,
-                                        Colors.purple,
-                                      ]),
-                                    ),
-                                    child: TextButton(
-                                      onPressed: () => {},
-                                      style: TextButton.styleFrom(
-                                        backgroundColor: Colors.transparent,
-                                      ),
-                                      child: const Text(
-                                        "Excluir meta ",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
                                   ),
                                 ],
                               ),
@@ -380,36 +314,16 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              Container(
-                                width: 150,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                  gradient: const LinearGradient(colors: [
-                                    Colors.pink,
-                                    Colors.purple,
-                                  ]),
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: TextButton(
-                                  onPressed: () => {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const CompanyUsersList()),
-                                    ),
-                                  },
-                                  style: TextButton.styleFrom(
-                                    backgroundColor: Colors.transparent,
-                                  ),
-                                  child: const Text(
-                                    "Ver todos usuarios",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              textButton(
+                                  context,
+                                  150,
+                                  40,
+                                  "Ver todos usuarios",
+                                  true,
+                                  false,
+                                  false,
+                                  true,
+                                  "/lista_usuarios_empresa"),
                               const SizedBox(
                                 height: 10,
                               ),
@@ -489,11 +403,7 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
           width: 500,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const CompanyPerfilPage()),
-              );
+              Navigator.of(context).pushNamed('/perfil_empresa');
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,

@@ -1,3 +1,4 @@
+import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 
 class AthleteEditPerfilPage extends StatefulWidget {
@@ -8,9 +9,8 @@ class AthleteEditPerfilPage extends StatefulWidget {
 }
 
 class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
-  
   bool isObscurePassword = true;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,107 +27,36 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
           ),
         ),
         bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(4.0),
-            child: Container(
-              color: Colors.grey.shade900,
-              height: 1.0,
-            ),
+          preferredSize: const Size.fromHeight(4.0),
+          child: Container(
+            color: Colors.grey.shade900,
+            height: 1.0,
           ),
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.all(20.0),
-        child:Column(
+        child: Column(
           children: [
-            buildTextField("Nome completo", "Robson Irineu da Silva", false),
-            buildTextField("Email", "robsonirineu@gmail.com", false),
-            buildTextField("Senha", "*****", true),
+            buildTextField(
+                context, "Nome completo", "Robson Irineu da Silva", false),
+            buildTextField(context, "Email", "robsonirineu@gmail.com", false),
+            buildTextField(context, "Senha", "*****", true),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 160,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    // gradient: const LinearGradient(
-                    //   colors: [
-                    //     Colors.pink,
-                    //     Colors.purple,
-                    //   ]
-                    // ),
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Colors.purple)
-                  ),
-                  child: TextButton(
-                    onPressed: () => {},
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                    ),
-                    child: const Text(
-                      "Cancelar alterações",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                textButton(context, 160, 40, "Cancelar alterações", false, true,
+                    false, false, ""),
+                const SizedBox(
+                  width: 20,
                 ),
-                const SizedBox(width: 20,),
-                Container(
-                  width: 160,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [
-                        Colors.pink,
-                        Colors.purple,
-                      ]
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: TextButton(
-                    onPressed: () => {},
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                    ),
-                    child: const Text(
-                      "Salvar alterações",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+                textButton(context, 160, 40, "Salvar alterações", true, false,
+                    false, false, ""),
               ],
             )
           ],
         ),
       ),
-    );
-  }
-
-  Widget buildTextField(String labelText, String placeholder, bool isPasswordTextField)
-  {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 30),
-      child: TextField(
-        obscureText: isPasswordTextField ? isObscurePassword : false,
-        decoration: InputDecoration(
-          suffixIcon: isPasswordTextField ?
-            IconButton(
-              onPressed: () => {},
-              icon: const Icon(Icons.remove_red_eye, color: Colors.grey,)
-            ) : null,
-        contentPadding: const EdgeInsets.only(bottom: 5),
-        labelText: labelText,
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          hintText: placeholder,
-          hintStyle: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Colors.grey,
-          )
-        ),
-      ),
-      
     );
   }
 }
