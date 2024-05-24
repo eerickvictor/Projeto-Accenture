@@ -271,9 +271,6 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                             ),
                           ),
                         ),
-                        Row(
-                          
-                        ),
                         const SizedBox(
                           height: 10,
                         ),
@@ -290,7 +287,142 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
               width: 400,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context, 
+                    builder: (BuildContext context) 
+                    {
+                      return Container(
+                        width: 400,
+                        height: 330,
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                          color: Color.fromARGB(255, 88, 0, 100)
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '22/05/2024',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white
+                              ),
+                            ),
+                            const SizedBox(height: 20,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Container(
+                                  width: 170,
+                                  height: 170,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                    color: Color.fromARGB(255, 65, 0, 71)
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'TEMPO',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white
+                                        ),
+                                      ),
+                                      Text(
+                                        '30:45',
+                                        style: TextStyle(
+                                          fontSize: 40,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.white
+                                        ),
+                                      ),
+                                      Text(
+                                        'MIN:S',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 20,),
+                                Container(
+                                  width: 170,
+                                  height: 170,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                    color: Color.fromARGB(255, 65, 0, 71)
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'DISTANCIA',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white
+                                        ),
+                                      ),
+                                      Text(
+                                        '2,5',
+                                        style: TextStyle(
+                                          fontSize: 40,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.white
+                                        ),
+                                      ),
+                                      Text(
+                                        'KM',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20,),
+                            Container(
+                              width: 160,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: Colors.red.shade900,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: TextButton(
+                                onPressed: () => {
+                                  Navigator.pop(context),
+                                },
+                                style: TextButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                ),
+                                child: const Text(
+                                  "Finalizar exercicio",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+
+
+                          ],
+                        ),
+                      );
+                    }
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   shape: const BeveledRectangleBorder(),
                   backgroundColor: Colors.purple,
