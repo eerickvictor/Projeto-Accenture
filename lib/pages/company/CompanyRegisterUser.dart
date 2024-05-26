@@ -1,14 +1,14 @@
 import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 
-class CompanyUpadateMeta extends StatefulWidget {
-  const CompanyUpadateMeta({super.key});
+class CompanyRegisterUser extends StatefulWidget {
+  const CompanyRegisterUser({super.key});
 
   @override
-  State<CompanyUpadateMeta> createState() => _CompanyUpadateMetaState();
+  State<CompanyRegisterUser> createState() => _CompanyRegisterUserState();
 }
 
-class _CompanyUpadateMetaState extends State<CompanyUpadateMeta> {
+class _CompanyRegisterUserState extends State<CompanyRegisterUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class _CompanyUpadateMetaState extends State<CompanyUpadateMeta> {
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.black,
         title: const Text(
-          'Editar meta',
+          'Cadastrar Usuario',
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -48,11 +48,12 @@ class _CompanyUpadateMetaState extends State<CompanyUpadateMeta> {
                             const BorderRadius.all(Radius.circular(10.0))),
                     child: Column(
                       children: [
-                        buildTextField(context, "Objetivo", "", false),
+                        // buildTextField(context, labelText, placeholder, isPasswordTextField),
+                        buildTextField(context, "CPF", "", false),
                         spacing(0, 20),
-                        buildTextField(context, "Recompensa", "", false),
+                        buildTextField(context, "E-mail", "", false),
                         spacing(0, 20),
-                        textButton(context, 180, 50, "Salvar alterações", true, false, false, false, ""),
+                        textButton(context, 150, 50, "Cadastrar usuario", true, false, false, false, ""),
                         spacing(0, 10),
                       ],
                     ),

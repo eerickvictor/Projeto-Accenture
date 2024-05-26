@@ -38,8 +38,9 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            buildTextField(
-                context, "Nome completo", "Robson Irineu da Silva", false),
+            buildTextField(context, "Nome completo", "Robson Irineu da Silva", false),
+            buildTextField(context, "Idade", "34", false),
+            buildTextField(context, "Sexo", "Masculino", false),
             buildTextField(context, "Email", "robsonirineu@gmail.com", false),
             buildTextField(context, "Senha", "*****", true),
             Row(

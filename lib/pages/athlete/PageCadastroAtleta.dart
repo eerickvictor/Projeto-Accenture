@@ -1,3 +1,4 @@
+import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 
 class CadastroAtleta extends StatelessWidget {
@@ -6,6 +7,17 @@ class CadastroAtleta extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: Colors.black,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(4.0),
+          child: Container(
+            color: Colors.grey.shade900,
+            height: 1.0,
+          ),
+        ),
+      ),
       body: Container(
         padding: const EdgeInsets.only(top: 10, left: 40, right: 40),
         color: Colors.black,
@@ -22,69 +34,65 @@ class CadastroAtleta extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              keyboardType: TextInputType.name,
-              decoration: const InputDecoration(
-                  labelText: "Nome Completo",
-                  labelStyle: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18,
-                  )),
-              style: const TextStyle(fontSize: 18, color: Colors.white),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: "CPF",
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                ),
-              ),
-              style: const TextStyle(fontSize: 18, color: Colors.white),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                labelText: "E-mail",
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
-              style: const TextStyle(fontSize: 18, color: Colors.white),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              keyboardType: TextInputType.text,
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: "Senha",
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                ),
-              ),
-              style: const TextStyle(fontSize: 18, color: Colors.white),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
+            spacing(0, 20),
+            buildTextField(context, "Nome completo", "", false),
+            // TextFormField(
+            //   keyboardType: TextInputType.name,
+            //   decoration: const InputDecoration(
+            //       labelText: "Nome Completo",
+            //       labelStyle: TextStyle(
+            //         color: Colors.white,
+            //         fontWeight: FontWeight.w400,
+            //         fontSize: 18,
+            //       )),
+            //   style: const TextStyle(fontSize: 18, color: Colors.white),
+            // ),
+            buildTextField(context, "CPF", "", false),
+            // TextFormField(
+            //   keyboardType: TextInputType.number,
+            //   decoration: const InputDecoration(
+            //     labelText: "CPF",
+            //     labelStyle: TextStyle(
+            //       color: Colors.white,
+            //       fontWeight: FontWeight.w400,
+            //       fontSize: 18,
+            //     ),
+            //   ),
+            //   style: const TextStyle(fontSize: 18, color: Colors.white),
+            // ),
+            buildTextField(context, "E-mail", "", false),
+            // TextFormField(
+            //   keyboardType: TextInputType.emailAddress,
+            //   decoration: const InputDecoration(
+            //     labelText: "E-mail",
+            //     labelStyle: TextStyle(
+            //       color: Colors.white,
+            //       fontWeight: FontWeight.w400,
+            //       fontSize: 20,
+            //     ),
+            //   ),
+            //   style: const TextStyle(fontSize: 18, color: Colors.white),
+            // ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            buildTextField(context, "Senha", "", false),
+            // TextFormField(
+            //   keyboardType: TextInputType.text,
+            //   obscureText: true,
+            //   decoration: const InputDecoration(
+            //     labelText: "Senha",
+            //     labelStyle: TextStyle(
+            //       color: Colors.white,
+            //       fontWeight: FontWeight.w400,
+            //       fontSize: 18,
+            //     ),
+            //   ),
+            //   style: const TextStyle(fontSize: 18, color: Colors.white),
+            // ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
             Container(
               height: 60,
               alignment: Alignment.centerLeft,

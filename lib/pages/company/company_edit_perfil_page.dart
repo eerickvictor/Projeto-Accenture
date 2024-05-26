@@ -38,7 +38,10 @@ class _CompanyEditPerfilPageState extends State<CompanyEditPerfilPage> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            buildTextField("Nome completo", "Compahia X", false),
+            buildTextField("Nome", "Compahia X", false),
+            buildTextField("Nome Social", "Companhia X", false),
+            buildTextField("Endereço", "Av. Mal. Mascarenhas de Morais, 7787 - Imbiribeira, Recife - PE, 51180-001", false),
+            buildTextField("Contato", "+55 81 9 86763945", false),
             buildTextField("Email", "companhiaX@gmail.com", false),
             buildTextField("Senha", "*******", true),
             Row(

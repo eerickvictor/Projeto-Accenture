@@ -11,6 +11,17 @@ class _PageLoginCompanyState extends State<PageLoginCompany> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: Colors.black,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(4.0),
+          child: Container(
+            color: Colors.grey.shade900,
+            height: 1.0,
+          ),
+        ),
+      ),
       body: Container(
         padding: const EdgeInsets.only(
           top: 60,
@@ -62,7 +73,7 @@ class _PageLoginCompanyState extends State<PageLoginCompany> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context)
-                      .pushReplacementNamed('/cadastro_empresa');
+                      .pushNamed('/cadastro_empresa');
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,

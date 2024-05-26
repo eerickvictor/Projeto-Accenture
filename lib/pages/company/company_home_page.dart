@@ -61,9 +61,7 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                                   Radius.circular(10.0))),
                           child: Column(
                             children: [
-                              const SizedBox(
-                                height: 5,
-                              ),
+                              spacing(0, 5),
                               const Row(
                                 children: [
                                   Padding(padding: EdgeInsets.all(5.0)),
@@ -81,9 +79,7 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 5,
-                              ),
+                              spacing(0, 5),
                               Container(
                                 width: 350,
                                 height: 1,
@@ -91,9 +87,7 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                                   color: Colors.grey.shade900,
                                 ),
                               ),
-                              const SizedBox(
-                                height: 5,
-                              ),
+                              spacing(0, 5),
                               const Row(
                                 children: [
                                   Padding(padding: EdgeInsets.all(10.0)),
@@ -111,9 +105,7 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
+                              spacing(0, 10),
                               Container(
                                 width: 350,
                                 height: 1,
@@ -121,9 +113,7 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                                   color: Colors.grey.shade900,
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
+                              spacing(0, 10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -137,9 +127,7 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                                       false,
                                       true,
                                       "/criar_meta_empresa"),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
+                                  spacing(20, 0),                                 
                                   textButton(
                                       context,
                                       110,
@@ -150,14 +138,12 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                                       false,
                                       true,
                                       "/editar_meta_empresa"),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
+                              // const SizedBox(
+                              //   height: 10,
+                              // ),
+                              spacing(0, 10)
                             ],
                           ),
                         ),
@@ -191,142 +177,40 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                                   Radius.circular(10.0))),
                           child: Column(
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    border:
-                                        Border.all(color: Colors.grey.shade900),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(5.0))),
-                                child: const Row(
-                                  children: [
-                                    Icon(
-                                      Icons.person,
-                                      color: Colors.purple,
-                                      size: 50,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Sofia Martins',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        Text(
-                                          'QuiloWatts Gerados: 5000mil',
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                              userContainer("Sofia Martins", "10000"),
+                              spacing(0, 5),
+                              userContainer("Lucas Ferreira", "7000"),
+                              spacing(0, 5),
+                              userContainer("Isabela Silva", "5000"),
+                              spacing(0, 20),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  textButton(
+                                      context,
+                                      150,
+                                      40,
+                                      "Ver todos usuarios",
+                                      true,
+                                      false,
+                                      false,
+                                      true,
+                                      "/lista_usuarios_empresa"),
+                                  spacing(20, 0),
+                                  textButton(
+                                      context,
+                                      150,
+                                      40,
+                                      "Cadastrar usuario",
+                                      true,
+                                      false,
+                                      false,
+                                      true,
+                                      "/cadastrar_usuario_meta"),
+
+                                ],
                               ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                    border:
-                                        Border.all(color: Colors.grey.shade900),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(5.0))),
-                                child: const Row(
-                                  children: [
-                                    Icon(
-                                      Icons.person,
-                                      color: Colors.purple,
-                                      size: 50,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Lucas Ferreira',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        Text(
-                                          'QuiloWatts Gerados: 5000mil',
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                    border:
-                                        Border.all(color: Colors.grey.shade900),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(5.0))),
-                                child: const Row(
-                                  children: [
-                                    Icon(
-                                      Icons.person,
-                                      color: Colors.purple,
-                                      size: 50,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Isabela Silva',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        Text(
-                                          'QuiloWatts Gerados: 5000mil',
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              textButton(
-                                  context,
-                                  150,
-                                  40,
-                                  "Ver todos usuarios",
-                                  true,
-                                  false,
-                                  false,
-                                  true,
-                                  "/lista_usuarios_empresa"),
-                              const SizedBox(
-                                height: 10,
-                              ),
+                              spacing(0, 20),
                             ],
                           ),
                         ),

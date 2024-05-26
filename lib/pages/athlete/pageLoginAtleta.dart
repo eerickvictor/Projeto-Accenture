@@ -7,6 +7,17 @@ class LoginAtleta extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: Colors.black,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(4.0),
+          child: Container(
+            color: Colors.grey.shade900,
+            height: 1.0,
+          ),
+        ),
+      ),
       body: Container(
         padding: const EdgeInsets.only(
           top: 60,
@@ -35,7 +46,7 @@ class LoginAtleta extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context)
-                      .pushReplacementNamed('/cadastro_atleta');
+                      .pushNamed('/cadastro_atleta');
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,

@@ -1,3 +1,4 @@
+import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 
 class CompanyPerfilPage extends StatefulWidget {
@@ -8,6 +9,7 @@ class CompanyPerfilPage extends StatefulWidget {
 }
 
 class _CompanyPerfilPageState extends State<CompanyPerfilPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,16 +48,14 @@ class _CompanyPerfilPageState extends State<CompanyPerfilPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.edit,
                         color: Colors.white,
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
+                      spacing(10, 0),
+                      const Text(
                         'Editar perfil',
                         style: TextStyle(
                           fontSize: 20,
@@ -132,60 +132,6 @@ class _CompanyPerfilPageState extends State<CompanyPerfilPage> {
           ],
         ),
       ),
-      // bottomNavigationBar: Container(
-      //   padding: const EdgeInsets.all(10.0),
-      //   height: 60,
-      //   decoration: BoxDecoration(
-      //     color: Colors.transparent,
-      //     border: Border(top: BorderSide(color: Colors.grey.shade900, width: 1.0))
-      //   ),
-      //   child: SizedBox(
-      //       height: 20,
-      //       width: 500,
-      //       child: Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //         children: [
-      //           ElevatedButton.icon(
-      //             onPressed: () {},
-      //             icon: const Icon(
-      //               Icons.edit,
-      //               color: Colors.white,
-      //             ),
-      //             label: const Text(
-      //               'Editar perfil',
-      //               style: TextStyle(
-      //                 color: Colors.white,
-      //               ),
-      //             ),
-      //             style: ElevatedButton.styleFrom(
-      //                 backgroundColor: Colors.transparent,
-      //                 shadowColor: Colors.transparent),
-      //           ),
-      //           ElevatedButton.icon(
-      //             onPressed: () {
-      //               Navigator.pushReplacement(
-      //                 context,
-      //                 MaterialPageRoute(
-      //                     builder: (context) => const EscolhaLogin()),
-      //               );
-      //             },
-      //             icon: const Icon(
-      //               Icons.backspace,
-      //               color: Colors.white,
-      //             ),
-      //             label: const Text(
-      //               'Sair',
-      //               style: TextStyle(
-      //                 color: Colors.white,
-      //               ),
-      //             ),
-      //             style: ElevatedButton.styleFrom(
-      //                 backgroundColor: Colors.transparent,
-      //                 shadowColor: Colors.transparent),
-      //           ),
-      //         ],
-      //       )),
-      // ),
     );
   }
 }

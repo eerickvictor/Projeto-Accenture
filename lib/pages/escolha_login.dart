@@ -133,9 +133,9 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
               onPressed: () {
                 buttonD == 1 && buttonE == 1
                     ? Navigator.of(context)
-                        .pushReplacementNamed('/login_atleta')
+                        .pushNamed('/login_atleta')
                     : Navigator.of(context)
-                        .pushReplacementNamed('/login_empresa');
+                        .pushNamed('/login_empresa');
               },
               style: TextButton.styleFrom(
                 backgroundColor: Colors.purple,

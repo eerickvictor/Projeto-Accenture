@@ -1,3 +1,4 @@
+import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -48,7 +49,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
       ),
       body: Container(
         padding: const EdgeInsets.all(10.0),
-        width: 400,
+        // width: 400,
         child: Column(
           children: [
             Container(
@@ -64,8 +65,8 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(15),
-                    width: 400,
+                    padding: const EdgeInsets.all(15),
+                    // width: 400,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade900),
                       borderRadius: const BorderRadius.all(
@@ -76,17 +77,15 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          child: const Row(
+                          child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.home,
                                 color: Colors.purple,
                                 size: 15,
                               ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
+                              spacing(10, 0),
+                              const Text(
                                 'Parque Santana - Ariano Suassuna - R. \nJorge Gomes de Sá - Santana, Recife - PE,\n 52060-530',
                                 style: TextStyle(
                                     color: Colors.white,
@@ -96,9 +95,9 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                             ],
                           ),
                         ),
-                        SizedBox(height: 10,),
+                        spacing(0, 10),
                         Container(
-                          width: 350,
+                          // width: 350,
                           height: 1,
                           decoration: BoxDecoration(
                             color: Colors.grey.shade900,
@@ -108,17 +107,15 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                           height: 10,
                         ),
                         Container(
-                          child: const Row(
+                          child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.phone,
                                 color: Colors.purple,
                                 size: 15,
                               ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
+                              spacing(10, 0),
+                              const Text(
                                 '+55 81 96575-4534',
                                 style: TextStyle(
                                     color: Colors.white,
@@ -128,29 +125,25 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                             ],
                           ),
                         ),
-                        SizedBox(height: 10,),
+                        spacing(0, 10),
                         Container(
-                          width: 350,
+                          // width: 350,
                           height: 1,
                           decoration: BoxDecoration(
                             color: Colors.grey.shade900,
                           ),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        spacing(0, 10),
                         Container(
-                          child: const Row(
+                          child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.circle,
                                 color: Colors.purple,
                                 size: 15,
                               ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
+                              spacing(10, 0),
+                              const Text(
                                 'https://www.google.com.br/?hl=pt-BR&sa\nfe=active&ssui=on',
                                 style: TextStyle(
                                     color: Colors.white,
@@ -166,26 +159,23 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            spacing(0, 30),
             Container(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Meta e recompensa',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
+                  const Text(
+                    'Meta e recompensa',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
                     ),
                   ),
                   Container(
-                    width: 400,
+                    // width: 400,
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade900),
                       borderRadius: const BorderRadius.all(
@@ -194,9 +184,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                     ),
                     child: Column(
                       children: [
-                        const SizedBox(
-                          height: 5,
-                        ),
+                        spacing(0, 5),
                         const Row(
                           children: [
                             Padding(padding: EdgeInsets.all(5.0)),
@@ -214,19 +202,15 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          height: 5,
-                        ),
+                        spacing(0, 5),
                         Container(
-                          width: 350,
+                          // width: 350,
                           height: 1,
                           decoration: BoxDecoration(
                             color: Colors.grey.shade900,
                           ),
                         ),
-                        const SizedBox(
-                          height: 5,
-                        ),
+                        spacing(0, 5),
                         const Row(
                           children: [
                             Padding(padding: EdgeInsets.all(10.0)),
@@ -241,36 +225,32 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        spacing(0, 10),
                         Container(
-                          width: 350,
+                          // width: 350,
                           height: 1,
                           decoration: BoxDecoration(
                             color: Colors.grey.shade900,
                           ),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          width: 350,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            color: Colors.purple,
-                            borderRadius: BorderRadius.circular(30)
-                          ),
-                          child: Center(
-                            child: Text(
-                              '80%',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
+                        spacing(0, 10),
+                        // Container(
+                        //   width: 350,
+                        //   height: 35,
+                        //   decoration: BoxDecoration(
+                        //     color: Colors.purple,
+                        //     borderRadius: BorderRadius.circular(30)
+                        //   ),
+                        //   child: const Center(
+                        //     child: Text(
+                        //       '80%',
+                        //       style: TextStyle(
+                        //         fontSize: 20,
+                        //         color: Colors.white,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         const SizedBox(
                           height: 10,
                         ),
@@ -303,7 +283,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               '22/05/2024',
                               style: TextStyle(
                                 fontSize: 20,
@@ -318,11 +298,11 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                 Container(
                                   width: 170,
                                   height: 170,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     color: Color.fromARGB(255, 65, 0, 71)
                                   ),
-                                  child: Column(
+                                  child: const Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
@@ -356,11 +336,11 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                 Container(
                                   width: 170,
                                   height: 170,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     color: Color.fromARGB(255, 65, 0, 71)
                                   ),
-                                  child: Column(
+                                  child: const Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
