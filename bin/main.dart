@@ -15,7 +15,7 @@ void main() async{
   final _dependencyInjector = Injector.initialize();
   
   UsuarioDao _usuarioDao = UsuarioDao(_dependencyInjector.get<DbConfiguration>());
-  print(await _usuarioDao.findOne(1));
+  print(await _usuarioDao.findAll());
 
   var cascadeHandler = Cascade()
     .add(_dependencyInjector.get<LoginApi>().getHandler())

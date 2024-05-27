@@ -1,4 +1,4 @@
 abstract class DbConfiguration{
-  Future <dynamic> createConnection();
+  Future <dynamic> Connection();
   Future<dynamic> get connection;
 }

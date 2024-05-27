@@ -18,20 +18,22 @@ class UsuarioDao implements Dao<Usuario>{
  Future<List<Usuario>> findAll() async {
   final String SQL = 'SELECT * FROM usuario';
   var connection = await _dbConfiguration.connection;
-  var result = await connection.query(SQL);
-  List<Usuario> _usuario = [];
-  for(final r in result.fields){
-   _usuario.add(Usuario.fromMap(r.fields));
+  var result = await connection.execute(SQL);
+  for(final r in result.rows){
+    print(r.assoc());
   } 
-  return _usuario;
+  return result;
 }
 
   @override
 Future<Usuario> findOne(int id) async {
   final String SQL = 'SELECT * FROM usuario WHERE id = ?'; 
   var connection = await _dbConfiguration.connection;
-  var result = await connection.query(SQL, [id]);
-  return Usuario.fromMap(result.single.fields);
+  var result = await connection.execute(SQL, [id]);
+  for(final r in result.rows){
+    print(r.assoc());
+  }
+  return result;
 }
 
   @override
