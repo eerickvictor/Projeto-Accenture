@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:test/expect.dart';
+
 import 'parse_extension.dart';
 class CustomEnv{
   static Map <String, String> _map = {};
@@ -17,6 +19,10 @@ class CustomEnv{
   }
   static Future<void> _loadFile() async{
     List <String> linhas = (await _readField()).split('\n');
+    if(linhas.isEmpty){
+      List <String> linhas = (await _readField()).split('\n');
+       _map = {for (var l in linhas) l.split('=')[0]: l.split('=')[1]};
+    }
     _map = {for (var l in linhas) l.split('=')[0]: l.split('=')[1]};
   }
   

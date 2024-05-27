@@ -30,7 +30,7 @@ void main() async{
 
   await CustomServer().initialize(
     handler: handler,
-    url: await CustomEnv.get<String>(key:'url'),
-    port: await CustomEnv.get<int>(key:'port'),
+    url: "localhost",
+    port: 8080,
   );
 }

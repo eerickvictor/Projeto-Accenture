@@ -9,13 +9,13 @@ class UsuarioDao implements Dao<Usuario>{
   UsuarioDao(this._dbConfiguration);
   
   @override
-  Future<Usuario> delete(int id)async{
+  Future delete(int id)async{
     // TODO: implement delete
     throw UnimplementedError();
   }
 
   @override
- Future<List<Usuario>> findAll() async {
+ Future findAll() async {
   final String SQL = 'SELECT * FROM usuario';
   var connection = await _dbConfiguration.connection;
   var result = await connection.execute(SQL);
@@ -26,13 +26,10 @@ class UsuarioDao implements Dao<Usuario>{
 }
 
   @override
-Future<Usuario> findOne(int id) async {
+Future findOne(int id) async {
   final String SQL = 'SELECT * FROM usuario WHERE id = ?'; 
   var connection = await _dbConfiguration.connection;
   var result = await connection.execute(SQL, [id]);
-  for(final r in result.rows){
-    print(r.assoc());
-  }
   return result;
 }
 
