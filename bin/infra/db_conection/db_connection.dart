@@ -1,28 +1,31 @@
-import 'package:mysql_client/mysql_client.dart';
-
+import 'package:mysql1/mysql1.dart';
 import 'db_configuration.dart';
 
 class Dbconnection implements DbConfiguration{
  
- MySQLConnection? _connection;
+ MySqlConnection? _connection;
+  
  
   @override
   // TODO: implement connection
-  Future<MySQLConnection> get connection async{
+  Future<MySqlConnection> get connection async{
     try {
       if(_connection == null){
       _connection = await createConnection();
-    }
-    return _connection!;
-    } catch (e) {
+    }}catch(e) {
       throw Exception("Erro ao criar conexão com o banco $e");
     }
+    return _connection!;
   }
 
   @override
-  Future createConnection() async {
-    await MySQLConnection.createConnection(host: '127.0.0.1'
-  , port: 3306, userName: 'bancoteste_user', password: 'bancoteste_pass', databaseName: 'bancoteste');
-  }
-
+  Future <MySqlConnection> createConnection() async {
+   return await MySqlConnection.connect(ConnectionSettings(
+    host: "127.0.0.1",
+    port: 3306,
+    user: "bancoteste_user",
+    password: "bancoteste_pass",
+    db: "bancoteste"
+   ));
+   }
 }
