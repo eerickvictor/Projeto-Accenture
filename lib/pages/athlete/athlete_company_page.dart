@@ -1,6 +1,7 @@
 import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 
 class AthleteCompanyPage extends StatefulWidget {
   const AthleteCompanyPage({super.key});
@@ -10,6 +11,33 @@ class AthleteCompanyPage extends StatefulWidget {
 }
 
 class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
+
+  final StopWatchTimer _stopWatchTimer = StopWatchTimer();
+  final _isHours = true;
+
+  double kms = 0;
+
+  void pedalar()
+  {   
+    setState(() {
+      kms = kms + 0.005;
+    });
+    print(kms.toStringAsFixed(2));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+
+  @override
+  void dispose()
+  {
+    super.dispose();
+    _stopWatchTimer.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -268,138 +296,172 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
+                  _stopWatchTimer.onStartTimer();
                   showModalBottomSheet(
                     context: context, 
-                    builder: (BuildContext context) 
+                    builder: (context) 
                     {
-                      return Container(
-                        width: 400,
-                        height: 330,
-                        padding: const EdgeInsets.all(10),
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-                          color: Color.fromARGB(255, 88, 0, 100)
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              '22/05/2024',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white
-                              ),
-                            ),
-                            const SizedBox(height: 20,),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Container(
-                                  width: 170,
-                                  height: 170,
-                                  decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                                    color: Color.fromARGB(255, 65, 0, 71)
-                                  ),
-                                  child: const Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'TEMPO',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white
-                                        ),
-                                      ),
-                                      Text(
-                                        '30:45',
-                                        style: TextStyle(
-                                          fontSize: 40,
-                                          fontWeight: FontWeight.w700,
-                                          color: Colors.white
-                                        ),
-                                      ),
-                                      Text(
-                                        'MIN:S',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(height: 20,),
-                                Container(
-                                  width: 170,
-                                  height: 170,
-                                  decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                                    color: Color.fromARGB(255, 65, 0, 71)
-                                  ),
-                                  child: const Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'DISTANCIA',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white
-                                        ),
-                                      ),
-                                      Text(
-                                        '2,5',
-                                        style: TextStyle(
-                                          fontSize: 40,
-                                          fontWeight: FontWeight.w700,
-                                          color: Colors.white
-                                        ),
-                                      ),
-                                      Text(
-                                        'KM',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 20,),
-                            Container(
-                              width: 160,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: Colors.red.shade900,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: TextButton(
-                                onPressed: () => {
-                                  Navigator.pop(context),
-                                },
-                                style: TextButton.styleFrom(
-                                  backgroundColor: Colors.transparent,
-                                ),
-                                child: const Text(
-                                  "Finalizar exercicio",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
+                      return StatefulBuilder(
+                        builder: (BuildContext context, StateSetter setState) {
+                          return Container(
+                          width: 400,
+                          height: 400,
+                          padding: const EdgeInsets.all(10),
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                            color: Color.fromARGB(255, 88, 0, 100)
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                '22/05/2024',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white
                                 ),
                               ),
-                            ),
-
-
-                          ],
-                        ),
-                      );
+                              const SizedBox(height: 20,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Container(
+                                    width: 170,
+                                    height: 170,
+                                    decoration: const BoxDecoration(
+                                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                                      color: Color.fromARGB(255, 65, 0, 71)
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        const Text(
+                                          'TEMPO',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white
+                                          ),
+                                        ),
+                                        StreamBuilder<int>(
+                                          stream: _stopWatchTimer.rawTime,
+                                          builder: (context, snapshot) {
+                                            final value = snapshot.data;
+                                            final displayTime = StopWatchTimer.getDisplayTime(value!, hours:  _isHours);
+                                            return Text(displayTime, style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w700, color: Colors.white),);
+                                          }
+                                        ),
+                                        const Text(
+                                          'MIN:S',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(height: 20,), 
+                                  Container(
+                                    width: 170,
+                                    height: 170,
+                                    decoration: const BoxDecoration(
+                                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                                      color: Color.fromARGB(255, 65, 0, 71)
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        const Text(
+                                          'DISTANCIA',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white
+                                          ),
+                                        ),
+                                        Text(
+                                          kms.toStringAsFixed(2),
+                                          style: const TextStyle(
+                                            fontSize: 40,
+                                            fontWeight: FontWeight.w700,
+                                            color: Colors.white
+                                          ),
+                                        ),
+                                        const Text(
+                                          'KM',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),                            
+                                ],
+                              ),
+                              const SizedBox(height: 20,),
+                              Container(
+                                width: 160,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: TextButton(
+                                  onPressed: () => {
+                                    setState(() {
+                                      pedalar();
+                                    }),
+                                  },
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: Colors.transparent,
+                                  ),
+                                  child: const Text(
+                                    "Pedalar",
+                                    style: TextStyle(
+                                      color: const Color.fromARGB(255, 65, 0, 71),
+                                      fontWeight: FontWeight.w800
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              spacing(0, 10),
+                              Container(
+                                width: 160,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  color: Colors.red.shade900,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: TextButton(
+                                  onPressed: () => {
+                                    setState(() {
+                                      kms = 0;  
+                                    }),
+                                    _stopWatchTimer.onStopTimer(),
+                                    _stopWatchTimer.onResetTimer(),
+                                    Navigator.pop(context),
+                                  },
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: Colors.transparent,
+                                  ),
+                                  child: const Text(
+                                    "Finalizar exercicio",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      });  
                     }
                   );
                 },
@@ -422,7 +484,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,
-                              fontWeight: FontWeight.w500))
+                              fontWeight: FontWeight.w500)),
                     ],
                   ),
                 ),
