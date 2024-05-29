@@ -81,6 +81,54 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                 ],
               ),
             ),
+             const SizedBox(
+              height: 10,
+            ),
+            Container(
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade900),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(5.0),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Row(
+                    children: [
+                      Icon(
+                        Icons.electric_bike,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Exercicios',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                  FloatingActionButton.small(
+                    heroTag: 'btnEdit',
+                    onPressed: () => {
+                      Navigator.of(context).pushNamed('/atleta_exercicios'),
+                    },
+                    backgroundColor: Colors.purple,
+                    shape: const CircleBorder(),
+                    child: const Icon(
+                      Icons.arrow_forward_outlined,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
             const SizedBox(
               height: 10,
             ),

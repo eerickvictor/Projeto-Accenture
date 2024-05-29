@@ -1,6 +1,7 @@
 import 'package:enercicio/pages/athlete/PageCadastroAtleta.dart';
 import 'package:enercicio/pages/athlete/athlete_company_page.dart';
 import 'package:enercicio/pages/athlete/athlete_edit_perfil_page.dart';
+import 'package:enercicio/pages/athlete/athlete_exercicio.dart';
 import 'package:enercicio/pages/athlete/athlete_home_page.dart';
 import 'package:enercicio/pages/athlete/athlete_perfil_page.dart';
 import 'package:enercicio/pages/athlete/pageLoginAtleta.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         '/home_atleta': (context) => const AthleteHomePage(),
         '/home_atleta_empresa': (context) => const AthleteCompanyPage(),
         '/perfil_atleta': (context) => const AthletePerfilPage(),
+        '/atleta_exercicios': (context) => const AthleteExercicio(),
         '/editar_perfil_atleta': (context) => const AthleteEditPerfilPage(),
         '/login_empresa': (context) => const PageLoginCompany(),
         '/cadastro_empresa': (context) => const PageCadastroCompany(),
