@@ -113,6 +113,7 @@ class _PageLoginCompanyState extends State<PageLoginCompany> {
               child: SizedBox.expand(
                 child: ElevatedButton(
                   onPressed: () {
+                    Navigator.of(context).pop();
                     Navigator.of(context).pushReplacementNamed('/home_empresa');
                   },
                   style: ElevatedButton.styleFrom(

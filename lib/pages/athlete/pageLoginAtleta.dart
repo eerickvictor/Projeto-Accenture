@@ -86,6 +86,7 @@ class LoginAtleta extends StatelessWidget {
               child: SizedBox.expand(
                 child: ElevatedButton(
                   onPressed: () {
+                    Navigator.of(context).pop();
                     Navigator.of(context).pushReplacementNamed('/home_atleta');
                   },
                   style: ElevatedButton.styleFrom(
