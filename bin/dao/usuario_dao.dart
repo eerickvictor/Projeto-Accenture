@@ -10,9 +10,13 @@ class UsuarioDao implements Dao<Usuario>{
   
   @override
   Future delete(int id)async{
-    // TODO: implement delete
-    throw UnimplementedError();
-  }
+    var connection = await _dbConfiguration.connection;
+    var result = await connection.execute("DELETE FROM usuario WHERE id = :id", {"id": id}); 
+    for (final row in result.rows) {
+      print(row.affectedRows());
+    }
+    return result.row.affectedRows;
+}
 
   @override
  Future findAll() async {
@@ -22,22 +26,25 @@ class UsuarioDao implements Dao<Usuario>{
   for(final r in result.rows){
     print(r.assoc());
   } 
-  return result;
 }
 
   @override
 Future findOne(int id) async {
-  final String SQL = 'SELECT * FROM usuario WHERE id = ?'; 
-  var connection = await _dbConfiguration.connection;
-  var result = await connection.execute(SQL, [id]);
-  return result;
+ var connection = await _dbConfiguration.connection;
+ var result = await connection.execute("SELECT * FROM usuario WHERE id = :id", {"id": id}); 
+ for (final row in result.rows) {
+    print(row.assoc());
+  }
 }
 
   @override
-  Future save(Usuario value) async{
-    // TODO: implement save
-    throw UnimplementedError();
-  }
+  Future save(int id, String cpf, String nome, String email, String senha, int is_ativo, String data_criacao) async{
+    var connection = await _dbConfiguration.connection;
+    var stmt = await connection.prepare(
+  "INSERT INTO usuario (id, cpf, nome, email, senha, is_ativo, data_criacao ) VALUES (?, ?, ?, ?, ?, ?, ?)",);
+  await stmt.execute([id, cpf, nome, email, senha, is_ativo, data_criacao]);
+  
+}
 
   @override
   Future update(Usuario value) {
