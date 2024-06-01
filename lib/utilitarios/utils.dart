@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 bool isObscurePassword = true;
 
@@ -178,3 +179,17 @@ Widget spacing(double width, double height) {
 //             );
 // }
 
+InputDecoration getAuthenticationInputDecoration(String label, bool isPassword) {
+  return InputDecoration(
+    label: Text(label),
+    labelStyle: const TextStyle(
+      color: Colors.white,
+    ),
+    enabledBorder: const UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.white),
+    ),
+    floatingLabelBehavior: FloatingLabelBehavior.always, 
+    suffixIcon: isPassword ?  IconButton(onPressed: () {}, icon: const Icon(Icons.lock_outline)) : null,
+      // isPassword ? visible ? IconButton(onPressed: () {visible = false;}, icon: const Icon(Icons.lock_open_rounded)) : IconButton(onPressed: () {visible = true;}, icon: const Icon(Icons.lock_outline)) : null
+  );
+}

@@ -1,3 +1,4 @@
+import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 
 class PageLoginCompany extends StatefulWidget {
@@ -8,6 +9,9 @@ class PageLoginCompany extends StatefulWidget {
 }
 
 class _PageLoginCompanyState extends State<PageLoginCompany> {
+
+  bool visible = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,36 +40,20 @@ class _PageLoginCompanyState extends State<PageLoginCompany> {
               height: 128,
               child: Image.asset("assets/images/company_imagem.png"),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            spacing(0, 20),
             TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                labelText: "E-mail",
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
+              decoration: getAuthenticationInputDecoration("E-mail", false),
+              style: const TextStyle(
+                color: Colors.white,
               ),
-              style: const TextStyle(fontSize: 15, color: Colors.white),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            spacing(0, 20),
             TextFormField(
-              keyboardType: TextInputType.text,
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: "Senha",
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
+              decoration: getAuthenticationInputDecoration("Senha", true),
+              obscureText: visible,
+              style: const TextStyle(
+                color: Colors.white,
               ),
-              style: const TextStyle(fontSize: 15, color: Colors.white),
             ),
             Container(
               height: 40,

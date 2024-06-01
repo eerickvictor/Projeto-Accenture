@@ -29,8 +29,8 @@ class _PageCadastroCompanyState extends State<PageCadastroCompany> {
         child: ListView(
           children: <Widget>[
             Container(
-              width: 200,
-              height: 200,
+              width: 100,
+              height: 100,
               alignment: const Alignment(0.0, 1.15),
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -39,73 +39,27 @@ class _PageCadastroCompanyState extends State<PageCadastroCompany> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
+            spacing(0, 30),
+            TextFormField(
+              decoration: getAuthenticationInputDecoration("Nome Fantasia", false),
             ),
-            buildTextField(context, "Nome fantasia", "", false),
-            // TextFormField(
-            //   keyboardType: TextInputType.name,
-            //   decoration: const InputDecoration(
-            //       labelText: "Nome Fantasia",
-            //       labelStyle: TextStyle(
-            //         color: Colors.white,
-            //         fontWeight: FontWeight.w400,
-            //         fontSize: 18,
-            //       )),
-            //   style: const TextStyle(fontSize: 18, color: Colors.white),
-            // ),
-            // const SizedBox(
-            //   height: 10,
-            // ),
-            buildTextField(context, "CNPJ", "", false),
-            // TextFormField(
-            //   keyboardType: TextInputType.number,
-            //   decoration: const InputDecoration(
-            //     labelText: "CNPJ",
-            //     labelStyle: TextStyle(
-            //       color: Colors.white,
-            //       fontWeight: FontWeight.w400,
-            //       fontSize: 18,
-            //     ),
-            //   ),
-            //   style: const TextStyle(fontSize: 18, color: Colors.white),
-            // ),
-            // const SizedBox(
-            //   height: 10,
-            // ),
-            buildTextField(context, "E-mail", "", false),
-            // TextFormField(
-            //   keyboardType: TextInputType.emailAddress,
-            //   decoration: const InputDecoration(
-            //     labelText: "E-mail",
-            //     labelStyle: TextStyle(
-            //       color: Colors.white,
-            //       fontWeight: FontWeight.w400,
-            //       fontSize: 20,
-            //     ),
-            //   ),
-            //   style: const TextStyle(fontSize: 18, color: Colors.white),
-            // ),
-            // const SizedBox(
-            //   height: 10,
-            // ),
-            buildTextField(context, "Senha", "", false),
-            // TextFormField(
-            //   keyboardType: TextInputType.text,
-            //   obscureText: true,
-            //   decoration: const InputDecoration(
-            //     labelText: "Senha",
-            //     labelStyle: TextStyle(
-            //       color: Colors.white,
-            //       fontWeight: FontWeight.w400,
-            //       fontSize: 18,
-            //     ),
-            //   ),
-            //   style: const TextStyle(fontSize: 18, color: Colors.white),
-            // ),
-            // const SizedBox(
-            //   height: 10,
-            // ),
+            spacing(0, 20),
+            TextFormField(
+              decoration: getAuthenticationInputDecoration("Razão Social", false),
+            ),
+            spacing(0, 20),
+            TextFormField(
+              decoration: getAuthenticationInputDecoration("CNPJ", false),
+            ),
+            spacing(0, 20),
+            TextFormField(
+              decoration: getAuthenticationInputDecoration("E-mail", false),
+            ),
+            spacing(0, 20),
+            TextFormField(
+              decoration: getAuthenticationInputDecoration("Senha", true),
+            ),
+            spacing(0, 30),
             Container(
               height: 60,
               alignment: Alignment.centerLeft,
