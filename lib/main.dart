@@ -5,7 +5,7 @@ import 'package:enercicio/pages/athlete/athlete_exercicio.dart';
 import 'package:enercicio/pages/athlete/athlete_home_page.dart';
 import 'package:enercicio/pages/athlete/athlete_perfil_page.dart';
 import 'package:enercicio/pages/athlete/pageLoginAtleta.dart';
-import 'package:enercicio/pages/company/CompanyRegisterUser.dart';
+import 'package:enercicio/pages/company/company_register_users.dart';
 import 'package:enercicio/pages/company/PageCadastroCompany.dart';
 import 'package:enercicio/pages/company/company_create_meta.dart';
 import 'package:enercicio/pages/company/company_edit_perfil_page.dart';
@@ -15,10 +15,26 @@ import 'package:enercicio/pages/company/company_update_meta.dart';
 import 'package:enercicio/pages/company/company_users_list.dart';
 import 'package:enercicio/pages/company/pageLoginCompany.dart';
 import 'package:enercicio/pages/escolha_login.dart';
+import 'package:parse_server_sdk/parse_server_sdk.dart';
 // import 'package:enercicio/pages/pageLoginAtleta.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();;
+  final keyAplicationId = 'J1o9zJlHx7V5mdbVvDhxiySFSckPDN6JXv4f55dm';
+  final keyClientKey = 'crqJOb3T41JMWl7bwg3Suwe2nAaZMoe362or1Dgw';
+  final keyParseServerUrl = 'https://parseapi.back4app.com';
+
+  await Parse().initialize(keyAplicationId, keyParseServerUrl, clientKey: keyClientKey, autoSendSessionId: true);
+
+  var firstObject = ParseObject('TesteConnection')
+    ..set(
+      'message', 'Conexão criada com sucesso!');
+
+  await firstObject.save();
+
+  print('ok');
+
   runApp(const MyApp());
 }
 
