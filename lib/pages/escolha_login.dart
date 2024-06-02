@@ -91,17 +91,9 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
                 SizedBox(
                   height: 250,
                   width: 250,
-                  // color: Colors.white,
                   child: Image.asset(buttonD == 1 && buttonE == 1
                       ? 'assets/images/bike_imagem.png'
                       : 'assets/images/company_imagem.png'),
-                  // child: ListView(
-                  //   scrollDirection: Axis.horizontal,
-                  //   children: [
-                  //     Image.asset('assets/images/bike_imagem.png'),
-                  //     Image.asset('assets/images/company_imagem.png'),
-                  //   ],
-                  // ),
                 ),
                 ElevatedButton(
                   onPressed: modfieLogin,
@@ -129,24 +121,29 @@ class _EscolhaLoginState extends State<EscolhaLogin> {
             Container(
               height: 50,
             ),
-            TextButton(
-              onPressed: () {
-                buttonD == 1 && buttonE == 1
+            Container(
+              width: 170,
+              height: 50,
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(colors: [
+                  Colors.pink,
+                  Color.fromRGBO(156, 39, 176, 1),
+                ]),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: TextButton(
+                onPressed: () {
+                  buttonD == 1 && buttonE == 1
                     ? Navigator.of(context)
                         .pushNamed('/login_atleta')
                     : Navigator.of(context)
                         .pushNamed('/login_empresa');
-              },
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.purple,
-                // fixedSize: Size(400, 50)
-              ),
-              child: const Text(
-                'ENTRAR',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+                },
+                child: const Text(
+                  "ENTRAR",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
