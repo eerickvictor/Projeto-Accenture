@@ -39,6 +39,7 @@ Widget buildTextField(BuildContext context, String labelText,
   );
 }
 
+
 Widget textButton(
   BuildContext context,
   double width,
@@ -179,14 +180,20 @@ Widget spacing(double width, double height) {
 //             );
 // }
 
-InputDecoration getAuthenticationInputDecoration(String label, bool isPassword) {
+InputDecoration getAuthenticationInputDecoration(String label, bool isPassword, bool isModifyData, String data) {
   return InputDecoration(
     label: Text(label),
     labelStyle: const TextStyle(
       color: Colors.white,
     ),
+    hintText: isModifyData ? data : null,
     enabledBorder: const UnderlineInputBorder(
       borderSide: BorderSide(color: Colors.white),
+    ),
+    hintStyle: const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: Colors.grey,
     ),
     floatingLabelBehavior: FloatingLabelBehavior.always, 
     suffixIcon: isPassword ?  IconButton(onPressed: () {}, icon: const Icon(Icons.lock_outline)) : null,
