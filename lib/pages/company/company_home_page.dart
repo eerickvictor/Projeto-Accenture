@@ -117,27 +117,51 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  textButton(
-                                      context,
-                                      110,
-                                      40,
-                                      "Criar meta",
-                                      true,
-                                      false,
-                                      false,
-                                      true,
-                                      "/criar_meta_empresa"),
+                                  Container(
+                                    width: 140,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      gradient: const LinearGradient(colors: [
+                                        Colors.pink,
+                                        Color.fromRGBO(156, 39, 176, 1),
+                                      ]),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: TextButton(
+                                      onPressed: () {
+                                          Navigator.of(context).pushNamed("/criar_meta_empresa");
+                                      },
+                                      child: const Text(
+                                        "Criar meta",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                   spacing(20, 0),                                 
-                                  textButton(
-                                      context,
-                                      110,
-                                      40,
-                                      "Editar meta",
-                                      true,
-                                      false,
-                                      false,
-                                      true,
-                                      "/editar_meta_empresa"),
+                                   Container(
+                                    width: 140,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      gradient: const LinearGradient(colors: [
+                                        Colors.pink,
+                                        Color.fromRGBO(156, 39, 176, 1),
+                                      ]),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: TextButton(
+                                      onPressed: () {
+                                          Navigator.of(context).pushNamed("/editar_meta_empresa");
+                                      },
+                                      child: const Text(
+                                        "Editar meta",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                               // const SizedBox(
