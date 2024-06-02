@@ -10,6 +10,9 @@ class CompanyCreateMeta extends StatefulWidget {
 }
 
 class _CompanyCreateMetaState extends State<CompanyCreateMeta> {
+
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,15 +50,61 @@ class _CompanyCreateMetaState extends State<CompanyCreateMeta> {
                         border: Border.all(color: Colors.grey.shade900),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10.0))),
-                    child: Column(
-                      children: [
-                        buildTextField(context, "Objetivo", "", false),
-                        spacing(0, 20),
-                        buildTextField(context, "Recompensa", "", false),
-                        spacing(0, 20),
-                        textButton(context, 150, 50, "Criar meta", true, false, false, false, ""),
-                        spacing(0, 10),
-                      ],
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            decoration: getAuthenticationInputDecoration("Objetivo", false, false, ""),
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                            validator: (String? value) {
+                              if(value == "") {
+                                return "O campo que recebe o Objetivo não pode ser vazio";
+                              }
+                              return null;
+                            },
+                          ),
+                          spacing(0, 20),
+                          TextFormField(
+                            decoration: getAuthenticationInputDecoration("Objetivo", false, false, ""),
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                            validator: (String? value) {
+                              if(value == "") {
+                                return "O campo que recebe a Recompensa não pode ser vazio";
+                              }
+                              return null;
+                            },
+                          ),
+                          spacing(0, 30),
+                          Container(
+                            width: 150,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(colors: [
+                                Colors.pink,
+                                Color.fromRGBO(156, 39, 176, 1),
+                              ]),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: TextButton(
+                              onPressed: () {
+                                  botaoCriar();
+                              },
+                              child: const Text(
+                                "Criar meta",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                          spacing(0, 10),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -65,5 +114,15 @@ class _CompanyCreateMetaState extends State<CompanyCreateMeta> {
         ),
       ),
     );
+  }
+
+  botaoCriar() {
+    if (_formKey.currentState!.validate()) {
+      print("Formulario valido");
+      Navigator.of(context).pop();
+    } else{
+      
+      print("Formulario invalido");
+    }
   }
 }

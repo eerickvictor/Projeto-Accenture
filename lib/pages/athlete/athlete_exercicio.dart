@@ -156,4 +156,5 @@ class _AthleteExercicioState extends State<AthleteExercicio> {
       width: height.toDouble(),
     );
   }
+  
 }

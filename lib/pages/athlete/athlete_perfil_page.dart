@@ -115,7 +115,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                     ],
                   ),
                   FloatingActionButton.small(
-                    heroTag: 'btnEdit',
+                    heroTag: 'btnExercizes',
                     onPressed: () => {
                       Navigator.of(context).pushNamed('/atleta_exercicios'),
                     },

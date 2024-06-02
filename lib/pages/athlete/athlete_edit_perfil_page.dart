@@ -9,7 +9,8 @@ class AthleteEditPerfilPage extends StatefulWidget {
 }
 
 class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
-  bool isObscurePassword = true;
+  
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -36,28 +37,139 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
       ),
       body: Container(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            buildTextField(context, "Nome completo", "Robson Irineu da Silva", false),
-            buildTextField(context, "Idade", "34", false),
-            buildTextField(context, "Sexo", "Masculino", false),
-            buildTextField(context, "Email", "robsonirineu@gmail.com", false),
-            buildTextField(context, "Senha", "*****", true),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                textButton(context, 160, 40, "Cancelar alterações", false, true,
-                    false, false, ""),
-                const SizedBox(
-                  width: 20,
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: <Widget>[
+              TextFormField(
+                decoration: getAuthenticationInputDecoration("Nome Completo", false, true, "Bruno Antonio Alexandrino da Silva"),
+                style: const TextStyle(
+                  color: Colors.white,
                 ),
-                textButton(context, 160, 40, "Salvar alterações", true, false,
-                    false, false, ""),
-              ],
-            )
-          ],
+                validator: (String? value) {
+                  if(value == "") {
+                    return "O campo que recebe o nome não pode ser vazio";
+                  }
+                  if(value!.length < 10) {
+                    return "O valor informado é muito curto";
+                  }
+                  return null;
+                },
+              ),
+              spacing(0, 20),
+              TextFormField(
+                decoration: getAuthenticationInputDecoration("Idade", false, true, "19"),
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                validator: (String? value) {
+                  if(value == "") {
+                    return "O campo que recebe a idade não pode ser vazio";
+                  }
+                  return null;
+                },
+              ),
+              spacing(0, 20),
+              TextFormField(
+                decoration: getAuthenticationInputDecoration("Sexo", false, true, "Masculino"),
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                validator: (String? value) {
+                  if(value == "") {
+                    return "O campo que recebe o sexo não pode ser vazio";
+                  }
+                  return null;
+                },
+              ),
+              spacing(0, 20),
+              TextFormField(
+                decoration: getAuthenticationInputDecoration("E-mail", false, true, "brunoantonio0210@gmail.com"),
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                validator: (String? value) {
+                  if(value == "") {
+                    return "O campo que recebe o email não pode ser vazio";
+                  }
+                  return null;
+                },
+              ),
+              spacing(0, 20),
+              TextFormField(
+                decoration: getAuthenticationInputDecoration("Senha", true, true, "1234"),
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                validator: (String? value) {
+                  if(value == "") {
+                    return "O campo que recebe a senha não pode ser vazio";
+                  }
+                  return null;
+                },
+              ),
+              spacing(0, 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 170,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.purple),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text(
+                        "Cancelar Alterações",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  spacing(20, 0),
+                  Container(
+                    width: 170,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(colors: [
+                        Colors.pink,
+                        Color.fromRGBO(156, 39, 176, 1),
+                      ]),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        botaoSalvarAlteracoes();
+                      },
+                      child: const Text(
+                        "Salvar Alterações",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  botaoSalvarAlteracoes() {
+    if (_formKey.currentState!.validate()) {
+      print("Formulario valido");
+      Navigator.of(context).pop();
+    } else{
+      
+      print("Formulario invalido");
+    }
   }
 }
