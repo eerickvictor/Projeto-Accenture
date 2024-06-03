@@ -20,20 +20,16 @@ import 'package:parse_server_sdk/parse_server_sdk.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();;
+  WidgetsFlutterBinding.ensureInitialized();
   final keyAplicationId = 'J1o9zJlHx7V5mdbVvDhxiySFSckPDN6JXv4f55dm';
   final keyClientKey = 'crqJOb3T41JMWl7bwg3Suwe2nAaZMoe362or1Dgw';
   final keyParseServerUrl = 'https://parseapi.back4app.com';
 
   await Parse().initialize(keyAplicationId, keyParseServerUrl, clientKey: keyClientKey, autoSendSessionId: true);
 
-  var firstObject = ParseObject('TesteConnection')
-    ..set(
-      'message', 'Conexão criada com sucesso!');
+  // var message = ParseObject('TesteConnection')..set('message', 'Cadastro realizado');
 
-  await firstObject.save();
-
-  print('ok');
+  // await message.save();
 
   runApp(const MyApp());
 }
