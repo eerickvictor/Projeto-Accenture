@@ -1,3 +1,4 @@
+import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -42,6 +43,13 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
               child: ListView(
                 shrinkWrap: true,
                 children: [
+                  TextFormField(
+                    decoration: getAuthenticationInputDecoration('', false, true, "Procurar"),
+                    style: const TextStyle(
+                      color: Colors.white
+                    ),
+                  ),
+                  spacing(0, 30),
                   Container(
                     child: Column(
                       children: [
