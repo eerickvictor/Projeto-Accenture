@@ -114,60 +114,29 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                                 ),
                               ),
                               spacing(0, 10),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 140,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      gradient: const LinearGradient(colors: [
-                                        Colors.pink,
-                                        Color.fromRGBO(156, 39, 176, 1),
-                                      ]),
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    child: TextButton(
-                                      onPressed: () {
-                                          Navigator.of(context).pushNamed("/criar_meta_empresa");
-                                      },
-                                      child: const Text(
-                                        "Criar meta",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
+                              Container(
+                                width: 140,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  gradient: const LinearGradient(colors: [
+                                    Colors.pink,
+                                    Color.fromRGBO(156, 39, 176, 1),
+                                  ]),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: TextButton(
+                                  onPressed: () {
+                                      Navigator.of(context).pushNamed("/gerenciar_meta_empresa");
+                                  },
+                                  child: const Text(
+                                    "Gerenciar meta",
+                                    style: TextStyle(
+                                      color: Colors.white,
                                     ),
                                   ),
-                                  spacing(20, 0),                                 
-                                   Container(
-                                    width: 140,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      gradient: const LinearGradient(colors: [
-                                        Colors.pink,
-                                        Color.fromRGBO(156, 39, 176, 1),
-                                      ]),
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    child: TextButton(
-                                      onPressed: () {
-                                          Navigator.of(context).pushNamed("/editar_meta_empresa");
-                                      },
-                                      child: const Text(
-                                        "Editar meta",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
-                              // const SizedBox(
-                              //   height: 10,
-                              // ),
-                              spacing(0, 10)
+                              spacing(0, 10),
                             ],
                           ),
                         ),
@@ -183,59 +152,76 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                         const Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            'Usuarios',
-                            textAlign: TextAlign.center,
+                            'Criar meta',
                             style: TextStyle(
                               color: Colors.white,
-                              fontWeight: FontWeight.bold,
                               fontSize: 20,
+                              fontWeight: FontWeight.bold
                             ),
                           ),
                         ),
                         Container(
                           width: 400,
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(20.0),
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey.shade900),
-                              borderRadius: const BorderRadius.all(
-                                  Radius.circular(10.0))),
-                          child: Column(
-                            children: [
-                              userContainer("Sofia Martins", "10000"),
-                              spacing(0, 5),
-                              userContainer("Lucas Ferreira", "7000"),
-                              spacing(0, 5),
-                              userContainer("Isabela Silva", "5000"),
-                              spacing(0, 20),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  textButton(
-                                      context,
-                                      150,
-                                      40,
-                                      "Ver todos usuarios",
-                                      true,
-                                      false,
-                                      false,
-                                      true,
-                                      "/lista_usuarios_empresa"),
-                                  spacing(20, 0),
-                                  textButton(
-                                      context,
-                                      150,
-                                      40,
-                                      "Cadastrar usuario",
-                                      true,
-                                      false,
-                                      false,
-                                      true,
-                                      "/cadastrar_usuario_meta"),
-
-                                ],
-                              ),
-                              spacing(0, 20),
-                            ],
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10.0))),
+                          child: Form(
+                            // key: _formKey,
+                            child: Column(
+                              children: [
+                                TextFormField(
+                                  decoration: getAuthenticationInputDecoration("Objetivo", false, false, ""),
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                  validator: (String? value) {
+                                    if(value == "") {
+                                      return "O campo que recebe o Objetivo não pode ser vazio";
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                spacing(0, 20),
+                                TextFormField(
+                                  decoration: getAuthenticationInputDecoration("Objetivo", false, false, ""),
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                  validator: (String? value) {
+                                    if(value == "") {
+                                      return "O campo que recebe a Recompensa não pode ser vazio";
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                spacing(0, 30),
+                                Container(
+                                  width: 150,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    gradient: const LinearGradient(colors: [
+                                      Colors.pink,
+                                      Color.fromRGBO(156, 39, 176, 1),
+                                    ]),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      
+                                    },
+                                    child: const Text(
+                                      "Criar meta",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                spacing(0, 10),
+                              ],
+                            ),
                           ),
                         ),
                       ],
