@@ -18,7 +18,7 @@ class _LoginAtletaState extends State<LoginAtleta> {
   TextEditingController passwordController = TextEditingController();
 
   //Criação da variavel que vai receber o Id da conta do atleta que está fazendo o login
-  String? athleteId;
+  String athleteId = "";
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +135,7 @@ class _LoginAtletaState extends State<LoginAtleta> {
                 child: SizedBox.expand(
                   child: ElevatedButton(
                     onPressed: () {
-                      botaoLogin();
+                      botaoLogin(athleteId);
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
@@ -177,11 +177,15 @@ class _LoginAtletaState extends State<LoginAtleta> {
     );
   }
 
-  botaoLogin() {
+  botaoLogin(String athleteId) async{
     if (_formKey.currentState!.validate()) {
       print("Formulario valido");
-      loginAthlete(emailController, passwordController);
+      loginAthlete(emailController, passwordController, athleteId);
+      print(loginAthlete(emailController, passwordController, athleteId));
+      //aqui a variavel athleteId vai esperar o resultado da função loginAthlete e armazenar em si
+      athleteId = await loginAthlete(emailController, passwordController, athleteId);
       Navigator.of(context).pop();
+      //Aqui está sendo feito a passagem da variavel athleteId para a pagina Home_Atleta
       Navigator.of(context).pushReplacementNamed('/home_atleta', arguments: {'athleteId': athleteId});
     } else{
       
@@ -189,7 +193,7 @@ class _LoginAtletaState extends State<LoginAtleta> {
     }
   }
 
-  Future<void> loginAthlete(TextEditingController emailController, TextEditingController passwordController) async {
+  Future<String> loginAthlete(TextEditingController emailController, TextEditingController passwordController, String athleteId) async {
     QueryBuilder<ParseObject> loginQuery = QueryBuilder<ParseObject>(ParseObject('Atleta'));
     loginQuery.whereContains('email', emailController.text);
     loginQuery.whereContains('senha', passwordController.text);
@@ -204,6 +208,7 @@ class _LoginAtletaState extends State<LoginAtleta> {
         print((o as ParseObject).toString());
       }
     }
+    return athleteId;
   } 
 
     

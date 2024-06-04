@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class AthleteHomePage extends StatefulWidget {
   const AthleteHomePage({super.key});
@@ -11,6 +14,8 @@ class AthleteHomePage extends StatefulWidget {
 class _AthleteHomePageState extends State<AthleteHomePage> {
 
   String? athleteId;
+
+  ParseObject? company;
 
   void pressed() {
     print('pressionado');
@@ -27,6 +32,8 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
         print(athleteId);
       });
     }
+
+    getCompany();
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -168,5 +175,19 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
         ),
       )
     ]);
+  }
+}
+
+
+Future<List<ParseObject>> getCompany() async {
+  QueryBuilder<ParseObject> queryGetCompany = QueryBuilder<ParseObject>(ParseObject('Empresa'));
+  queryGetCompany.keysToReturn(['nome', 'objectId']);
+  final ParseResponse apiRespose = await queryGetCompany.query();
+
+  if(apiRespose.success && apiRespose.results != null) {
+    print(apiRespose.results as List<ParseObject>);
+    return apiRespose.results as List<ParseObject>;
+  } else {
+    return [];
   }
 }
