@@ -117,7 +117,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   FloatingActionButton.small(
                     heroTag: 'btnExercizes',
                     onPressed: () => {
-                      Navigator.of(context).pushNamed('/atleta_exercicios'),
+                      Navigator.of(context).pushNamed('/exercicio_empresa_atleta'),
                     },
                     backgroundColor: Colors.purple,
                     shape: const CircleBorder(),
