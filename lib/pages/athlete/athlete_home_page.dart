@@ -9,12 +9,25 @@ class AthleteHomePage extends StatefulWidget {
 }
 
 class _AthleteHomePageState extends State<AthleteHomePage> {
+
+  String? athleteId;
+
   void pressed() {
     print('pressionado');
   }
 
   @override
   Widget build(BuildContext context) {
+
+    final Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
+    print(athleteId);
+    if (arguments != null) {
+      setState(() {
+        athleteId = arguments['athleteId'];
+        print(athleteId);
+      });
+    }
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -45,10 +58,11 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
                   Container(
                     child: Column(
                       children: [
-                        const Align(
+                         const Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
                             'Empresas',
+                            // athleteId,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,

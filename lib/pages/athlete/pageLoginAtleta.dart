@@ -1,5 +1,6 @@
 import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class LoginAtleta extends StatefulWidget {
   const LoginAtleta({super.key});
@@ -11,6 +12,13 @@ class LoginAtleta extends StatefulWidget {
 class _LoginAtletaState extends State<LoginAtleta> {
 
   final _formKey = GlobalKey<FormState>();
+
+  //Criação dos controladores do formulario. São eles que vão receber os valores dos inputs
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  //Criação da variavel que vai receber o Id da conta do atleta que está fazendo o login
+  String? athleteId;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +54,7 @@ class _LoginAtletaState extends State<LoginAtleta> {
                 height: 20,
               ),
               TextFormField(
+                controller: emailController,
                 decoration: getAuthenticationInputDecoration("E-mail", false, false, ""),
                 style: const TextStyle(
                   color: Colors.white,
@@ -67,6 +76,7 @@ class _LoginAtletaState extends State<LoginAtleta> {
                 height: 20,
               ),
               TextFormField(
+                controller: passwordController,
                 decoration: getAuthenticationInputDecoration("Senha", true, false, ""),
                 obscureText: true,
                 style: const TextStyle(
@@ -170,11 +180,34 @@ class _LoginAtletaState extends State<LoginAtleta> {
   botaoLogin() {
     if (_formKey.currentState!.validate()) {
       print("Formulario valido");
+      loginAthlete(emailController, passwordController);
       Navigator.of(context).pop();
-      Navigator.of(context).pushReplacementNamed('/home_atleta');
+      Navigator.of(context).pushReplacementNamed('/home_atleta', arguments: {'athleteId': athleteId});
     } else{
       
       print("Formulario invalido");
     }
   }
+
+  Future<void> loginAthlete(TextEditingController emailController, TextEditingController passwordController) async {
+    QueryBuilder<ParseObject> loginQuery = QueryBuilder<ParseObject>(ParseObject('Atleta'));
+    loginQuery.whereContains('email', emailController.text);
+    loginQuery.whereContains('senha', passwordController.text);
+    final ParseResponse apiResponse = await loginQuery.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        o as ParseObject;
+        // var atlheteId = o.get('objectId');
+        athleteId = o.get('objectId');
+        print(athleteId);
+        print((o as ParseObject).toString());
+      }
+    }
+  } 
+
+    
+    
+
+  
 }
