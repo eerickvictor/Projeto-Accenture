@@ -262,35 +262,31 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                           ),
                         ),
                         spacing(0, 10),
-                        // Container(
-                        //   width: 350,
-                        //   height: 35,
-                        //   decoration: BoxDecoration(
-                        //     color: Colors.purple,
-                        //     borderRadius: BorderRadius.circular(30)
-                        //   ),
-                        //   child: const Center(
-                        //     child: Text(
-                        //       '80%',
-                        //       style: TextStyle(
-                        //         fontSize: 20,
-                        //         color: Colors.white,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        const SizedBox(
-                          height: 10,
+                        Container(
+                          width: 350,
+                          height: 35,
+                          decoration: BoxDecoration(
+                            color: Colors.purple,
+                            borderRadius: BorderRadius.circular(30)
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Concluido',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ),
+                        spacing(0, 10)
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+           spacing(0, 30),
             Container(
               width: 400,
               height: 50,
@@ -322,7 +318,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                   color: Colors.white
                                 ),
                               ),
-                              const SizedBox(height: 20,),
+                              spacing(0, 20),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
@@ -363,7 +359,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                       ],
                                     ),
                                   ),
-                                  const SizedBox(height: 20,), 
+                                  spacing(0, 20),
                                   Container(
                                     width: 170,
                                     height: 170,
@@ -403,7 +399,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                   ),                            
                                 ],
                               ),
-                              const SizedBox(height: 20,),
+                              spacing(0, 20),
                               Container(
                                 width: 160,
                                 height: 40,
