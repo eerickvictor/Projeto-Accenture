@@ -24,6 +24,12 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
   String distance = '';
   String reward = '';
 
+  String athleteId = '';
+
+  double distanceExercise = 0;
+  int timeExercise = 0;
+  DateTime dateExercise = DateTime.now();
+
   final StopWatchTimer _stopWatchTimer = StopWatchTimer();
   final _isHours = true;
 
@@ -33,6 +39,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
   {   
     setState(() {
       kms = kms + 0.005;
+      distanceExercise = kms;
     });
     print(kms.toStringAsFixed(2));
   }
@@ -59,6 +66,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
     if (arguments != null) {
       setState(() {
         companyId = arguments['companyId'];
+        athleteId = arguments['athleteId'];
         print(companyId);
       });
     }
@@ -188,33 +196,6 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                           ),
                         ),
                         spacing(0, 10),
-                        Container(
-                          // width: 350,
-                          height: 1,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade900,
-                          ),
-                        ),
-                        spacing(0, 10),
-                        Container(
-                          child: Row(
-                            children: [
-                              const Icon(
-                                Icons.circle,
-                                color: Colors.purple,
-                                size: 15,
-                              ),
-                              spacing(10, 0),
-                              const Text(
-                                'https://www.google.com.br/?hl=pt-BR&sa\nfe=active&ssui=on',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ],
-                          ),
-                        )
                       ],
                     ),
                   ),
@@ -296,35 +277,31 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                           ),
                         ),
                         spacing(0, 10),
-                        // Container(
-                        //   width: 350,
-                        //   height: 35,
-                        //   decoration: BoxDecoration(
-                        //     color: Colors.purple,
-                        //     borderRadius: BorderRadius.circular(30)
-                        //   ),
-                        //   child: const Center(
-                        //     child: Text(
-                        //       '80%',
-                        //       style: TextStyle(
-                        //         fontSize: 20,
-                        //         color: Colors.white,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        const SizedBox(
-                          height: 10,
+                        Container(
+                          width: 350,
+                          height: 35,
+                          decoration: BoxDecoration(
+                            color: Colors.purple,
+                            borderRadius: BorderRadius.circular(30)
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Concluido',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ),
+                        spacing(0, 10)
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+           spacing(0, 30),
             Container(
               width: 400,
               height: 50,
@@ -356,7 +333,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                   color: Colors.white
                                 ),
                               ),
-                              const SizedBox(height: 20,),
+                              spacing(0, 20),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
@@ -397,7 +374,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                       ],
                                     ),
                                   ),
-                                  const SizedBox(height: 20,), 
+                                  spacing(0, 20),
                                   Container(
                                     width: 170,
                                     height: 170,
@@ -437,7 +414,7 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                   ),                            
                                 ],
                               ),
-                              const SizedBox(height: 20,),
+                              spacing(0, 20),
                               Container(
                                 width: 160,
                                 height: 40,
@@ -473,12 +450,15 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                 ),
                                 child: TextButton(
                                   onPressed: () => {
-                                    setState(() {
-                                      kms = 0;  
-                                    }),
                                     _stopWatchTimer.onStopTimer(),
+                                    _stopWatchTimer.rawTime.listen((value) {
+                                      setState(() {
+                                        timeExercise = value;
+                                      });
+                                    }),
                                     _stopWatchTimer.onResetTimer(),
                                     Navigator.pop(context),
+                                    saveExerciseData(),
                                   },
                                   style: TextButton.styleFrom(
                                     backgroundColor: Colors.transparent,
@@ -577,4 +557,15 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
       
     }
   }
+
+  Future<void> saveExerciseData() async {
+    final exercise = ParseObject('Exercicio')
+      ..set('distancia', distanceExercise)
+      // ..set('tempo', timeExercise)
+      ..set('data', dateExercise)
+      ..set('id_Atleta', athleteId)
+      ..set('id_Meta', metaId);
+    await exercise.save();
+  }
+
 }

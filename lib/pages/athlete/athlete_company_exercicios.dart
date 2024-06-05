@@ -1,35 +1,23 @@
+import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class AthletePerfilPage extends StatefulWidget {
-  const AthletePerfilPage({super.key});
+class AthleteCompanyExercicios extends StatefulWidget {
+  const AthleteCompanyExercicios({super.key});
 
   @override
-  State<AthletePerfilPage> createState() => _AthletePerfilPageState();
+  State<AthleteCompanyExercicios> createState() => _AthleteCompanyExerciciosState();
 }
 
-class _AthletePerfilPageState extends State<AthletePerfilPage> {
-
-  String? athleteId;
-
+class _AthleteCompanyExerciciosState extends State<AthleteCompanyExercicios> {
   @override
   Widget build(BuildContext context) {
-
-    final Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
-    if (arguments != null) {
-      setState(() {
-        athleteId = arguments['athleteId'];
-        print(athleteId);
-      });
-    }
-
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
         title: const Text(
-          'Perfil',
+          'Exercicios',
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -59,17 +47,16 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(
-                        Icons.edit,
-                        color: Colors.white,
-                      ),
                       SizedBox(
-                        width: 10,
+                        width: 40,
+                        height: 40,
+                        child: Image.asset(''),
                       ),
-                      Text(
-                        'Editar perfil',
+                      spacing(10, 0),
+                      const Text(
+                        'EmpresaX',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
@@ -79,9 +66,9 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                     ],
                   ),
                   FloatingActionButton.small(
-                    heroTag: 'btnEdit',
+                    heroTag: 'btnCompany1',
                     onPressed: () => {
-                      Navigator.of(context).pushNamed('/editar_perfil_atleta', arguments: {"athleteId": athleteId}),
+                      Navigator.of(context).pushNamed('/atleta_exercicios'),
                     },
                     backgroundColor: Colors.purple,
                     shape: const CircleBorder(),
@@ -96,7 +83,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
              const SizedBox(
               height: 10,
             ),
-            Container(
+             Container(
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey.shade900),
@@ -107,17 +94,16 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(
-                        Icons.electric_bike,
-                        color: Colors.white,
-                      ),
                       SizedBox(
-                        width: 10,
+                        width: 40,
+                        height: 40,
+                        child: Image.asset(''),
                       ),
-                      Text(
-                        'Exercicios',
+                      spacing(10, 0),
+                      const Text(
+                        'EmpresaX',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
@@ -127,9 +113,9 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                     ],
                   ),
                   FloatingActionButton.small(
-                    heroTag: 'btnExercizes',
+                    heroTag: 'btnCompany2',
                     onPressed: () => {
-                      Navigator.of(context).pushNamed('/exercicio_empresa_atleta'),
+                      Navigator.of(context).pushNamed('/atleta_exercicios'),
                     },
                     backgroundColor: Colors.purple,
                     shape: const CircleBorder(),
@@ -144,7 +130,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
             const SizedBox(
               height: 10,
             ),
-            Container(
+             Container(
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey.shade900),
@@ -155,17 +141,16 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(
-                        Icons.backspace,
-                        color: Colors.white,
-                      ),
                       SizedBox(
-                        width: 10,
+                        width: 40,
+                        height: 40,
+                        child: Image.asset(''),
                       ),
-                      Text(
-                        'Sair da conta',
+                      spacing(10, 0),
+                      const Text(
+                        'EmpresaX',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
@@ -175,10 +160,9 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                     ],
                   ),
                   FloatingActionButton.small(
-                    heroTag: 'btnBack',
+                    heroTag: 'btnCompany3',
                     onPressed: () => {
-                      Navigator.pop(context),
-                      Navigator.of(context).pushReplacementNamed('/'),
+                      Navigator.of(context).pushNamed('/atleta_exercicios'),
                     },
                     backgroundColor: Colors.purple,
                     shape: const CircleBorder(),
@@ -193,60 +177,6 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
           ],
         ),
       ),
-      // bottomNavigationBar: Container(
-      //   padding: const EdgeInsets.all(10.0),
-      //   height: 60,
-      //   decoration: BoxDecoration(
-      //     color: Colors.transparent,
-      //     border: Border(top: BorderSide(color: Colors.grey.shade900, width: 1.0))
-      //   ),
-      //   child: SizedBox(
-      //       height: 20,
-      //       width: 500,
-      //       child: Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //         children: [
-      //           ElevatedButton.icon(
-      //             onPressed: () {},
-      //             icon: const Icon(
-      //               Icons.edit,
-      //               color: Colors.white,
-      //             ),
-      //             label: const Text(
-      //               'Editar perfil',
-      //               style: TextStyle(
-      //                 color: Colors.white,
-      //               ),
-      //             ),
-      //             style: ElevatedButton.styleFrom(
-      //                 backgroundColor: Colors.transparent,
-      //                 shadowColor: Colors.transparent),
-      //           ),
-      //           ElevatedButton.icon(
-      //             onPressed: () {
-      //               Navigator.pushReplacement(
-      //                 context,
-      //                 MaterialPageRoute(
-      //                     builder: (context) => const EscolhaLogin()),
-      //               );
-      //             },
-      //             icon: const Icon(
-      //               Icons.backspace,
-      //               color: Colors.white,
-      //             ),
-      //             label: const Text(
-      //               'Sair',
-      //               style: TextStyle(
-      //                 color: Colors.white,
-      //               ),
-      //             ),
-      //             style: ElevatedButton.styleFrom(
-      //                 backgroundColor: Colors.transparent,
-      //                 shadowColor: Colors.transparent),
-      //           ),
-      //         ],
-      //       )),
-      // ),
     );
   }
 }
