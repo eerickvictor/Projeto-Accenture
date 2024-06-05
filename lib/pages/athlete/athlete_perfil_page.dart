@@ -9,8 +9,20 @@ class AthletePerfilPage extends StatefulWidget {
 }
 
 class _AthletePerfilPageState extends State<AthletePerfilPage> {
+
+  String? athleteId;
+
   @override
   Widget build(BuildContext context) {
+
+    final Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
+    if (arguments != null) {
+      setState(() {
+        athleteId = arguments['athleteId'];
+        print(athleteId);
+      });
+    }
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -69,7 +81,7 @@ class _AthletePerfilPageState extends State<AthletePerfilPage> {
                   FloatingActionButton.small(
                     heroTag: 'btnEdit',
                     onPressed: () => {
-                      Navigator.of(context).pushNamed('/editar_perfil_atleta'),
+                      Navigator.of(context).pushNamed('/editar_perfil_atleta', arguments: {"athleteId": athleteId}),
                     },
                     backgroundColor: Colors.purple,
                     shape: const CircleBorder(),
