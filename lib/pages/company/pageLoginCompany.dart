@@ -1,5 +1,7 @@
+import 'package:enercicio/models/athlete.dart';
 import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class PageLoginCompany extends StatefulWidget {
   const PageLoginCompany({super.key});
@@ -11,6 +13,12 @@ class PageLoginCompany extends StatefulWidget {
 class _PageLoginCompanyState extends State<PageLoginCompany> {
 
   final _formKey = GlobalKey<FormState>();
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+
+  String companyId = '';
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +52,7 @@ class _PageLoginCompanyState extends State<PageLoginCompany> {
               ),
               spacing(0, 20),
               TextFormField(
+                controller: emailController,
                 decoration: getAuthenticationInputDecoration("E-mail", false, false, ""),
                 style: const TextStyle(
                   color: Colors.white,
@@ -63,6 +72,7 @@ class _PageLoginCompanyState extends State<PageLoginCompany> {
               ),
               spacing(0, 20),
               TextFormField(
+                controller: passwordController,
                 decoration: getAuthenticationInputDecoration("Senha", true, false, ""),
                 obscureText: true,
                 style: const TextStyle(
@@ -121,7 +131,7 @@ class _PageLoginCompanyState extends State<PageLoginCompany> {
                 child: SizedBox.expand(
                   child: ElevatedButton(
                     onPressed: () {
-                      botaoLogin();
+                      botaoLogin(companyId);
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
@@ -163,14 +173,26 @@ class _PageLoginCompanyState extends State<PageLoginCompany> {
     );
   }
 
-  botaoLogin() {
+  botaoLogin(String companyId) async {
     if (_formKey.currentState!.validate()) {
-      print("Formulario valido");
-      Navigator.of(context).pop();
-      Navigator.of(context).pushReplacementNamed('/home_empresa');
-    } else{
-      
-      print("Formulario invalido");
+
+      QueryBuilder<ParseObject> company = QueryBuilder<ParseObject>(ParseObject('Empresa'));
+      company.whereContains('email', emailController.text);
+      company.whereContains('senha', passwordController.text);
+      final ParseResponse apiResponse = await company.query();
+
+      if (apiResponse.success && apiResponse.results != null) {
+        var company = apiResponse.results!.first;
+
+        companyId = company.get('objectId');
+
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login realizado com sucesso!')));
+
+        Navigator.of(context).pop();
+        Navigator.of(context).pushReplacementNamed('/home_empresa', arguments: {'companyId': companyId});
+      } else{
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login ou senha invalidos!')));
+      }
     }
   }
 }

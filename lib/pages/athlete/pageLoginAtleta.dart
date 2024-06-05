@@ -179,40 +179,38 @@ class _LoginAtletaState extends State<LoginAtleta> {
 
   botaoLogin(String athleteId) async{
     if (_formKey.currentState!.validate()) {
-      print("Formulario valido");
-      loginAthlete(emailController, passwordController, athleteId);
-      print(loginAthlete(emailController, passwordController, athleteId));
-      //aqui a variavel athleteId vai esperar o resultado da função loginAthlete e armazenar em si
-      athleteId = await loginAthlete(emailController, passwordController, athleteId);
-      Navigator.of(context).pop();
-      //Aqui está sendo feito a passagem da variavel athleteId para a pagina Home_Atleta
-      Navigator.of(context).pushReplacementNamed('/home_atleta', arguments: {'athleteId': athleteId});
-    } else{
-      
-      print("Formulario invalido");
+        QueryBuilder<ParseObject> loginQuery = QueryBuilder<ParseObject>(ParseObject('Atleta'));
+        loginQuery.whereContains('email', emailController.text);
+        loginQuery.whereContains('senha', passwordController.text);
+        final ParseResponse apiResponse = await loginQuery.query();
+
+        if (apiResponse.success && apiResponse.results != null) {
+          var athlete = apiResponse.results!.first;
+          
+          athleteId = athlete.get('objectId');
+
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login realizado com sucesso!')));
+
+          Navigator.of(context).pop();
+          //Aqui está sendo feito a passagem da variavel athleteId para a pagina Home_Atleta
+          Navigator.of(context).pushReplacementNamed('/home_atleta', arguments: {'athleteId': athleteId});
+        } else {
+           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login ou senha invalidos!')));
+        }
+      // loginAthlete(emailController, passwordController, athleteId);
+      // //aqui a variavel athleteId vai esperar o resultado da função loginAthlete e armazenar em si
+      // athleteId = await loginAthlete(emailController, passwordController, athleteId);
     }
   }
 
-  Future<String> loginAthlete(TextEditingController emailController, TextEditingController passwordController, String athleteId) async {
-    QueryBuilder<ParseObject> loginQuery = QueryBuilder<ParseObject>(ParseObject('Atleta'));
-    loginQuery.whereContains('email', emailController.text);
-    loginQuery.whereContains('senha', passwordController.text);
-    final ParseResponse apiResponse = await loginQuery.query();
+  
 
-    if (apiResponse.success && apiResponse.results != null) {
-      for (var o in apiResponse.results!) {
-        o as ParseObject;
-        // var atlheteId = o.get('objectId');
-        athleteId = o.get('objectId');
-        print(athleteId);
-        print((o as ParseObject).toString());
-      }
-    }
-    return athleteId;
+   
+
   } 
 
     
     
 
   
-}
+

@@ -1,5 +1,7 @@
+
 import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class PageCadastroCompany extends StatefulWidget {
   const PageCadastroCompany({super.key});
@@ -9,8 +11,13 @@ class PageCadastroCompany extends StatefulWidget {
 }
 
 class _PageCadastroCompanyState extends State<PageCadastroCompany> {
-
   final _formKey = GlobalKey<FormState>();
+  TextEditingController nome = TextEditingController();
+  TextEditingController cnpj = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController endereco = TextEditingController();
+  TextEditingController contato = TextEditingController();
+  TextEditingController senha = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,15 +53,17 @@ class _PageCadastroCompanyState extends State<PageCadastroCompany> {
               ),
               spacing(0, 30),
               TextFormField(
-                decoration: getAuthenticationInputDecoration("Nome Fantasia", false, false, ""),
+                controller: nome,
+                decoration: getAuthenticationInputDecoration(
+                    "Nome Fantasia", false, false, ""),
                 style: const TextStyle(
                   color: Colors.white,
                 ),
                 validator: (String? value) {
-                  if(value == "") {
+                  if (value == "") {
                     return "O campo que recebe o nome fantasia não pode ser vazio";
                   }
-                  if(value!.length < 2) {
+                  if (value!.length < 2) {
                     return "O valor informado é muito curto";
                   }
                   return null;
@@ -62,28 +71,14 @@ class _PageCadastroCompanyState extends State<PageCadastroCompany> {
               ),
               spacing(0, 20),
               TextFormField(
-                decoration: getAuthenticationInputDecoration("Razão Social", false, false, ""),
+                controller: cnpj,
+                decoration:
+                    getAuthenticationInputDecoration("CNPJ", false, false, ""),
                 style: const TextStyle(
                   color: Colors.white,
                 ),
                 validator: (String? value) {
-                  if(value == "") {
-                    return "O campo que recebe a razão social não pode ser vazio";
-                  }
-                  if(value!.length < 2) {
-                    return "O valor informado é muito curto";
-                  }
-                  return null;
-                },
-              ),
-              spacing(0, 20),
-              TextFormField(
-                decoration: getAuthenticationInputDecoration("CNPJ", false, false, ""),
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-                validator: (String? value) {
-                  if(value == "") {
+                  if (value == "") {
                     return "O campo que recebe o CNPJ não pode ser vazio";
                   }
                   return null;
@@ -91,18 +86,20 @@ class _PageCadastroCompanyState extends State<PageCadastroCompany> {
               ),
               spacing(0, 20),
               TextFormField(
-                decoration: getAuthenticationInputDecoration("E-mail", false, false, ""),
+                controller: email,
+                decoration: getAuthenticationInputDecoration(
+                    "E-mail", false, false, ""),
                 style: const TextStyle(
                   color: Colors.white,
                 ),
-                 validator: (String? value) {
-                  if(value == "") {
+                validator: (String? value) {
+                  if (value == "") {
                     return "O campo que recebe email não pode ser vazio";
                   }
-                  if(value!.length < 5) {
+                  if (value!.length < 5) {
                     return "O e-mail informado é muito curto";
                   }
-                  if(!value.contains("@")) {
+                  if (!value.contains("@")) {
                     return "O e-mail informado não é valido";
                   }
                   return null;
@@ -110,14 +107,46 @@ class _PageCadastroCompanyState extends State<PageCadastroCompany> {
               ),
               spacing(0, 20),
               TextFormField(
-                decoration: getAuthenticationInputDecoration("Senha", true, false, ""),
+                controller: contato,
+                decoration: getAuthenticationInputDecoration(
+                    "Contato", false, false, ""),
                 style: const TextStyle(
                   color: Colors.white,
                 ),
                 validator: (String? value) {
-                  if(value == "") {
+                  if (value == "") {
+                    return "O campo que recebe o contato não pode ser vazio";
+                  }
+                  return null;
+                },
+              ),
+              spacing(0, 20),
+              TextFormField(
+                controller: endereco,
+                decoration: getAuthenticationInputDecoration(
+                    "Endereço", false, false, ""),
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                validator: (String? value) {
+                  if (value == "") {
+                    return "O campo que recebe o Endereço não pode ser vazio";
+                  }
+                  return null;
+                },
+              ),
+              spacing(0, 20),
+              TextFormField(
+                controller: senha,
+                decoration:
+                    getAuthenticationInputDecoration("Senha", true, false, ""),
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                validator: (String? value) {
+                  if (value == "") {
                     return "O campo que recebe a senha não pode ser vazio";
-                  } 
+                  }
                   return null;
                 },
               ),
@@ -175,10 +204,27 @@ class _PageCadastroCompanyState extends State<PageCadastroCompany> {
   botaoCadastrar() {
     if (_formKey.currentState!.validate()) {
       print("Formulario valido");
+      saveDataEmpresa(nome, cnpj, email, contato, endereco, senha);
       Navigator.pop(context);
-    } else{
-      
+    } else {
       print("Formulario invalido");
     }
+  }
+
+  Future<void> saveDataEmpresa(
+      TextEditingController nome,
+      TextEditingController cnpj,
+      TextEditingController email,
+      TextEditingController contato,
+      TextEditingController endereco,
+      TextEditingController senha) async {
+    final empresa = ParseObject('Empresa')
+      ..set('nome', nome.text)
+      ..set('cnpj', cnpj.text)
+      ..set('email', email.text)
+      ..set('endereco', endereco.text)
+      ..set('contato', contato.text)
+      ..set('senha', senha.text);
+    await empresa.save();
   }
 }

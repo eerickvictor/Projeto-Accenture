@@ -10,8 +10,18 @@ class CompanyPerfilPage extends StatefulWidget {
 
 class _CompanyPerfilPageState extends State<CompanyPerfilPage> {
 
+  String? companyId;
+
   @override
   Widget build(BuildContext context) {
+
+    final Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
+    if (arguments != null) {
+      setState(() {
+        companyId = arguments['companyId'];
+      });
+    }
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -68,7 +78,7 @@ class _CompanyPerfilPageState extends State<CompanyPerfilPage> {
                   FloatingActionButton.small(
                     heroTag: 'btnEdit',
                     onPressed: () => {
-                      Navigator.of(context).pushNamed('/editar_perfil_empresa'),
+                      Navigator.of(context).pushNamed('/editar_perfil_empresa', arguments: {'companyId': companyId}),
                     },
                     backgroundColor: Colors.purple,
                     shape: const CircleBorder(),

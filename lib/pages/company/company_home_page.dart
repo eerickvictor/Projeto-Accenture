@@ -1,6 +1,7 @@
 import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class CompanyHomePage extends StatefulWidget {
   const CompanyHomePage({super.key});
@@ -10,8 +11,26 @@ class CompanyHomePage extends StatefulWidget {
 }
 
 class _CompanyHomePageState extends State<CompanyHomePage> {
+
+  final _formKey = GlobalKey<FormState>();
+
+  String? companyId;
+
+  TextEditingController rewardController = TextEditingController();
+  TextEditingController distanceController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
+
+    final Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
+    if (arguments != null) {
+      setState(() {
+        companyId = arguments['companyId'];
+        print(companyId);
+      });
+    }
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -168,10 +187,11 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10.0))),
                           child: Form(
-                            // key: _formKey,
+                            key: _formKey,
                             child: Column(
                               children: [
                                 TextFormField(
+                                  controller: distanceController,
                                   decoration: getAuthenticationInputDecoration("Objetivo", false, false, ""),
                                   style: const TextStyle(
                                     color: Colors.white,
@@ -185,7 +205,8 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                                 ),
                                 spacing(0, 20),
                                 TextFormField(
-                                  decoration: getAuthenticationInputDecoration("Objetivo", false, false, ""),
+                                  controller: rewardController,
+                                  decoration: getAuthenticationInputDecoration("Recompensa", false, false, ""),
                                   style: const TextStyle(
                                     color: Colors.white,
                                   ),
@@ -209,7 +230,7 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                                   ),
                                   child: TextButton(
                                     onPressed: () {
-                                      
+                                      createMetaBotton();
                                     },
                                     child: const Text(
                                       "Criar meta",
@@ -297,7 +318,7 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
           width: 500,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pushNamed('/perfil_empresa');
+              Navigator.of(context).pushNamed('/perfil_empresa', arguments: {"companyId": companyId});
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
@@ -312,5 +333,30 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
         ),
       ),
     );
+  }
+
+
+  void createMetaBotton() {
+    if (_formKey.currentState!.validate()) {
+      saveMetaData(rewardController, distanceController, companyId!);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Meta Criada com sucesso!')));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Por gentileza informe os dados de maneira correta!')));
+    }
+  }
+
+  Future<void> saveMetaData(
+      TextEditingController reward,
+      TextEditingController distance,
+      String companyId) async {
+    
+    final empresaObjectId = ParseObject('Empresa').objectId;
+
+    final meta = ParseObject('Meta')
+      ..set('Recompensa', reward.text)
+      ..set('distancia', distance.text)
+      ..set('id_Empresa', ParseObject('Empresa')..objectId = empresaObjectId);
+    await meta.save();
+
   }
 }

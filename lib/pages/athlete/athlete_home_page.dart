@@ -104,7 +104,7 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
                               final companyName = company.get<String>('nome');
                               return companyContainer(
                                 companyName!,
-                                "assets/images/stations/station_imagem.png", companyId!
+                                "assets/images/stations/station_imagem.png", companyId!, athleteId!
                               );
                             },
                           ),
@@ -149,7 +149,7 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
     );
   }
 
-  Widget companyContainer(String companyName, String urlCompanyImage, String companyId) {
+  Widget companyContainer(String companyName, String urlCompanyImage, String companyId, String athleteId) {
     return Column(
       children: [
         SizedBox(
@@ -157,7 +157,7 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
           height: 250,
           child: ElevatedButton(
             onPressed: () => {
-              Navigator.of(context).pushNamed('/home_atleta_empresa', arguments: {'companyId': companyId}),
+              Navigator.of(context).pushNamed('/home_atleta_empresa', arguments: {'companyId': companyId, 'athleteId': athleteId}),
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,

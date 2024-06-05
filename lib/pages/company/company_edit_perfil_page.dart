@@ -1,5 +1,7 @@
 import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
+
 
 class CompanyEditPerfilPage extends StatefulWidget {
   const CompanyEditPerfilPage({super.key});
@@ -12,8 +14,35 @@ class _CompanyEditPerfilPageState extends State<CompanyEditPerfilPage> {
 
   final _formKey = GlobalKey<FormState>();
 
+  TextEditingController nameController = TextEditingController();
+  TextEditingController cnpjController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController contactController = TextEditingController();
+  TextEditingController adressController = TextEditingController();
+
+  String companyId = "";
+  String name = "";
+  String cnpj = "";
+  String email = "";
+  String password = "";
+  String contact = "";
+  String adress = "";
+
+
   @override
   Widget build(BuildContext context) {
+
+    final Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
+    if (arguments != null) {
+      setState(() {
+        companyId = arguments['companyId'];
+        print(companyId);
+      });
+    }
+
+    getCompanyData(companyId);
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -43,6 +72,7 @@ class _CompanyEditPerfilPageState extends State<CompanyEditPerfilPage> {
             children: <Widget>[
               spacing(0, 30),
               TextFormField(
+                controller: nameController,
                 decoration: getAuthenticationInputDecoration("Nome Fantasia", false, true, "Enercicio"),
                 style: const TextStyle(
                   color: Colors.white,
@@ -59,48 +89,7 @@ class _CompanyEditPerfilPageState extends State<CompanyEditPerfilPage> {
               ),
               spacing(0, 20),
               TextFormField(
-                decoration: getAuthenticationInputDecoration("Razao Social", false, true, "Enercicio S.A"),
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-                validator: (String? value) {
-                  if(value == "") {
-                    return "O campo que recebe a Razao social não pode ser vazio";
-                  }
-                  if(value!.length < 5) {
-                    return "O valor informado é muito curto";
-                  }
-                  return null;
-                },
-              ),
-              spacing(0, 20),
-              TextFormField(
-                decoration: getAuthenticationInputDecoration("Endereço", false, true, "Rua flutter 467"),
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-                validator: (String? value) {
-                  if(value == "") {
-                    return "O campo que recebe o Endereço não pode ser vazio";
-                  }
-                  return null;
-                },
-              ),
-              spacing(0, 20),
-              TextFormField(
-                decoration: getAuthenticationInputDecoration("Contato", false, true, "+55 81 9 65473421"),
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-                validator: (String? value) {
-                  if(value == "") {
-                    return "O campo que recebe o Endereço não pode ser vazio";
-                  }
-                  return null;
-                },
-              ),
-              spacing(0, 20),
-              TextFormField(
+                controller: emailController,
                 decoration: getAuthenticationInputDecoration("Email", false, true, "enercicio@gmail.com"),
                 style: const TextStyle(
                   color: Colors.white,
@@ -120,6 +109,7 @@ class _CompanyEditPerfilPageState extends State<CompanyEditPerfilPage> {
               ),
               spacing(0, 20),
               TextFormField(
+                controller: passwordController,
                 decoration: getAuthenticationInputDecoration("Senha", false, true, "1234"),
                  style: const TextStyle(
                   color: Colors.white,
@@ -130,6 +120,34 @@ class _CompanyEditPerfilPageState extends State<CompanyEditPerfilPage> {
                   }
                   if(value!.length < 5) {
                     return "A senha informada é muito curta";
+                  }
+                  return null;
+                },
+              ),
+              spacing(0, 20),
+              TextFormField(
+                controller: adressController,
+                decoration: getAuthenticationInputDecoration("Endereço", false, true, "Rua flutter 467"),
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                validator: (String? value) {
+                  if(value == "") {
+                    return "O campo que recebe o Endereço não pode ser vazio";
+                  }
+                  return null;
+                },
+              ),
+              spacing(0, 20),
+              TextFormField(
+                controller: contactController,
+                decoration: getAuthenticationInputDecoration("Contato", false, true, "+55 81 9 65473421"),
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                validator: (String? value) {
+                  if(value == "") {
+                    return "O campo que recebe o Endereço não pode ser vazio";
                   }
                   return null;
                 },
@@ -192,10 +210,57 @@ class _CompanyEditPerfilPageState extends State<CompanyEditPerfilPage> {
   botaoLogin() {
     if (_formKey.currentState!.validate()) {
       print("Formulario valido");
+      
       Navigator.of(context).pop();
     } else{
       
       print("Formulario invalido");
     }
   }
+
+  //Função que vai servir para fazer o update dos dados do Atleta
+  Future<void> updateCompanyData(String companyId, TextEditingController nameController, TextEditingController cnpjController, TextEditingController emailController, TextEditingController passwordController, TextEditingController contactController, TextEditingController adressController) async {
+    QueryBuilder<ParseObject> company = QueryBuilder<ParseObject>(ParseObject('Empresa'));
+    // athlete.whereContains('objectId', athleteId);
+  company.whereContains('objectId', companyId);
+    final ParseResponse apiResponse = await company.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      var company = apiResponse.results!.first;
+      company.set('nome', nameController.text);
+      company.set('cnpj', cnpjController.text);
+      company.set('email', emailController.text);
+      company.set('senha', passwordController.text);
+      company.set('contato', contactController.text);
+      company.set('endereco', adressController.text);
+      await company.save();
+    }
+  }
+
+  Future<void> getCompanyData(String companyId) async {
+    QueryBuilder<ParseObject> companyObject = QueryBuilder<ParseObject>(ParseObject('Empresa'));
+    companyObject.whereContains('objectId', companyId);
+    final ParseResponse apiResponse = await companyObject.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      final ParseObject athlete = apiResponse.results!.first as ParseObject;
+
+      if(mounted) {
+
+        setState(() {
+          name = athlete.get<String>('nome') ?? '';
+          cnpj = athlete.get<String>('cnpj') ?? '';
+          email = athlete.get<String>('email') ?? '';
+          password = athlete.get<String>('senha') ?? '';
+          contact = athlete.get<String>('contato') ?? '';
+          adress = athlete.get<String>('endereco') ?? '';
+        });  
+
+      }
+      
+    }
+  }
+
+
 }
+
