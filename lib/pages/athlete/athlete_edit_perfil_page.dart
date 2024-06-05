@@ -1,5 +1,9 @@
+import 'dart:ffi';
+
 import 'package:enercicio/utilitarios/utils.dart';
+import '../../enums/gender.dart';
 import 'package:flutter/material.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class AthleteEditPerfilPage extends StatefulWidget {
   const AthleteEditPerfilPage({super.key});
@@ -12,8 +16,46 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
   
   final _formKey = GlobalKey<FormState>();
 
+  TextEditingController nameController = TextEditingController();
+  TextEditingController cpfController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController birthDateController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  Gender selectGender = Gender.HOMEM;
+
+
+  String athleteId = "";
+  String name = "";
+  String cpf = '';
+  String email = '';
+  String birthDate = '';
+  String password = '';
+
+  List<String> athleteData = [];
+
   @override
   Widget build(BuildContext context) {
+
+    final Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
+    if (arguments != null) {
+      setState(() {
+        athleteId = arguments['athleteId'];
+        print(athleteId);
+      });
+    }
+
+    // @override
+    // void initialState() {
+    //   super.initState();
+    //   getAthleteData(athleteId, athleteData);
+    // }
+    // // List<String> athleteData = [];
+
+    // print(athleteData);
+
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -27,13 +69,13 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(4.0),
-          child: Container(
-            color: Colors.grey.shade900,
-            height: 1.0,
-          ),
-        ),
+        // bottom: PreferredSize(
+        //   preferredSize: const Size.fromHeight(4.0),
+        //   child: Container(
+        //     color: Colors.grey.shade900,
+        //     height: 1.0,
+        //   ),
+        // ),
       ),
       body: Container(
         padding: const EdgeInsets.all(20.0),
@@ -41,8 +83,11 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
           key: _formKey,
           child: ListView(
             children: <Widget>[
+              spacing(0, 10),
               TextFormField(
-                decoration: getAuthenticationInputDecoration("Nome Completo", false, true, "Bruno Antonio Alexandrino da Silva"),
+                controller: nameController,
+                // keyboardType: TextInputType.text,
+                decoration: getAuthenticationInputDecoration("Nome completo", false, false, ''),
                 style: const TextStyle(
                   color: Colors.white,
                 ),
@@ -58,33 +103,25 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
               ),
               spacing(0, 20),
               TextFormField(
-                decoration: getAuthenticationInputDecoration("Idade", false, true, "19"),
+                controller: cpfController,
+                decoration: getAuthenticationInputDecoration("CPF", false, false, ""),
                 style: const TextStyle(
                   color: Colors.white,
                 ),
                 validator: (String? value) {
                   if(value == "") {
-                    return "O campo que recebe a idade não pode ser vazio";
+                    return "O campo que recebe o CPF não pode ser vazio";
+                  }
+                  if(value!.length < 11) {
+                    return "O valor informado é muito curto";
                   }
                   return null;
                 },
               ),
               spacing(0, 20),
               TextFormField(
-                decoration: getAuthenticationInputDecoration("Sexo", false, true, "Masculino"),
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-                validator: (String? value) {
-                  if(value == "") {
-                    return "O campo que recebe o sexo não pode ser vazio";
-                  }
-                  return null;
-                },
-              ),
-              spacing(0, 20),
-              TextFormField(
-                decoration: getAuthenticationInputDecoration("E-mail", false, true, "brunoantonio0210@gmail.com"),
+                controller: emailController,
+                decoration: getAuthenticationInputDecoration("E-mail", false, false, ""),
                 style: const TextStyle(
                   color: Colors.white,
                 ),
@@ -92,12 +129,20 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
                   if(value == "") {
                     return "O campo que recebe o email não pode ser vazio";
                   }
+                  if(value!.length < 5) {
+                    return "O valor informado é muito curto";
+                  }
+                  if(!value.contains("@")) {
+                    return "O e-mail informado não é valido";
+                  }
                   return null;
                 },
               ),
               spacing(0, 20),
               TextFormField(
-                decoration: getAuthenticationInputDecoration("Senha", true, true, "1234"),
+                controller: passwordController,
+                decoration: getAuthenticationInputDecoration("Senha", true, false, ""),
+                obscureText: true,
                 style: const TextStyle(
                   color: Colors.white,
                 ),
@@ -105,10 +150,26 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
                   if(value == "") {
                     return "O campo que recebe a senha não pode ser vazio";
                   }
-                  return null;
-                },
+                }
               ),
-              spacing(0, 30),
+              spacing(0, 20),
+              TextFormField(
+                controller: birthDateController,
+                decoration: getAuthenticationInputDecoration("Data de nascimento", false, false, ""),
+                obscureText: false,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                readOnly: true,
+                onTap: _selectDate,
+                validator: (String? data) {
+                  data = birthDateController.text;
+                  if(data == "") {
+                    return "O campo que recebe a Data não pode ser vazio";
+                  }
+                }
+              ),
+              spacing(0, 50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -163,13 +224,102 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
     );
   }
 
+void _selectDate() async {
+    DateTime? _picker = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1950),
+      lastDate: DateTime(2100)
+    );
+
+    if (_picker != null) {
+      setState(() {
+        birthDateController.text = _picker.toString().split(' ')[0];
+      });
+    }
+  }
+
   botaoSalvarAlteracoes() {
     if (_formKey.currentState!.validate()) {
       print("Formulario valido");
+      updateAthleteData(athleteId, nameController, cpfController, emailController, passwordController, birthDateController);
       Navigator.of(context).pop();
     } else{
       
       print("Formulario invalido");
     }
   }
+
+
+  //Função que vai servir para fazer o update dos dados do Atleta
+  Future<void> updateAthleteData(String athleteId, TextEditingController nameController, TextEditingController cpfController, TextEditingController emailController, TextEditingController senhaController, TextEditingController birthDataController) async {
+    QueryBuilder<ParseObject> athlete = QueryBuilder<ParseObject>(ParseObject('Atleta'));
+    // athlete.whereContains('objectId', athleteId);
+    athlete.whereContains('objectId', athleteId);
+    final ParseResponse apiResponse = await athlete.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var athlete in apiResponse.results!) {
+        athlete as ParseObject;
+        athlete.set('nome', nameController.text);
+        athlete.set('cpf', cpfController.text);
+        athlete.set('email', emailController.text);
+        athlete.set('senha', passwordController.text);
+        athlete.set('data_nascimento', birthDateController.text);
+        await athlete.save();
+      }
+    }
+
+  Future<List<String>> getAthleteData(String athleteId, List<String> athleteData) async {
+    QueryBuilder<ParseObject> athlete = QueryBuilder<ParseObject>(ParseObject('Atleta'));
+    // athlete.whereContains('objectId', athleteId);
+    athlete.whereContains('objectId', athleteId);
+    final ParseResponse apiResponse = await athlete.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      for (var o in apiResponse.results!) {
+        o as ParseObject;
+        athleteData.add(o.get('nome'));
+        athleteData.add(o.get('cpf'));
+        athleteData.add(o.get('email'));
+        athleteData.add(o.get('senha'));
+        athleteData.add(o.get('data_nascimento'));
+        // name = o.get('nome');
+        // cpf = o.get('cpf');
+        // email = o.get('email');
+        // password = o.get('senha');
+        // birthDate = o.get('data_nascimento');
+        // print(name + cpf + email + password + birthDate);
+        print((o as ParseObject).toString());
+      }
+    }
+
+    print(athleteData);
+
+    return athleteData;
+  } 
+
+  //  Future<String> getAthleteData(String athleteId) async {
+  //   QueryBuilder<ParseObject> athlete = QueryBuilder<ParseObject>(ParseObject('Atleta'));
+  //   // athlete.whereContains('objectId', athleteId);
+  //   athlete.whereEqualTo('objectId', athleteId);
+  //   final ParseResponse apiResponse = await athlete.query();
+
+  //   if (apiResponse.success && apiResponse.results != null) {
+  //     for (var o in apiResponse.results!) {
+  //       o as ParseObject;
+  //       name = o.get('nome');
+  //       cpf = o.get('cpf');
+  //       email = o.get('email');
+  //       password = o.get('senha');
+  //       birthDate = o.get('data_nascimento');
+  //       // print(name + cpf + email + password + birthDate);
+  //       // print((o as ParseObject).toString());
+  //     }
+  //   }
+
+  //   return 'name + cpf + email + password + birthDate';
+  // } 
+
+}
 }
