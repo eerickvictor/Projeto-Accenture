@@ -20,6 +20,7 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
     if (arguments != null) {
       setState(() {
         athleteId = arguments['athleteId'];
+        print(athleteId);
       });
     }
 
@@ -99,10 +100,11 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
                             //Função que vai pegar a quantidade de itens definidos no itemCount e realizar algo referente a essa quantidade
                             itemBuilder: (context, index) {
                               final company = snapshot.data![index];
+                              final companyId = company.get<String>('objectId');
                               final companyName = company.get<String>('nome');
                               return companyContainer(
                                 companyName!,
-                                "assets/images/stations/station_imagem.png",
+                                "assets/images/stations/station_imagem.png", companyId!
                               );
                             },
                           ),
@@ -130,7 +132,7 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
           width: 500,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pushNamed('/perfil_atleta');
+              Navigator.of(context).pushNamed('/perfil_atleta', arguments: {"athleteId": athleteId});
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
@@ -147,7 +149,7 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
     );
   }
 
-  Widget companyContainer(String companyName, String urlCompanyImage) {
+  Widget companyContainer(String companyName, String urlCompanyImage, String companyId) {
     return Column(
       children: [
         SizedBox(
@@ -155,7 +157,7 @@ class _AthleteHomePageState extends State<AthleteHomePage> {
           height: 250,
           child: ElevatedButton(
             onPressed: () => {
-              Navigator.of(context).pushNamed('/home_atleta_empresa'),
+              Navigator.of(context).pushNamed('/home_atleta_empresa', arguments: {'companyId': companyId}),
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
