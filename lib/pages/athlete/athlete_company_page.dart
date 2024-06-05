@@ -1,6 +1,7 @@
 import 'package:enercicio/utilitarios/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
 class AthleteCompanyPage extends StatefulWidget {
@@ -11,6 +12,17 @@ class AthleteCompanyPage extends StatefulWidget {
 }
 
 class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
+  
+  String companyId = '';
+  String name = '';
+  String adress = '';
+  String contact = '';
+  String image = '';
+  String idMeta = '';
+
+  String metaId = '';
+  String distance = '';
+  String reward = '';
 
   final StopWatchTimer _stopWatchTimer = StopWatchTimer();
   final _isHours = true;
@@ -38,8 +50,30 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
     _stopWatchTimer.dispose();
   }
 
+ 
+
   @override
   Widget build(BuildContext context) {
+
+    final Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
+    if (arguments != null) {
+      setState(() {
+        companyId = arguments['companyId'];
+        print(companyId);
+      });
+    }
+
+    getCompanyData(companyId);
+    getMetaData(companyId, idMeta);
+
+    print(adress);
+    print(name);
+    print(contact);
+    print(idMeta);
+    print(metaId);
+    print(reward);
+    print(distance);
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -56,9 +90,9 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
               const SizedBox(
                 width: 10,
               ),
-              const Text(
-                'COMPANY X',
-                style: TextStyle(
+              Text(
+                name,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
@@ -113,9 +147,9 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                 size: 15,
                               ),
                               spacing(10, 0),
-                              const Text(
-                                'Parque Santana - Ariano Suassuna - R. \nJorge Gomes de Sá - Santana, Recife - PE,\n 52060-530',
-                                style: TextStyle(
+                              Text(
+                                adress,
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w400),
@@ -143,9 +177,9 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                 size: 15,
                               ),
                               spacing(10, 0),
-                              const Text(
-                                '+55 81 96575-4534',
-                                style: TextStyle(
+                              Text(
+                                contact,
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w400),
@@ -213,16 +247,16 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                     child: Column(
                       children: [
                         spacing(0, 5),
-                        const Row(
+                        Row(
                           children: [
-                            Padding(padding: EdgeInsets.all(5.0)),
-                            Icon(
+                            const Padding(padding: EdgeInsets.all(5.0)),
+                            const Icon(
                               Icons.bolt,
                               color: Colors.purple,
                             ),
                             Text(
-                              '5KM',
-                              style: TextStyle(
+                              distance,
+                              style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
@@ -239,13 +273,13 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                           ),
                         ),
                         spacing(0, 5),
-                        const Row(
+                        Row(
                           children: [
                             Padding(padding: EdgeInsets.all(10.0)),
                             Icon(Icons.bolt, color: Colors.purple,),
                             Text(
-                              'Recompensa: 5% de desconto na \nmensalidade',
-                              style: TextStyle(
+                              reward,
+                              style: const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white,
@@ -494,5 +528,53 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
         ),
       ),
     );
+  }
+
+  //Função que puxa os dados referentes a empresa
+  Future<void> getCompanyData(String companyId) async {
+    QueryBuilder<ParseObject> companyObject = QueryBuilder<ParseObject>(ParseObject('Empresa'))..includeObject(['id_Meta']);
+    companyObject.whereContains('objectId', companyId);
+    final ParseResponse apiResponse = await companyObject.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      final ParseObject company = apiResponse.results!.first as ParseObject;
+
+      if(mounted) {
+
+        setState(() {
+            name = company.get<String>('nome') ?? '';
+            adress = company.get<String>('endereco') ?? '';
+            contact = company.get<String>('contato') ?? '';
+            image = company.get<String>('imagem') ?? '';
+            idMeta = company.get<String>('id_Meta') ?? '';
+        });  
+
+      }
+      
+    }
+  }
+
+  //Função que puxa os dados referentes a meta
+  Future<void> getMetaData(String companyId, String idMeta) async {
+    QueryBuilder<ParseObject> metaObject = QueryBuilder<ParseObject>(ParseObject('Meta'));
+    //Verifica se a meta existe e em qual meta ele está ligada
+    metaObject.whereContains('objectId', idMeta);
+    metaObject.whereContains('id_Empresa', companyId);
+    final ParseResponse apiResponse = await metaObject.query();
+
+    if (apiResponse.success && apiResponse.results != null) {
+      final ParseObject meta = apiResponse.results!.first as ParseObject;
+
+      if(mounted) {
+
+        setState(() {
+          metaId = meta.get<String>('objectId') ?? '';
+          distance = meta.get<String>('distancia') ?? '';
+          reward = meta.get<String>('Recompensa') ?? '';
+        });  
+        print(metaId);
+      }
+      
+    }
   }
 }
