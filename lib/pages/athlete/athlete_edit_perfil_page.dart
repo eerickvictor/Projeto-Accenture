@@ -33,7 +33,6 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
   String birthDate = '';
   String password = '';
 
-  List<String> athleteData = [];
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +45,8 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
       });
     }
 
-    // @override
-    // void initialState() {
-    //   super.initState();
-    //   getAthleteData(athleteId, athleteData);
-    // }
-    // // List<String> athleteData = [];
-
-    // print(athleteData);
+    getAthleteData(athleteId);
+    print(name);
 
 
     return Scaffold(
@@ -87,7 +80,7 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
               TextFormField(
                 controller: nameController,
                 // keyboardType: TextInputType.text,
-                decoration: getAuthenticationInputDecoration("Nome completo", false, false, ''),
+                decoration: getAuthenticationInputDecoration("Nome completo", false, true, name),
                 style: const TextStyle(
                   color: Colors.white,
                 ),
@@ -104,7 +97,7 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
               spacing(0, 20),
               TextFormField(
                 controller: cpfController,
-                decoration: getAuthenticationInputDecoration("CPF", false, false, ""),
+                decoration: getAuthenticationInputDecoration("CPF", false, true, cpf),
                 style: const TextStyle(
                   color: Colors.white,
                 ),
@@ -121,7 +114,7 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
               spacing(0, 20),
               TextFormField(
                 controller: emailController,
-                decoration: getAuthenticationInputDecoration("E-mail", false, false, ""),
+                decoration: getAuthenticationInputDecoration("E-mail", false, true, email),
                 style: const TextStyle(
                   color: Colors.white,
                 ),
@@ -141,7 +134,7 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
               spacing(0, 20),
               TextFormField(
                 controller: passwordController,
-                decoration: getAuthenticationInputDecoration("Senha", true, false, ""),
+                decoration: getAuthenticationInputDecoration("Senha", true, true, password),
                 obscureText: true,
                 style: const TextStyle(
                   color: Colors.white,
@@ -155,7 +148,7 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
               spacing(0, 20),
               TextFormField(
                 controller: birthDateController,
-                decoration: getAuthenticationInputDecoration("Data de nascimento", false, false, ""),
+                decoration: getAuthenticationInputDecoration("Data de nascimento", false, true, birthDate),
                 obscureText: false,
                 style: const TextStyle(
                   color: Colors.white,
@@ -224,7 +217,7 @@ class _AthleteEditPerfilPageState extends State<AthleteEditPerfilPage> {
     );
   }
 
-void _selectDate() async {
+  void _selectDate() async {
     DateTime? _picker = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -269,57 +262,29 @@ void _selectDate() async {
         await athlete.save();
       }
     }
+  }
 
-  Future<List<String>> getAthleteData(String athleteId, List<String> athleteData) async {
-    QueryBuilder<ParseObject> athlete = QueryBuilder<ParseObject>(ParseObject('Atleta'));
-    // athlete.whereContains('objectId', athleteId);
-    athlete.whereContains('objectId', athleteId);
-    final ParseResponse apiResponse = await athlete.query();
+   Future<void> getAthleteData(String atlheteId) async {
+    QueryBuilder<ParseObject> companyObject = QueryBuilder<ParseObject>(ParseObject('Atleta'));
+    companyObject.whereContains('objectId', athleteId);
+    final ParseResponse apiResponse = await companyObject.query();
 
     if (apiResponse.success && apiResponse.results != null) {
-      for (var o in apiResponse.results!) {
-        o as ParseObject;
-        athleteData.add(o.get('nome'));
-        athleteData.add(o.get('cpf'));
-        athleteData.add(o.get('email'));
-        athleteData.add(o.get('senha'));
-        athleteData.add(o.get('data_nascimento'));
-        // name = o.get('nome');
-        // cpf = o.get('cpf');
-        // email = o.get('email');
-        // password = o.get('senha');
-        // birthDate = o.get('data_nascimento');
-        // print(name + cpf + email + password + birthDate);
-        print((o as ParseObject).toString());
+      final ParseObject athlete = apiResponse.results!.first as ParseObject;
+
+      if(mounted) {
+
+        setState(() {
+          name = athlete.get<String>('nome') ?? '';
+          cpf = athlete.get<String>('cpf') ?? '';
+          email = athlete.get<String>('email') ?? '';
+          password = athlete.get<String>('senha') ?? '';
+          birthDate = athlete.get<String>('data_nascimento') ?? '';
+        });  
+
       }
+      
     }
+  }
 
-    print(athleteData);
-
-    return athleteData;
-  } 
-
-  //  Future<String> getAthleteData(String athleteId) async {
-  //   QueryBuilder<ParseObject> athlete = QueryBuilder<ParseObject>(ParseObject('Atleta'));
-  //   // athlete.whereContains('objectId', athleteId);
-  //   athlete.whereEqualTo('objectId', athleteId);
-  //   final ParseResponse apiResponse = await athlete.query();
-
-  //   if (apiResponse.success && apiResponse.results != null) {
-  //     for (var o in apiResponse.results!) {
-  //       o as ParseObject;
-  //       name = o.get('nome');
-  //       cpf = o.get('cpf');
-  //       email = o.get('email');
-  //       password = o.get('senha');
-  //       birthDate = o.get('data_nascimento');
-  //       // print(name + cpf + email + password + birthDate);
-  //       // print((o as ParseObject).toString());
-  //     }
-  //   }
-
-  //   return 'name + cpf + email + password + birthDate';
-  // } 
-
-}
 }
