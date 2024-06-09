@@ -56,12 +56,14 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
               const SizedBox(
                 width: 10,
               ),
-              const Text(
-                'COMPANY X',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
+              const Expanded(
+                child: Text(
+                  'COMPANY',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ],
@@ -77,7 +79,6 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
       ),
       body: Container(
         padding: const EdgeInsets.all(10.0),
-        // width: 400,
         child: Column(
           children: [
             Container(
@@ -94,7 +95,6 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                   ),
                   Container(
                     padding: const EdgeInsets.all(15),
-                    // width: 400,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade900),
                       borderRadius: const BorderRadius.all(
@@ -113,12 +113,14 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                 size: 15,
                               ),
                               spacing(10, 0),
-                              const Text(
-                                'Parque Santana - Ariano Suassuna - R. \nJorge Gomes de Sá - Santana, Recife - PE,\n 52060-530',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400),
+                              const Expanded(
+                                child: Text(
+                                  'Parque Santana - Ariano Suassuna - R. Jorge Gomes de Sá - Santana, Recife - PE, 52060-530',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400),
+                                ),
                               ),
                             ],
                           ),
@@ -143,44 +145,19 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                                 size: 15,
                               ),
                               spacing(10, 0),
-                              const Text(
-                                '+55 81 96575-4534',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400),
+                              const Expanded(
+                                child: Text(
+                                  '+55 81 96575-4534',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400),
+                                ),
                               ),
                             ],
                           ),
                         ),
                         spacing(0, 10),
-                        Container(
-                          // width: 350,
-                          height: 1,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade900,
-                          ),
-                        ),
-                        spacing(0, 10),
-                        Container(
-                          child: Row(
-                            children: [
-                              const Icon(
-                                Icons.circle,
-                                color: Colors.purple,
-                                size: 15,
-                              ),
-                              spacing(10, 0),
-                              const Text(
-                                'https://www.google.com.br/?hl=pt-BR&sa\nfe=active&ssui=on',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ],
-                          ),
-                        )
                       ],
                     ),
                   ),
@@ -220,12 +197,14 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                               Icons.bolt,
                               color: Colors.purple,
                             ),
-                            Text(
-                              '5KM',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
+                            Expanded(
+                              child: Text(
+                                '5KM',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ],
@@ -243,12 +222,14 @@ class _AthleteCompanyPageState extends State<AthleteCompanyPage> {
                           children: [
                             Padding(padding: EdgeInsets.all(10.0)),
                             Icon(Icons.bolt, color: Colors.purple,),
-                            Text(
-                              'Recompensa: 5% de desconto na \nmensalidade',
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white,
+                            Expanded(
+                              child: Text(
+                                'Recompensa: 5% de desconto na \nmensalidade',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ],

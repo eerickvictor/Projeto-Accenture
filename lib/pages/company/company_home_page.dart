@@ -54,7 +54,6 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                           ),
                         ),
                         Container(
-                          width: 400,
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey.shade900),
                               borderRadius: const BorderRadius.all(
@@ -81,7 +80,6 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                               ),
                               spacing(0, 5),
                               Container(
-                                width: 350,
                                 height: 1,
                                 decoration: BoxDecoration(
                                   color: Colors.grey.shade900,
@@ -107,7 +105,6 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                               ),
                               spacing(0, 10),
                               Container(
-                                width: 350,
                                 height: 1,
                                 decoration: BoxDecoration(
                                   color: Colors.grey.shade900,
@@ -115,7 +112,6 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                               ),
                               spacing(0, 10),
                               Container(
-                                width: 140,
                                 height: 40,
                                 decoration: BoxDecoration(
                                   gradient: const LinearGradient(colors: [
@@ -161,7 +157,6 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                           ),
                         ),
                         Container(
-                          width: 400,
                           padding: const EdgeInsets.all(20.0),
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey.shade900),
@@ -198,7 +193,6 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                                 ),
                                 spacing(0, 30),
                                 Container(
-                                  width: 150,
                                   height: 50,
                                   decoration: BoxDecoration(
                                     gradient: const LinearGradient(colors: [
@@ -227,9 +221,7 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 40,
-                  ),
+                 spacing(0, 40),
                   Container(
                     child: Column(
                       children: [
@@ -246,7 +238,6 @@ class _CompanyHomePageState extends State<CompanyHomePage> {
                           ),
                         ),
                         Container(
-                          width: 400,
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey.shade900),
