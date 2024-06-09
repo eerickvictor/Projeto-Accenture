@@ -79,29 +79,6 @@ class _LoginAtletaState extends State<LoginAtleta> {
                   return null;
                 },
               ),
-              Container(
-                height: 40,
-                alignment: Alignment.bottomRight,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed('/cadastro_atleta');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.purple[600],
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5),
-                      ),
-                    ),
-                  ),
-                  child: const Text(
-                    "Cadastrar-se",
-                    textAlign: TextAlign.right,
-                  ),
-                ),
-              ),
               const SizedBox(
                 height: 40,
               ),
@@ -159,7 +136,38 @@ class _LoginAtletaState extends State<LoginAtleta> {
                     ),
                   ),
                 ),
-              )
+              ),
+              const Padding(padding: EdgeInsets.only(bottom: 50)),
+              Expanded(
+                child: Container(
+                  height: 2,
+                  color: Colors.grey,
+                ),
+              ),
+              const Padding(padding: EdgeInsets.only(top: 50)),
+              const Text('Caso não tenha uma conta', style: TextStyle(color: Colors.white, fontSize: 20), textAlign: TextAlign.center,),
+              Container(
+                height: 40,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed('/cadastro_atleta');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.purple[600],
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
+                      ),
+                    ),
+                  ),
+                  child: const Text(
+                    "Cadastrar-se",
+                    textAlign: TextAlign.right,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
